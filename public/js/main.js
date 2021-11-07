@@ -1,3 +1,5 @@
+import { name } from "./index.js";
+
 window.jsPDF = window.jspdf.jsPDF;
 window.html2canvas = html2canvas;
 
@@ -7,6 +9,7 @@ if (document.getElementById("button")) {
     var EngineNo = document.getElementById("EngineNo").textContent;
     var VendorName = document.getElementById("VendorName").textContent;
     button.onclick = (e) => {
+        name();
         // console.log("button clicked");
         e.preventDefault();
         var doc = new jsPDF();
