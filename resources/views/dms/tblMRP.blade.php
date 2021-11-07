@@ -1,10 +1,5 @@
 @extends('layouts.app')
 @section('content')
-
-
-
-
-=======
 <div class="row justify-content-center">
     <div class="col-md-10">
         <h3 class="bg-primary text-center p-2 text-white mt-2 rounded">MRP Table</h3>
@@ -19,27 +14,33 @@
                             }}</label>
                     </div> --}}
                     {{-- @endforeach --}}
-                    <table class="table">
+                    <table class="table table-striped table-bordered">
                         <thead class="thead-dark">
-                            <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">Model</th>
-                                <th scope="col">MRP</th>
-                                <th scope="col">Commission</th>
-                                <th scope="col">TR</th>
-                                <th scope="col">Purchage Price</th>
+                            <tr style="text-align:center;">
+                                <th scope="col" style="vertical-align:middle;" class="align-items-center">#
+                                </th>
+                                <th scope="col" style="vertical-align:middle;">Model</th>
+                                <th scope="col" style="vertical-align:middle;">MRP</th>
+                                <th scope="col" style="vertical-align:middle;">Commission</th>
+                                <th scope="col" style="vertical-align:middle;">TR</th>
+                                <th scope="col" style="vertical-align:middle;">Purchage Price</th>
+                                <th scope="col" style="vertical-align:middle;">Purchage Price</th>
+                                <th style="width:10%; vertical-align:middle;">Action</th>
                             </tr>
                         </thead>
                         <tbody>
 
                             @foreach ($MrpDatas as $MrpData)
                             <tr>
-                                <th scope="row">{{ $loop->iteration}}</th>
+                                <th style="text-align:center;" scope="row">{{ $loop->iteration}}</th>
                                 <td>{{ $MrpData->Model }}</td>
-                                <td>{{ number_format((float)$MrpData->MRP, 2,'.', ',') }}</td>
-                                <td>{{ $MrpData->Commission }}</td>
-                                <td>{{ $MrpData->TR }}</td>
-                                <td>{{ $MrpData->PurchagePrice }}</td>
+                                <td style="text-align:right;">{{ number_format((float)$MrpData->MRP) }}</td>
+                                <td style="text-align:right;">{{ number_format((float)$MrpData->Commission) }}</td>
+                                <td style="text-align:right;">{{ number_format((float)$MrpData->TR) }}</td>
+                                <td style="text-align:right;">{{ number_format((float)$MrpData->PurchagePrice) }}</td>
+                                <td style="text-align:right;">{{ number_format((float)$MrpData->PurchagePrice) }}</td>
+                                <td style="text-align:center;"><a href="{{ url('mrpedit/'.$MrpData->ModelCode) }}"
+                                        class="btn btn-primary">Edit</a></td>
                             </tr>
                             @endforeach
 
