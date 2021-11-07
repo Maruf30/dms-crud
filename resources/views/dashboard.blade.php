@@ -18,7 +18,9 @@
                 <div class="col-md-2">
                     <div class="card">
                         <div class="card-header">
-                            <h5 class="text-center">MRP Table</h5>
+                            <a href="{{url('/tblMRP') }}">
+                                <h5 class="text-center">MRP Table</h5>
+                            </a>
                         </div>
 
                     </div>

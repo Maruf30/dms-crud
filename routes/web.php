@@ -23,6 +23,7 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'login'])->middlewa
 
 Route::get('create-pdf-file', [PDFController::class, 'index']);
 Route::get('/customerSearch', [App\Http\Controllers\HomeController::class, 'customerSearch'])->middleware('auth');
+Route::get('/tblMRP', [App\Http\Controllers\MrpController::class, 'index'])->middleware('auth');
 
 Route::get('core/{id}', [App\Http\Controllers\CoreController::class, 'show'])->middleware('auth');
 Route::get('customerInfoFullChassis/{id}', [App\Http\Controllers\CoreController::class, 'customerInfoFullChassis'])->middleware('auth');
