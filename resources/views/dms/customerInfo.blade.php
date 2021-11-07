@@ -88,8 +88,9 @@
                     <hr class="mt-5 mb-5" style="border-top: 4px solid #999;">
 
                     @endforeach
-                    <button class="btn btn-outline-info mx-auto" id="button">Conver to PDF</button>
+
                 </form>
+                <button class="btn btn-outline-info mx-auto" id="button">Conver to PDF</button>
             </div>
         </div>
     </div>
