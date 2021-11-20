@@ -40,7 +40,8 @@
                                 <td style="text-align:right;">{{ number_format((float)$MrpData->PurchagePrice) }}</td>
                                 <td style="text-align:right;">{{ number_format((float)$MrpData->PurchagePrice) }}</td>
                                 <td style="text-align:center;"><a href="{{ url('mrpedit/'.$MrpData->ModelCode) }}"
-                                        class="btn btn-primary">Edit</a></td>
+                                        class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Edit</a>
+                                </td>
                             </tr>
                             @endforeach
 
@@ -53,4 +54,30 @@
     </div>
 </div>
 
+<!-- Modal -->
+<form action="" method="post">
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Edit Details</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input class="form-control" type="text" name="email" value="{{  }}">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
 @endsection

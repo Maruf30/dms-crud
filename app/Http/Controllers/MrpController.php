@@ -14,4 +14,9 @@ class MrpController extends Controller
 
         return view('dms.tblMRP', ['MrpDatas' => $MrpData]);
     }
+    public function mrpedit($modelCode)
+    {
+        $mrpEditData = Mrp::select("*")->where("ModelCode", "=", $modelCode)->get();
+        return view('dms.mrpedit', ['mrpDatas' => $mrpEditData]);
+    }
 }
