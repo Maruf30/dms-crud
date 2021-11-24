@@ -2,6 +2,7 @@ import { name } from "./index.js";
 
 window.jsPDF = window.jspdf.jsPDF;
 window.html2canvas = html2canvas;
+// window.jQuery = window.jQuery = jQuery;
 
 if (document.getElementById("button")) {
     var button = document.getElementById("button");

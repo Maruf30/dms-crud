@@ -14,7 +14,7 @@
                             }}</label>
                     </div> --}}
                     {{-- @endforeach --}}
-                    <table class="table table-striped table-bordered">
+                    <table class="table table-striped table-bordered" id="example">
                         <thead class="thead-dark">
                             <tr style="text-align:center;">
                                 <th scope="col" style="vertical-align:middle;" class="align-items-center">#
@@ -69,7 +69,7 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="email">Email</label>
-                        <input class="form-control" type="text" name="email" value="{{  }}">
+                        <input class="form-control" type="text" name="email">
                     </div>
                 </div>
                 <div class="modal-footer">
