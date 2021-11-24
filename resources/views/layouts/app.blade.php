@@ -127,12 +127,14 @@
         var $ = window.jQuery;
         $.fn.dataTable.Buttons.defaults.dom.button.className = 'btn btn-secondary';
         
-        $('#example').DataTable({
-        dom: 'Bfrtip',
+        $('#example').DataTable({        
+            
+        dom: 'Bfrtip',        
         buttons: [
             'copy', 'csv', 'excel', 'pdf', 'print'
         ]
-    } );
+        
+    });
         
     
 }
