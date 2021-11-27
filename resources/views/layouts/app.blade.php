@@ -123,24 +123,38 @@
         integrity="sha512-tVYBzEItJit9HXaWTPo8vveXlkK62LbA+wez9IgzjTmFNLMBO1BEYladBw2wnM3YURZSMUyhayPCoLtjGh84NQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script>
-        window.onload = function() {    
-        var $ = window.jQuery;
-        $.fn.dataTable.Buttons.defaults.dom.button.className = 'btn btn-secondary';
+        // window.onload = function() {   
+        // var $ = window.jQuery;
+        // $.fn.dataTable.Buttons.defaults.dom.button.className = 'btn btn-secondary';
+        $(document).ready(function() {              
+            $('#example').DataTable({                
+                pageLength: 10,
+                responsive: true,             
+                // dom: 'Bfrtip',
+                dom: '<"html5buttons"B>lTfgitp',        
+                buttons: [
+                // 'copy', 'csv', 'excel', 'pdf', 'print'
+                        {extend: 'copy'},
+                        {extend: 'csv'},
+                        {extend: 'excel', title: 'ExampleFile'},
+                        {extend: 'pdf', title: 'ExampleFile'},
+                        {extend: 'print',
+                        customize: function (win){
+                            $(win.document.body).addClass('white-bg');
+                            $(win.document.body).css('font-size', '10px');
+                            $(win.document.body).find('table')
+                            .addClass('compact')
+                            .css('font-size', 'inherit');
+                        }}
+                        ]        
+            });
         
-        $('#example').DataTable({        
-            
-        dom: 'Bfrtip',        
-        buttons: [
-            'copy', 'csv', 'excel', 'pdf', 'print'
-        ]
-        
-    });
-        
-    
-}
+        });
+// }
     </script>
 
     @yield('third_party_scripts')
+    @yield('script')
 
     @stack('page_scripts')
 </body>
