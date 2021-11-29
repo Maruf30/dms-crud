@@ -120,73 +120,73 @@
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header text-write">
-                <h4 class="modal-title">Update</h4>
+                <h4 class="modal-title p-1">Update</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true"><i class="fa fa-close"></i></span>
                 </button>
             </div>
-            <form action="" method="post">
+            <form action="" method="post" class="form-horizontal">
                 <!-- form delete -->
                 {{ csrf_field() }}
                 <input type="text" hidden class="col-sm-9 form-control" id="id" name="id" value="" />
                 <div class="modal-body">
-                    <div class="form-group row">
+                    <div class="form-group-sm row">
                         <label class="col-sm-3 col-form-label">Model</label>
                         <div class="col-sm-9">
                             <input type="text" id="e_Model" name="Model" class="form-control" value="" />
                         </div>
                     </div>
-                    <div class="form-group row">
+                    <div class="form-group-sm row">
                         <label class="col-sm-3 col-form-label">VAT Pur MRP</label>
                         <div class="col-sm-9">
                             <input type="text" id="e_VATPurchageMRP" name="VATPurchageMRP" class="form-control"
                                 value="" />
                         </div>
                     </div>
-                    <div class="form-group row">
+                    <div class="form-group-sm row">
                         <label class="col-sm-3 col-form-label">MRP</label>
                         <div class="col-sm-9">
                             <input type="text" id="e_MRP" name="MRP" class="form-control" value="" />
                         </div>
                     </div>
-                    <div class="form-group row">
+                    <div class="form-group-sm row">
                         <label class="col-sm-3 col-form-label">VAT MRP</label>
                         <div class="col-sm-9">
                             <input type="text" id="e_VATMRP" name="VATMRP" class="form-control" value="" />
                         </div>
                     </div>
-                    <div class="form-group row">
+                    <div class="form-group-sm row">
                         <label class="col-sm-3 col-form-label">Sale Vat</label>
                         <div class="col-sm-9">
                             <input type="text" id="e_SaleVat" name="SaleVat" class="form-control" value="" />
                         </div>
                     </div>
-                    <div class="form-group row">
+                    <div class="form-group-sm row">
                         <label class="col-sm-3 col-form-label">Commission</label>
                         <div class="col-sm-9">
                             <input type="text" id="e_Commission" name="Commission" class="form-control" value="" />
                         </div>
                     </div>
-                    <div class="form-group row">
+                    <div class="form-group-sm row">
                         <label class="col-sm-3 col-form-label">TR</label>
                         <div class="col-sm-9">
                             <input type="text" id="e_TR" name="TR" class="form-control" value="" />
                         </div>
                     </div>
-                    <div class="form-group row">
+                    <div class="form-group-sm row">
                         <label class="col-sm-3 col-form-label">Purchage Price</label>
                         <div class="col-sm-9">
                             <input type="text" id="e_PurchagePrice" name="PurchagePrice" class="form-control"
                                 value="" />
                         </div>
                     </div>
-                    <div class="form-group row">
+                    <div class="form-group-sm row">
                         <label class="col-sm-3 col-form-label">Reabate Basic</label>
                         <div class="col-sm-9">
                             <input type="text" id="e_ReabateBasic" name="ReabateBasic" class="form-control" value="" />
                         </div>
                     </div>
-                    <div class="form-group row">
+                    <div class="form-group-sm row">
                         <label class="col-sm-3 col-form-label">Reabate</label>
                         <div class="col-sm-9">
                             <input type="text" id="e_Reabate" name="Reabate" class="form-control" value="" />
@@ -195,9 +195,9 @@
 
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal"><i
+                    <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal"><i
                             class="icofont icofont-eye-alt"></i>Close</button>
-                    <button type="submit" id="" name="" class="btn btn-success  waves-light"><i
+                    <button type="submit" id="" name="" class="btn btn-success btn-sm  waves-light"><i
                             class="icofont icofont-check-circled"></i>Update</button>
                 </div>
             </form><!-- form delete end -->
