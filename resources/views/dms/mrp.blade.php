@@ -5,6 +5,11 @@
         <h3 class="bg-primary text-center p-2 text-white mt-2 rounded">Product Price Details</h3>
         <div class="row justify-content-center">
             <div class="col-md-12">
+                @if(session()->has('success'))
+                <div class="alert alert-success">
+                    {{ session()->get('success') }}
+                </div>
+                @endif
                 <form>
                     {{-- @foreach ($MrpDatas as $MrpData) --}}
                     {{-- <div class="form-group row">
@@ -19,7 +24,8 @@
                         style="width:100%">
                         <thead>
                             <tr>
-                                <th class="align-middle">Sl</th>
+                                {{-- <th class="align-middle">Sl</th> --}}
+                                <th class="align-middle">Code</th>
                                 <th class="align-middle">Model</th>
                                 <th class="align-middle">VAT Pur</th>
                                 <th class="align-middle">MRP</th>
@@ -37,7 +43,8 @@
                         <tbody>
                             @foreach($MrpDatas as $MrpData)
                             <tr>
-                                <td class="Sl">{{$loop->iteration}}</td>
+                                {{-- <td class="Sl">{{$loop->iteration}}</td> --}}
+                                <td class="ModelCode">{{$MrpData->model_code}}</td>
                                 <td class="Model">{{$MrpData->Model}}</td>
                                 <td class="VATPurchageMRP text-right">{{ number_format($MrpData->VATPurchageMRP,0)}}
                                 </td>
@@ -52,13 +59,22 @@
                                 <td class="Reabate text-right">{{number_format($MrpData->Reabate,0)}}</td>
                                 <td class="text-center">
                                     <a class="m-r-15 text-muted edit" data-toggle="modal"
-                                        data-idUpdate="{{$MrpData->ModelCode}}" data-target="#exampleModal">
+                                        data-idUpdate="{{$MrpData->model_code}}" data-target="#exampleModal">
                                         <i class="fa fa-edit" style="color: #2196f3;font-size:16px;"></i>
                                     </a>
-                                    <a href="delete/{{$MrpData->ModelCode}}"
-                                        onclick="return confirm('Are you sure to want to delete it?')"> <i
-                                            class="fa fa-trash" aria-hidden="true"
+                                    <a href="#"><i class="fa fa-trash show_confirm" aria-hidden="true"
                                             style="color: red;font-size:16px;"></i></a>
+
+                                    {{-- <form method="POST" action="{{ route('users.delete', $user->id) }}">
+                                        @csrf
+                                        <input name="_method" type="hidden" value="DELETE">
+                                        <button type="submit" class="btn btn-xs btn-danger btn-flat show_confirm"
+                                            data-toggle="tooltip" title='Delete'>Delete</button>
+                                    </form> --}}
+                                    {{-- <a href="delete/{{$MrpData->ModelCode}}"
+                                        onclick="return confirm('Are you sure to want to delete it?')"> <i
+                                            class="fa fa-trash show_confirm" aria-hidden="true"
+                                            style="color: red;font-size:16px;"></i></a> --}}
                                 </td>
                             </tr>
                             @endforeach
@@ -125,11 +141,18 @@
                     <span aria-hidden="true"><i class="fa fa-close"></i></span>
                 </button>
             </div>
-            <form action="" method="post" class="form-horizontal">
+            <form action="{{ route('mrp.update') }}" method="post" class="form-horizontal">
                 <!-- form delete -->
                 {{ csrf_field() }}
-                <input type="text" hidden class="col-sm-9 form-control" id="id" name="id" value="" />
+                {{-- <input type="text" hidden class="col-sm-9 form-control" id="model_code" name="model_code"
+                    value="" /> --}}
                 <div class="modal-body">
+                    <div class="form-group-sm row">
+                        <label class="col-sm-3 col-form-label">Code</label>
+                        <div class="col-sm-9">
+                            <input type="text" id="e_Model_Code" name="model_code" class="form-control" value="" />
+                        </div>
+                    </div>
                     <div class="form-group-sm row">
                         <label class="col-sm-3 col-form-label">Model</label>
                         <div class="col-sm-9">
@@ -236,20 +259,40 @@
     @endsection
 
     @section('script')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
     <script>
         $(document).on('click', '.edit', function()
         {
+            
             var _this = $(this).parents('tr');
+            $('#e_Model_Code').val(_this.find('.ModelCode').text());
             $('#e_Model').val(_this.find('.Model').text());
-            $('#e_VATPurchageMRP').val(_this.find('.VATPurchageMRP').text());
-            $('#e_MRP').val(_this.find('.MRP').text());
-            $('#e_VATMRP').val(_this.find('.VATMRP').text());            
-            $('#e_SaleVat').val(_this.find('.SaleVat').text());
-            $('#e_Commission').val(_this.find('.Commission').text());
-            $('#e_TR').val(_this.find('.TR').text());
-            $('#e_PurchagePrice').val(_this.find('.PurchagePrice').text());
-            $('#e_ReabateBasic').val(_this.find('.ReabateBasic').text());
-            $('#e_Reabate').val(_this.find('.Reabate').text());
+            $('#e_VATPurchageMRP').val(_this.find('.VATPurchageMRP').text().replace(/,/g, ''));
+            $('#e_MRP').val(_this.find('.MRP').text().replace(/,/g, ''));
+            $('#e_VATMRP').val(_this.find('.VATMRP').text().replace(/,/g, ''));            
+            $('#e_SaleVat').val(_this.find('.SaleVat').text().replace(/,/g, ''));
+            $('#e_Commission').val(_this.find('.Commission').text().replace(/,/g, ''));
+            $('#e_TR').val(_this.find('.TR').text().replace(/,/g, ''));
+            $('#e_PurchagePrice').val(_this.find('.PurchagePrice').text().replace(/,/g, ''));
+            $('#e_ReabateBasic').val(_this.find('.ReabateBasic').text().replace(/,/g, ''));
+            $('#e_Reabate').val(_this.find('.Reabate').text().replace(/,/g, ''));
         });
+        $('.show_confirm').click(function(event) {
+        //   var form =  $(this).closest("form");
+        //   var name = $(this).data("name");
+          event.preventDefault();
+          swal({
+              title: `Are you sure you want to delete this record?`,
+              text: "If you delete this, it will be gone forever.",
+              icon: "warning",
+              buttons: true,
+              dangerMode: true,
+          })
+          .then((willDelete) => {
+            if (willDelete) {
+              form.submit();
+            }
+          });
+      });
     </script>
     @endsection

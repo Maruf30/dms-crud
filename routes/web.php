@@ -2,7 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
-
 use App\Http\Controllers\PDFController;
 
 
@@ -18,25 +17,25 @@ use App\Http\Controllers\PDFController;
 |
 */
 
-Route::get('/', [App\Http\Controllers\HomeController::class, 'login'])->middleware('auth');
-// Auth::routes();
-
+Route::get('/', [App\Http\Controllers\HomeController::class, 'login']);
 Route::get('create-pdf-file', [PDFController::class, 'index']);
-Route::get('/customerSearch', [App\Http\Controllers\HomeController::class, 'customerSearch'])->middleware('auth');
-Route::get('/tblMRP', [App\Http\Controllers\MrpController::class, 'index'])->middleware('auth');
-Route::get('/mrpedit/{ModelCode}', [App\Http\Controllers\MrpController::class, 'mrpedit'])->middleware('auth');
-
-Route::get('core/{id}', [App\Http\Controllers\CoreController::class, 'show'])->middleware('auth');
-Route::get('customerInfoFullChassis/{id}', [App\Http\Controllers\CoreController::class, 'customerInfoFullChassis'])->middleware('auth');
-Route::resource('products', ProductController::class)->middleware('auth');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::post('/chassisSearch', [App\Http\Controllers\CoreController::class, 'chassisSearch'])->middleware('auth');
-Route::post('/searchChassisList', [App\Http\Controllers\CoreController::class, 'searchChassisList'])->middleware('auth');
-Route::post('/engineSearch', [App\Http\Controllers\CoreController::class, 'engineSearch'])->middleware('auth');
-Route::post('/mobileSearch', [App\Http\Controllers\CoreController::class, 'mobileSearch'])->middleware('auth');
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('/customerSearch', [App\Http\Controllers\HomeController::class, 'customerSearch']);
+    // ---------------------------- MRP Table ----------------------------
+    Route::get('/mrp', [App\Http\Controllers\MrpController::class, 'index'])->name('mrp.details');
+    Route::post('/mrp_update', [App\Http\Controllers\MrpController::class, 'mrp_update'])->name('mrp.update');
 
-// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+    Route::get('core/{id}', [App\Http\Controllers\CoreController::class, 'show']);
+    Route::get('customerInfoFullChassis/{id}', [App\Http\Controllers\CoreController::class, 'customerInfoFullChassis']);
+    Route::resource('products', ProductController::class);
+    Route::post('/chassisSearch', [App\Http\Controllers\CoreController::class, 'chassisSearch']);
+    Route::post('/searchChassisList', [App\Http\Controllers\CoreController::class, 'searchChassisList']);
+    Route::post('/engineSearch', [App\Http\Controllers\CoreController::class, 'engineSearch']);
+    Route::post('/mobileSearch', [App\Http\Controllers\CoreController::class, 'mobileSearch']);
+});
 
 // Auth::routes();
 Auth::routes(['register' => false]);
