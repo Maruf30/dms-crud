@@ -6,11 +6,15 @@
         <div class="row justify-content-center">
             <div class="col-md-12">
                 @if(session()->has('success'))
-                <div class="alert alert-success">
+                <div class="alert alert-success alert-dismissable">
                     {{ session()->get('success') }}
                 </div>
                 @endif
                 <form>
+                    <a class="m-r-15 text-muted edit float-right btn btn-primary text-white mb-1" data-toggle="modal"
+                        data-target="#">Add
+                        New
+                    </a>
                     {{-- @foreach ($MrpDatas as $MrpData) --}}
                     {{-- <div class="form-group row">
                         <label
