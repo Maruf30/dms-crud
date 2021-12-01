@@ -25,7 +25,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/customerSearch', [App\Http\Controllers\HomeController::class, 'customerSearch']);
     // ---------------------------- MRP Table ----------------------------
     Route::get('/mrp', [App\Http\Controllers\MrpController::class, 'index'])->name('mrp.details');
-    Route::post('/mrp', [App\Http\Controllers\MrpController::class, 'index'])->name('mrp.add');
+    Route::post('/mrp', [App\Http\Controllers\MrpController::class, 'add'])->name('mrp.add');
     Route::post('/mrp_update', [App\Http\Controllers\MrpController::class, 'mrp_update'])->name('mrp.update');
 
 

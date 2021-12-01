@@ -294,7 +294,26 @@
             $('#exampleModal').modal('show');
             $('#title').text('Add New');
             $('#update').text('Save');
+            
         });
+        function vat_calculate(){
+                let mrp = $('#e_MRP').val();
+                let commission = $('#e_Commission').val();
+                let tr = $('#e_TR').val();
+                let purchage_price_tr = mrp - commission
+                let purchage_price = purchage_price_tr - (commission * 0.15);
+
+                $('#e_basic_vat').val(Math.round((mrp * 100) / 115));                
+                $('#e_SaleVat').val(Math.round((mrp * 15) / 115));                
+                $('#e_TR').val(commission * 0.15);                
+                $('#e_PurchagePrice').val(purchage_price);                
+                $('#e_ReabateBasic').val(Math.round((purchage_price * 100) / 115));                
+                $('#e_Reabate').val(Math.round((purchage_price * 15) / 115));                
+            }
+        $("#modal_form").on("input", function() 
+            {
+            vat_calculate();            
+            });
 
         $('.show_confirm').click(function(event) {
         //   var form =  $(this).closest("form");
