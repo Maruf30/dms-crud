@@ -11,9 +11,8 @@
                 </div>
                 @endif
                 <form>
-                    <a class="m-r-15 text-muted edit float-right btn btn-primary text-white mb-1" data-toggle="modal"
-                        data-target="#">Add
-                        New
+                    <a class="m-r-15 text-muted edit float-right btn btn-primary text-white mb-1" id="add"
+                        data-toggle="modal" data-target="#"><i class="fas fa-plus"></i>
                     </a>
                     {{-- @foreach ($MrpDatas as $MrpData) --}}
                     {{-- <div class="form-group row">
@@ -34,7 +33,7 @@
                                 <th class="align-middle">VAT Pur</th>
                                 <th class="align-middle">MRP</th>
                                 <th class="align-middle">VAT MRP</th>
-                                {{-- <th>Basic (VAT)</th> --}}
+                                <th class="align-middle">Basic (VAT)</th>
                                 <th class="align-middle">Sale VAT</th>
                                 <th class="align-middle">Comm.</th>
                                 <th class="align-middle">TR</th>
@@ -54,7 +53,7 @@
                                 </td>
                                 <td class="MRP text-right">{{number_format($MrpData->MRP,0)}}</td>
                                 <td class="VATMRP text-right">{{number_format($MrpData->VATMRP,0)}}</td>
-                                {{-- <td class="Basic(VAT)">{{$MrpData->VATMRP)}}</td> --}}
+                                <td class="basic_vat">{{number_format($MrpData->basic_vat)}}</td>
                                 <td class="SaleVat text-right">{{number_format($MrpData->SaleVat,0)}}</td>
                                 <td class="Commission text-right">{{number_format($MrpData->Commission,0)}}</td>
                                 <td class="TR text-right">{{number_format($MrpData->TR,0)}}</td>
@@ -64,7 +63,7 @@
                                 <td class="text-center">
                                     <a class="m-r-15 text-muted edit" data-toggle="modal"
                                         data-idUpdate="{{$MrpData->model_code}}" data-target="#exampleModal">
-                                        <i class="fa fa-edit" style="color: #2196f3;font-size:16px;"></i>
+                                        <i class="fa fa-edit" id="edit" style="color: #2196f3;font-size:16px;"></i>
                                     </a>
                                     <a href="#"><i class="fa fa-trash show_confirm" aria-hidden="true"
                                             style="color: red;font-size:16px;"></i></a>
@@ -140,12 +139,12 @@
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header text-write">
-                <h4 class="modal-title p-1">Update</h4>
+                <h4 class="modal-title p-1" id="title">Update</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true"><i class="fa fa-close"></i></span>
                 </button>
             </div>
-            <form action="{{ route('mrp.update') }}" method="post" class="form-horizontal">
+            <form action="{{ route('mrp.update') }}" method="post" class="form-horizontal" id="modal_form">
                 <!-- form delete -->
                 {{ csrf_field() }}
                 {{-- <input type="text" hidden class="col-sm-9 form-control" id="model_code" name="model_code"
@@ -180,6 +179,12 @@
                         <label class="col-sm-3 col-form-label">VAT MRP</label>
                         <div class="col-sm-9">
                             <input type="text" id="e_VATMRP" name="VATMRP" class="form-control" value="" />
+                        </div>
+                    </div>
+                    <div class="form-group-sm row">
+                        <label class="col-sm-3 col-form-label">Basic (VAT)</label>
+                        <div class="col-sm-9">
+                            <input type="text" id="e_basic_vat" name="basic_vat" class="form-control" value="" />
                         </div>
                     </div>
                     <div class="form-group-sm row">
@@ -224,8 +229,8 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal"><i
                             class="icofont icofont-eye-alt"></i>Close</button>
-                    <button type="submit" id="" name="" class="btn btn-success btn-sm  waves-light"><i
-                            class="icofont icofont-check-circled"></i>Update</button>
+                    <button type="submit" id="update" name=""
+                        class="btn btn-success btn-sm  waves-light">Update</button>
                 </div>
             </form><!-- form delete end -->
         </div>
@@ -265,15 +270,16 @@
     @section('script')
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
     <script>
-        $(document).on('click', '.edit', function()
-        {
-            
+        $(document).on('click', '#edit', function(){
+            $('#title').text('Update');
+            $('#update').text('Update');
             var _this = $(this).parents('tr');
             $('#e_Model_Code').val(_this.find('.ModelCode').text());
             $('#e_Model').val(_this.find('.Model').text());
             $('#e_VATPurchageMRP').val(_this.find('.VATPurchageMRP').text().replace(/,/g, ''));
             $('#e_MRP').val(_this.find('.MRP').text().replace(/,/g, ''));
             $('#e_VATMRP').val(_this.find('.VATMRP').text().replace(/,/g, ''));            
+            $('#e_basic_vat').val(_this.find('.basic_vat').text().replace(/,/g, ''));            
             $('#e_SaleVat').val(_this.find('.SaleVat').text().replace(/,/g, ''));
             $('#e_Commission').val(_this.find('.Commission').text().replace(/,/g, ''));
             $('#e_TR').val(_this.find('.TR').text().replace(/,/g, ''));
@@ -281,6 +287,15 @@
             $('#e_ReabateBasic').val(_this.find('.ReabateBasic').text().replace(/,/g, ''));
             $('#e_Reabate').val(_this.find('.Reabate').text().replace(/,/g, ''));
         });
+
+        $(document).on('click', '#add', function()
+        {   $('#modal_form')[0].reset();
+            $('#modal_form').attr('action', "{{ route('mrp.add') }}");
+            $('#exampleModal').modal('show');
+            $('#title').text('Add New');
+            $('#update').text('Save');
+        });
+
         $('.show_confirm').click(function(event) {
         //   var form =  $(this).closest("form");
         //   var name = $(this).data("name");
@@ -298,5 +313,6 @@
             }
           });
       });
+
     </script>
     @endsection

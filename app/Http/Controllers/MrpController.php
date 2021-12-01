@@ -15,6 +15,10 @@ class MrpController extends Controller
 
         return view('dms.mrp', ['MrpDatas' => $MrpData]);
     }
+    public function add(Request $request)
+    {
+        dd($request->all());
+    }
     public function mrp_update(Request $request)
     {
         // $update = [
