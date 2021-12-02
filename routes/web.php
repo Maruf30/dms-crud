@@ -24,9 +24,10 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/customerSearch', [App\Http\Controllers\HomeController::class, 'customerSearch']);
     // ---------------------------- MRP Table ----------------------------
-    Route::get('/mrp', [App\Http\Controllers\MrpController::class, 'index'])->name('mrp.details');
-    Route::post('/mrp', [App\Http\Controllers\MrpController::class, 'add'])->name('mrp.add');
+    Route::get('/mrp_get', [App\Http\Controllers\MrpController::class, 'mrp_get'])->name('mrp.get');
+    Route::post('/mrp_add', [App\Http\Controllers\MrpController::class, 'mrp_add'])->name('mrp.add');
     Route::post('/mrp_update', [App\Http\Controllers\MrpController::class, 'mrp_update'])->name('mrp.update');
+    Route::get('/mrp_delete/{model_code}', [App\Http\Controllers\MrpController::class, 'mrp_delete'])->name('mrp.delete');
 
 
     Route::get('core/{id}', [App\Http\Controllers\CoreController::class, 'show']);

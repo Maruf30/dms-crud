@@ -125,34 +125,60 @@
         integrity="sha512-tVYBzEItJit9HXaWTPo8vveXlkK62LbA+wez9IgzjTmFNLMBO1BEYladBw2wnM3YURZSMUyhayPCoLtjGh84NQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script>
-        // window.onload = function() {   
-        // var $ = window.jQuery;
-        // $.fn.dataTable.Buttons.defaults.dom.button.className = 'btn btn-secondary';
-        $(document).ready(function() {              
-            $('#example').DataTable({                
+        $(document).ready(function () {
+            $('#example').DataTable({
                 pageLength: 10,
-                responsive: true,             
+                responsive: true,
                 // dom: 'Bfrtip',
-                dom: '<"html5buttons"B>lTfgitp',        
+                dom: '<"html5buttons"B>lTfgitp',
                 buttons: [
-                // 'copy', 'csv', 'excel', 'pdf', 'print'
-                        {extend: 'copy'},
-                        {extend: 'csv'},
-                        {extend: 'excel', title: 'ExampleFile'},
-                        {extend: 'pdf', title: 'ExampleFile'},
-                        {extend: 'print',
-                        customize: function (win){
+                    // 'copy', 'csv', 'excel', 'pdf', 'print'
+                    {
+                        extend: 'copy'
+                    },
+                    {
+                        extend: 'csv'
+                    },
+                    {
+                        extend: 'excel',
+                        title: 'ExampleFile'
+                    },
+                    {
+                        extend: 'pdf',
+                        title: 'ExampleFile'
+                    },
+                    {
+                        extend: 'print',
+                        customize: function (win) {
                             $(win.document.body).addClass('white-bg');
                             $(win.document.body).css('font-size', '10px');
                             $(win.document.body).find('table')
-                            .addClass('compact')
-                            .css('font-size', 'inherit');
-                        }}
-                        ]        
+                                .addClass('compact')
+                                .css('font-size', 'inherit');
+                        }
+                    }
+                ]
             });
-        
+
+
         });
-// }
+        $(function () {
+            $(document).on('click', '[data-toggle="lightbox"]', function (event) {
+                event.preventDefault();
+                $(this).ekkoLightbox({
+                    alwaysShowClose: true
+                });
+            });
+
+            $('.filter-container').filterizr({
+                gutterPixels: 3
+            });
+            $('.btn[data-filter]').on('click', function () {
+                $('.btn[data-filter]').removeClass('active');
+                $(this).addClass('active');
+            });
+        })
+
     </script>
 
     @yield('third_party_scripts')

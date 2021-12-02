@@ -8,16 +8,19 @@ use DB;
 
 class MrpController extends Controller
 {
-    public function index()
+    public function mrp_get()
     {
         $MrpData = Mrp::all();
         // dd($MrpData);
 
-        return view('dms.mrp', ['MrpDatas' => $MrpData]);
+        return view('dms.mrp.mrp', ['MrpDatas' => $MrpData]);
     }
-    public function add(Request $request)
+    public function mrp_add(Request $request)
     {
-        dd($request->all());
+        Mrp::create($request->all());
+        return redirect()->back()->with('success', 'All Field Has been added successfully!');
+
+        // dd($request->all());
     }
     public function mrp_update(Request $request)
     {
@@ -35,12 +38,18 @@ class MrpController extends Controller
         //     'VATPurchageMRP'         =>  $request->VATPurchageMRP,
 
         // ];
-        // // dd($update);
+
         // DB::table('mrps')->where('model_code', $request->model_code)->update($update);
         Mrp::whereModelCode($request->model_code)->update($request->all());
         return redirect()->back()->with('success', 'All Field Has been update successfully!');
 
         // return redirect('first-team');
         // return view('dms.mrpedit', ['mrpDatas' => $mrpEditData]);
+    }
+    public function mrp_delete(Request $request)
+    {
+        // dd($request->model_code);
+        Mrp::whereModelCode($request->model_code)->delete();
+        return redirect()->back()->with('success', 'Deletion Operation successfull!');
     }
 }
