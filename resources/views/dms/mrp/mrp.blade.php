@@ -183,53 +183,101 @@
         </div>
     </div>
 </div> <!-- End Modal Delete-->
+@endsection
 
+@section('datatable')
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
+<script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.0.1/js/dataTables.buttons.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.0.1/js/buttons.html5.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.0.1/js/buttons.print.min.js"></script>
 @endsection
 
 @section('script')
-<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
 <script>
-    $(document).on('click', '#edit', function () {
-        $('#title').text('Update');
-        $('#update').text('Update');
-        var _this = $(this).parents('tr');
-        $('#e_Model_Code').val(_this.find('.ModelCode').text());
-        $('#e_Model').val(_this.find('.Model').text());
-        $('#e_VATPurchageMRP').val(_this.find('.VATPurchageMRP').text().replace(/,/g, ''));
-        $('#e_MRP').val(_this.find('.MRP').text().replace(/,/g, ''));
-        $('#e_VATMRP').val(_this.find('.VATMRP').text().replace(/,/g, ''));
-        $('#e_basic_vat').val(_this.find('.basic_vat').text().replace(/,/g, ''));
-        $('#e_SaleVat').val(_this.find('.SaleVat').text().replace(/,/g, ''));
-        $('#e_Commission').val(_this.find('.Commission').text().replace(/,/g, ''));
-        $('#e_TR').val(_this.find('.TR').text().replace(/,/g, ''));
-        $('#e_PurchagePrice').val(_this.find('.PurchagePrice').text().replace(/,/g, ''));
-        $('#e_ReabateBasic').val(_this.find('.ReabateBasic').text().replace(/,/g, ''));
-        $('#e_Reabate').val(_this.find('.Reabate').text().replace(/,/g, ''));
-    });
-    $(document).on('click', '#add', function () {
-        $('#modal_form')[0].reset();
-        $('#modal_form').attr('action', "{{ route('mrp.add') }}");
-        $('#exampleModal').modal('show');
-        $('#title').text('Add New');
-        $('#update').text('Save');
-    });
+    $(document).ready(function () {
+        $('#example').DataTable({
+            pageLength: 10,
+            responsive: true,
+            lengthChange: true,
+            // autoWidth: true,
+            // dom: 'Bfrtip',
+            dom: '<"html5buttons"B>lTfgitp',
+            buttons: [
+                // 'copy', 'csv', 'excel', 'pdf', 'print'
+                {
+                    extend: 'copy'
+                },
+                {
+                    extend: 'csv'
+                },
+                {
+                    extend: 'excel',
+                    title: 'ExampleFile'
+                },
+                {
+                    extend: 'pdf',
+                    title: 'ExampleFile'
+                },
+                {
+                    extend: 'print',
+                    customize: function (win) {
+                        $(win.document.body).addClass('white-bg');
+                        $(win.document.body).css('font-size', '10px');
+                        $(win.document.body).find('table')
+                            .addClass('compact')
+                            .css('font-size', 'inherit');
+                    }
+                }
+            ]
+        });
 
-    function vat_calculate() {
-        let mrp = $('#e_MRP').val();
-        let commission = $('#e_Commission').val();
-        let tr = $('#e_TR').val();
-        let purchage_price_tr = mrp - commission
-        let purchage_price = purchage_price_tr - (commission * 0.15);
-        $('#e_basic_vat').val(Math.round((mrp * 100) / 115));
-        $('#e_SaleVat').val(Math.round((mrp * 15) / 115));
-        $('#e_TR').val(commission * 0.15);
-        $('#e_PurchagePrice').val(purchage_price);
-        $('#e_ReabateBasic').val(Math.round((purchage_price * 100) / 115));
-        $('#e_Reabate').val(Math.round((purchage_price * 15) / 115));
-    }
-    $("#modal_form").on("input", function () {
-        vat_calculate();
-    });
+        $(document).on('click', '#edit', function () {
+            $('#title').text('Update');
+            $('#update').text('Update');
+            var _this = $(this).parents('tr');
+            $('#e_Model_Code').val(_this.find('.ModelCode').text());
+            $('#e_Model').val(_this.find('.Model').text());
+            $('#e_VATPurchageMRP').val(_this.find('.VATPurchageMRP').text().replace(/,/g, ''));
+            $('#e_MRP').val(_this.find('.MRP').text().replace(/,/g, ''));
+            $('#e_VATMRP').val(_this.find('.VATMRP').text().replace(/,/g, ''));
+            $('#e_basic_vat').val(_this.find('.basic_vat').text().replace(/,/g, ''));
+            $('#e_SaleVat').val(_this.find('.SaleVat').text().replace(/,/g, ''));
+            $('#e_Commission').val(_this.find('.Commission').text().replace(/,/g, ''));
+            $('#e_TR').val(_this.find('.TR').text().replace(/,/g, ''));
+            $('#e_PurchagePrice').val(_this.find('.PurchagePrice').text().replace(/,/g, ''));
+            $('#e_ReabateBasic').val(_this.find('.ReabateBasic').text().replace(/,/g, ''));
+            $('#e_Reabate').val(_this.find('.Reabate').text().replace(/,/g, ''));
+        });
+        $(document).on('click', '#add', function () {
+            $('#modal_form')[0].reset();
+            $('#modal_form').attr('action', "{{ route('mrp.add') }}");
+            $('#exampleModal').modal('show');
+            $('#title').text('Add New');
+            $('#update').text('Save');
+        });
+
+        function vat_calculate() {
+            let mrp = $('#e_MRP').val();
+            let commission = $('#e_Commission').val();
+            let tr = $('#e_TR').val();
+            let purchage_price_tr = mrp - commission
+            let purchage_price = purchage_price_tr - (commission * 0.15);
+            $('#e_basic_vat').val(Math.round((mrp * 100) / 115));
+            $('#e_SaleVat').val(Math.round((mrp * 15) / 115));
+            $('#e_TR').val(commission * 0.15);
+            $('#e_PurchagePrice').val(purchage_price);
+            $('#e_ReabateBasic').val(Math.round((purchage_price * 100) / 115));
+            $('#e_Reabate').val(Math.round((purchage_price * 15) / 115));
+        }
+        $("#modal_form").on("input", function () {
+            vat_calculate();
+        });
+
+    })
 
 </script>
 @endsection
