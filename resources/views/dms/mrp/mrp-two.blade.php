@@ -12,11 +12,14 @@
                 @endif
 
                 @if (Auth::user()->role_id === 1)
-                <a class="m-r-15 text-muted edit float-right btn btn-primary text-white mb-1" id="add" data-toggle="modal" data-target="#"><i class="fas fa-plus"></i>
+                <a class="m-r-15 text-muted edit float-right btn btn-primary text-white mb-1" id="add"
+                    data-toggle="modal" data-target="#"><i class="fas fa-plus"></i>
                 </a>
                 @endif
 
-                <table id="example" class="table table-hover table-responsive table-striped table-sm text-sm table-light table-bordered" style="width:100%;">
+                <table id="example"
+                    class="table table-hover table-responsive table-striped table-sm text-sm table-light table-bordered"
+                    style="width:100%;">
                     <thead>
                         <tr>
                             {{-- <th class="align-middle">Sl</th> --}}
@@ -57,10 +60,12 @@
                             <td class="Reabate text-right">{{number_format($MrpData->Reabate,0)}}</td>
                             @if (Auth::user()->role_id === 1)
                             <td class="text-center">
-                                <a class="m-r-15 text-muted edit" data-toggle="modal" data-idUpdate="{{$MrpData->model_code}}" data-target="#exampleModal">
+                                <a class="m-r-15 text-muted edit" data-toggle="modal"
+                                    data-idUpdate="{{$MrpData->model_code}}" data-target="#exampleModal">
                                     <i class="fa fa-edit" id="edit" style="color: #2196f3;font-size:16px;"></i>
                                 </a>
-                                <a href="{{ route('mrp.delete', $MrpData->model_code) }}" onclick="return confirm('Are you sure to want to delete it?')">
+                                <a href="{{ route('mrp.delete', $MrpData->model_code) }}"
+                                    onclick="return confirm('Are you sure to want to delete it?')">
                                     <i class="fa fa-trash" aria-hidden="true" style="color: red;font-size:16px;">
                                     </i>
                                 </a>
@@ -77,7 +82,8 @@
 </div>
 
 <!-- Modal Update-->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" style="z-index: 1050; display: none;" aria-hidden="true">
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" style="z-index: 1050; display: none;"
+    aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header text-write">
@@ -106,7 +112,8 @@
                     <div class="form-group-sm row">
                         <label class="col-sm-3 col-form-label">VAT Pur MRP</label>
                         <div class="col-sm-9">
-                            <input type="text" id="e_VATPurchageMRP" name="VATPurchageMRP" class="form-control" value="" />
+                            <input type="text" id="e_VATPurchageMRP" name="VATPurchageMRP" class="form-control"
+                                value="" />
                         </div>
                     </div>
                     <div class="form-group-sm row">
@@ -148,7 +155,8 @@
                     <div class="form-group-sm row">
                         <label class="col-sm-3 col-form-label">Purchage Price</label>
                         <div class="col-sm-9">
-                            <input type="text" id="e_PurchagePrice" name="PurchagePrice" class="form-control" value="" />
+                            <input type="text" id="e_PurchagePrice" name="PurchagePrice" class="form-control"
+                                value="" />
                         </div>
                     </div>
                     <div class="form-group-sm row">
@@ -166,8 +174,10 @@
 
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal"><i class="icofont icofont-eye-alt"></i>Close</button>
-                    <button type="submit" id="update" name="" class="btn btn-success btn-sm  waves-light">Update</button>
+                    <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal"><i
+                            class="icofont icofont-eye-alt"></i>Close</button>
+                    <button type="submit" id="update" name=""
+                        class="btn btn-success btn-sm  waves-light">Update</button>
                 </div>
             </form><!-- form delete end -->
         </div>
@@ -179,7 +189,7 @@
 @section('script')
 <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
 <script>
-    $(document).on('click', '#edit', function() {
+    $(document).on('click', '#edit', function () {
         $('#title').text('Update');
         $('#update').text('Update');
         var _this = $(this).parents('tr');
@@ -196,7 +206,7 @@
         $('#e_ReabateBasic').val(_this.find('.ReabateBasic').text().replace(/,/g, ''));
         $('#e_Reabate').val(_this.find('.Reabate').text().replace(/,/g, ''));
     });
-    $(document).on('click', '#add', function() {
+    $(document).on('click', '#add', function () {
         $('#modal_form')[0].reset();
         $('#modal_form').attr('action', "{{ route('mrp.add') }}");
         $('#exampleModal').modal('show');
@@ -217,8 +227,9 @@
         $('#e_ReabateBasic').val(Math.round((purchage_price * 100) / 115));
         $('#e_Reabate').val(Math.round((purchage_price * 15) / 115));
     }
-    $("#modal_form").on("input", function() {
+    $("#modal_form").on("input", function () {
         vat_calculate();
     });
+
 </script>
 @endsection
