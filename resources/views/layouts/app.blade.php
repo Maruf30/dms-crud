@@ -16,20 +16,11 @@
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
     <script src="{{ mix('js/app.js') }}"></script>
     <script type="module" src="js/main.js"></script>
-    <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/buttons/2.0.1/js/dataTables.buttons.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
-    <script src="https://cdn.datatables.net/buttons/2.0.1/js/buttons.html5.min.js"></script>
-    <script src="https://cdn.datatables.net/buttons/2.0.1/js/buttons.print.min.js"></script>
 
-
+    @yield('datatable')
     @yield('third_party_stylesheets')
-
     @stack('page_css')
     @include('sweetalert::alert')
-
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -126,58 +117,22 @@
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script>
         $(document).ready(function () {
-            $('#example').DataTable({
-                pageLength: 10,
-                responsive: true,
-                // dom: 'Bfrtip',
-                dom: '<"html5buttons"B>lTfgitp',
-                buttons: [
-                    // 'copy', 'csv', 'excel', 'pdf', 'print'
-                    {
-                        extend: 'copy'
-                    },
-                    {
-                        extend: 'csv'
-                    },
-                    {
-                        extend: 'excel',
-                        title: 'ExampleFile'
-                    },
-                    {
-                        extend: 'pdf',
-                        title: 'ExampleFile'
-                    },
-                    {
-                        extend: 'print',
-                        customize: function (win) {
-                            $(win.document.body).addClass('white-bg');
-                            $(win.document.body).css('font-size', '10px');
-                            $(win.document.body).find('table')
-                                .addClass('compact')
-                                .css('font-size', 'inherit');
-                        }
-                    }
-                ]
-            });
+            // admin lte add active class to current link start
+            /** add active class and stay opened when selected */
+            var url = window.location;
 
+            // for sidebar menu entirely but not cover treeview
+            $('ul.nav-sidebar a').filter(function () {
+                return this.href == url;
+            }).addClass('active');
 
+            // for treeview
+            $('ul.nav-treeview a').filter(function () {
+                return this.href == url;
+            }).parentsUntil(".nav-sidebar > .nav-treeview").addClass('menu-open').prev('a').addClass(
+                'active');
+            // admin lte add active class to current link start
         });
-        $(function () {
-            $(document).on('click', '[data-toggle="lightbox"]', function (event) {
-                event.preventDefault();
-                $(this).ekkoLightbox({
-                    alwaysShowClose: true
-                });
-            });
-
-            $('.filter-container').filterizr({
-                gutterPixels: 3
-            });
-            $('.btn[data-filter]').on('click', function () {
-                $('.btn[data-filter]').removeClass('active');
-                $(this).addClass('active');
-            });
-        })
 
     </script>
 
