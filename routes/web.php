@@ -26,6 +26,7 @@ Route::group(['middleware' => 'auth'], function () {
     // ---------------------------- MRP Table ----------------------------
 
     // Testing Route MrpControllerTwo
+    Route::get('/index', [App\Http\Controllers\MrpControllerTwo::class, 'index'])->name('mrp.index');
     Route::get('/mrp_get_two', [App\Http\Controllers\MrpControllerTwo::class, 'mrp_get_two'])->name('mrp.get_two');
 
     // Original Route

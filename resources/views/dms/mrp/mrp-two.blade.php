@@ -5,72 +5,11 @@
         <h3 class="bg-primary text-center p-2 text-white mt-2 rounded">Product Price Details</h3>
         <div class="row justify-content-center">
             <div class="col-md-12">
-                @if(session()->has('success'))
-                <div class="alert alert-success alert-dismissable">
-                    {{ session()->get('success') }}
-                </div>
-                @endif
-
-                @if (Auth::user()->role_id === 1)
                 <a class="m-r-15 text-muted edit float-right btn btn-primary text-white mb-1" id="add" data-toggle="modal" data-target="#"><i class="fas fa-plus"></i>
                 </a>
-                @endif
-
-                <table id="example" class="table table-hover table-responsive table-striped table-sm text-sm table-light table-bordered" style="width:100%;">
-                    <thead>
-                        <tr>
-                            {{-- <th class="align-middle">Sl</th> --}}
-                            <th class="align-middle">Code</th>
-                            <th class="align-middle">Model</th>
-                            <th class="align-middle">VAT Pur</th>
-                            <th class="align-middle">MRP</th>
-                            <th class="align-middle">VMRP</th>
-                            <th class="align-middle">Basic</th>
-                            <th class="align-middle">VAT</th>
-                            <th class="align-middle">Comm</th>
-                            <th class="align-middle">TR</th>
-                            <th class="align-middle">Buy</th>
-                            <th class="align-middle">Basic</th>
-                            <th class="align-middle">Reabate</th>
-                            @if (Auth::user()->role_id === 1)
-                            <th class="align-middle">Action</th>
-                            @endif
-
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach($MrpDatas as $MrpData)
-                        <tr>
-                            {{-- <td class="Sl">{{$loop->iteration}}</td> --}}
-                            <td class="ModelCode">{{$MrpData->model_code}}</td>
-                            <td class="Model">{{$MrpData->Model}}</td>
-                            <td class="VATPurchageMRP text-right">{{ number_format($MrpData->VATPurchageMRP,0)}}
-                            </td>
-                            <td class="MRP text-right">{{number_format($MrpData->MRP,0)}}</td>
-                            <td class="VATMRP text-right">{{number_format($MrpData->VATMRP,0)}}</td>
-                            <td class="basic_vat">{{number_format($MrpData->basic_vat)}}</td>
-                            <td class="SaleVat text-right">{{number_format($MrpData->SaleVat,0)}}</td>
-                            <td class="Commission text-right">{{number_format($MrpData->Commission,0)}}</td>
-                            <td class="TR text-right">{{number_format($MrpData->TR,0)}}</td>
-                            <td class="PurchagePrice text-right">{{number_format($MrpData->PurchagePrice,0)}}</td>
-                            <td class="ReabateBasic text-right">{{number_format($MrpData->ReabateBasic,0)}}</td>
-                            <td class="Reabate text-right">{{number_format($MrpData->Reabate,0)}}</td>
-                            @if (Auth::user()->role_id === 1)
-                            <td class="text-center">
-                                <a class="m-r-15 text-muted edit" data-toggle="modal" data-idUpdate="{{$MrpData->model_code}}" data-target="#exampleModal">
-                                    <i class="fa fa-edit" id="edit" style="color: #2196f3;font-size:16px;"></i>
-                                </a>
-                                <a href="{{ route('mrp.delete', $MrpData->model_code) }}" onclick="return confirm('Are you sure to want to delete it?')">
-                                    <i class="fa fa-trash" aria-hidden="true" style="color: red;font-size:16px;">
-                                    </i>
-                                </a>
-                            </td>
-                            @endif
-
-                        </tr>
-                        @endforeach
-                    </tbody>
-                </table>
+                <div id="show_all_mrp">
+                    <h1 class="text-center text-secondary my-5">Loading...</h1>
+                </div>
             </div>
         </div>
     </div>
@@ -188,42 +127,7 @@
 
 @section('script')
 <script>
-    $(document).ready(function() {
-        $('#example').DataTable({
-            pageLength: 10,
-            responsive: true,
-            lengthChange: true,
-            // autoWidth: true,
-            // dom: 'Bfrtip',
-            dom: '<"html5buttons"B>lTfgitp',
-            buttons: [
-                // 'copy', 'csv', 'excel', 'pdf', 'print'
-                {
-                    extend: 'copy'
-                },
-                {
-                    extend: 'csv'
-                },
-                {
-                    extend: 'excel',
-                    title: 'ExampleFile'
-                },
-                {
-                    extend: 'pdf',
-                    title: 'ExampleFile'
-                },
-                {
-                    extend: 'print',
-                    customize: function(win) {
-                        $(win.document.body).addClass('white-bg');
-                        $(win.document.body).css('font-size', '10px');
-                        $(win.document.body).find('table')
-                            .addClass('compact')
-                            .css('font-size', 'inherit');
-                    }
-                }
-            ]
-        });
+    $(function() {
         $(document).on('click', '#edit', function() {
             $('#title').text('Update');
             $('#update').text('Update');
@@ -265,6 +169,77 @@
         $("#modal_form").on("input", function() {
             vat_calculate();
         });
+        fetchAllMrp();
+
+        function fetchAllMrp() {
+            $.ajax({
+                url: "{{ route('mrp.get_two') }}",
+                method: 'get',
+                success: function(response) {
+                    if (response.length > 0) {
+                        var html = `<table id="example" class="table table-hover table-responsive table-striped table-sm text-sm table-light table-bordered" style="width:100%;">
+                        <thead>
+                            <tr>
+                                <th class="align-middle">Code</th>
+                                <th class="align-middle">Model</th>
+                                <th class="align-middle">VAT Pur</th>
+                                <th class="align-middle">MRP</th>
+                                <th class="align-middle">VMRP</th>
+                                <th class="align-middle">Basic</th>
+                                <th class="align-middle">VAT</th>
+                                <th class="align-middle">Comm</th>
+                                <th class="align-middle">TR</th>
+                                <th class="align-middle">Buy</th>
+                                <th class="align-middle">Basic</th>
+                                <th class="align-middle">Reabate</th>
+                                <th class="align-middle">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>`;
+                        response.forEach(function(data, index) {
+                            html +=
+                                `<tr>
+                                <td class="ModelCode">${data.model_code}</td>
+                                <td class="Model">${data.Model}</td>
+                                <td class="VATPurchageMRP text-right">${data.VATPurchageMRP}</td>
+                                <td class="MRP text-right">${data.MRP}</td>
+                                <td class="VATMRP text-right">${data.VATMRP}</td>
+                                <td class="basic_vat">${data.basic_vat}</td>
+                                <td class="SaleVat text-right">${data.SaleVat}</td>
+                                <td class="Commission text-right">${data.Commission}</td>
+                                <td class="TR text-right">${data.TR}</td>
+                                <td class="PurchagePrice text-right">${data.PurchagePrice}</td>
+                                <td class="ReabateBasic text-right">${data.ReabateBasic}</td>
+                                <td class="Reabate text-right">${data.Reabate}</td>
+                                <td class="text-center">
+                                    <a class="m-r-15 text-muted edit" id="${data.model_code}"  data-toggle="modal" data-idUpdate="${data.model_code}" data-target="#exampleModal">
+                                        <i class="fa fa-edit" id="edit" style="color: #2196f3;font-size:16px;"></i>
+                                    </a>
+                                    <a href="#" id="${data.model_code}">
+                                        <i class="fa fa-trash" aria-hidden="true" style="color: red;font-size:16px;">
+                                        </i>
+                                    </a>
+                                </td>
+                            </tr>`;
+                        });
+                        html += `</tbody></table>`;
+                    } else {
+                        html = `<h3 class="text-center">No MRP Found</h3>`;
+                    }
+                    console.log(html);
+                    $("#show_all_mrp").html(html);
+                    $("#example").DataTable({
+                        pageLength: 10,
+                        responsive: true,
+                        lengthChange: true,
+                        dom: '<"html5buttons"B>lTfgitp',
+                        buttons: [
+                            'copy', 'csv', 'excel', 'pdf', 'print'
+                        ]
+                    });
+                }
+            });
+        };
     })
 </script>
 @endsection

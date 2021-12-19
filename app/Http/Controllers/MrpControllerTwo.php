@@ -8,12 +8,16 @@ use DB;
 
 class MrpControllerTwo extends Controller
 {
+    public function index()
+    {
+        return view('dms.mrp.mrp-two');
+    }
     public function mrp_get_two()
     {
-        $MrpData = Mrp::all();
-        // dd($MrpData);
+        $Mrps = Mrp::all();
 
-        return view('dms.mrp.mrp-two', ['MrpDatas' => $MrpData]);
+        return response()->json($Mrps);
+        // return view('dms.mrp.mrp-two', ['MrpDatas' => $MrpData]);
     }
     public function mrp_add(Request $request)
     {
