@@ -28,12 +28,14 @@ Route::group(['middleware' => 'auth'], function () {
     // Testing Route MrpControllerTwo
     Route::get('/index', [App\Http\Controllers\MrpControllerTwo::class, 'index'])->name('mrp.index');
     Route::get('/mrp_get_two', [App\Http\Controllers\MrpControllerTwo::class, 'mrp_get_two'])->name('mrp.get_two');
+    Route::post('/mrp_update_two', [App\Http\Controllers\MrpController::class, 'mrp_update_two'])->name('mrp.update_two');
+    Route::post('/mrp_add_two', [App\Http\Controllers\MrpController::class, 'mrp_add_two'])->name('mrp.add_two');
 
     // Original Route
     Route::get('/mrp_get', [App\Http\Controllers\MrpController::class, 'mrp_get'])->name('mrp.get');
     Route::post('/mrp_add', [App\Http\Controllers\MrpController::class, 'mrp_add'])->name('mrp.add');
     Route::post('/mrp_update', [App\Http\Controllers\MrpController::class, 'mrp_update'])->name('mrp.update');
-    Route::get('/mrp_delete/{model_code}', [App\Http\Controllers\MrpController::class, 'mrp_delete'])->name('mrp.delete');
+    Route::delete('/mrp_delete', [App\Http\Controllers\MrpController::class, 'mrp_delete'])->name('mrp.delete');
 
 
     Route::get('core/{id}', [App\Http\Controllers\CoreController::class, 'show']);

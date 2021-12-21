@@ -15,14 +15,16 @@ class MrpController extends Controller
 
         return view('dms.mrp.mrp', ['MrpDatas' => $MrpData]);
     }
-    public function mrp_add(Request $request)
+    public function mrp_add_two(Request $request)
     {
         Mrp::create($request->all());
-        return redirect()->back()->with('success', 'All Field Has been added successfully!');
+        return response()->json([
+            'status' => 200,
+        ]);
 
         // dd($request->all());
     }
-    public function mrp_update(Request $request)
+    public function mrp_update_two(Request $request)
     {
         // $update = [
         //     'model_code'           =>  $request->model_code,
@@ -40,8 +42,9 @@ class MrpController extends Controller
         // ];
 
         // DB::table('mrps')->where('model_code', $request->model_code)->update($update);
+        // dd($request->all());
         Mrp::whereModelCode($request->model_code)->update($request->all());
-        return redirect()->back()->with('success', 'All Field Has been update successfully!');
+        return response()->json(['status' => 200]);
 
         // return redirect('first-team');
         // return view('dms.mrpedit', ['mrpDatas' => $mrpEditData]);
@@ -50,6 +53,6 @@ class MrpController extends Controller
     {
         // dd($request->model_code);
         Mrp::whereModelCode($request->model_code)->delete();
-        return redirect()->back()->with('success', 'Deletion Operation successfull!');
+        return response()->json(['status' => 200]);
     }
 }
