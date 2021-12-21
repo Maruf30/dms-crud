@@ -25,79 +25,79 @@
                     <span aria-hidden="true"><i class="fa fa-close"></i></span>
                 </button>
             </div>
-            <form action="#" method="POST" class="form-horizontal edit_mrp_form" id="edit_mrp_form">
+            <form action="#" method="POST" class="form-horizontal" id="add_mrp_form">
                 @csrf
                 <div class="modal-body">
                     <div class="form-group-sm row">
                         <label class="col-sm-3 col-form-label">Code</label>
                         <div class="col-sm-9">
-                            <input required type="text" id="e_Model_Code" name="model_code" class="form-control" value="" />
+                            <input type="text" id="e_Model_Code" name="model_code" class="form-control" value="" />
                         </div>
                     </div>
                     <div class="form-group-sm row">
                         <label class="col-sm-3 col-form-label">Model</label>
                         <div class="col-sm-9">
-                            <input required type="text" id="e_Model" name="Model" class="form-control" value="" />
+                            <input type="text" id="e_Model" name="Model" class="form-control" value="" />
                         </div>
                     </div>
                     <div class="form-group-sm row">
                         <label class="col-sm-3 col-form-label">VAT Pur MRP</label>
                         <div class="col-sm-9">
-                            <input required type="text" id="e_VATPurchageMRP" name="VATPurchageMRP" class="form-control" value="" />
+                            <input type="text" id="e_VATPurchageMRP" name="VATPurchageMRP" class="form-control" value="" />
                         </div>
                     </div>
                     <div class="form-group-sm row">
                         <label class="col-sm-3 col-form-label">MRP</label>
                         <div class="col-sm-9">
-                            <input required type="text" id="e_MRP" name="MRP" class="form-control" value="" />
+                            <input type="text" id="e_MRP" name="MRP" class="form-control" value="" />
                         </div>
                     </div>
                     <div class="form-group-sm row">
                         <label class="col-sm-3 col-form-label">VAT MRP</label>
                         <div class="col-sm-9">
-                            <input required type="text" id="e_VATMRP" name="VATMRP" class="form-control" value="" />
+                            <input type="text" id="e_VATMRP" name="VATMRP" class="form-control" value="" />
                         </div>
                     </div>
                     <div class="form-group-sm row">
                         <label class="col-sm-3 col-form-label">Basic (VAT)</label>
                         <div class="col-sm-9">
-                            <input required type="text" id="e_basic_vat" name="basic_vat" class="form-control" value="" />
+                            <input type="text" id="e_basic_vat" name="basic_vat" class="form-control" value="" />
                         </div>
                     </div>
                     <div class="form-group-sm row">
                         <label class="col-sm-3 col-form-label">Sale Vat</label>
                         <div class="col-sm-9">
-                            <input required type="text" id="e_SaleVat" name="SaleVat" class="form-control" value="" />
+                            <input type="text" id="e_SaleVat" name="SaleVat" class="form-control" value="" />
                         </div>
                     </div>
                     <div class="form-group-sm row">
                         <label class="col-sm-3 col-form-label">Commission</label>
                         <div class="col-sm-9">
-                            <input required type="text" id="e_Commission" name="Commission" class="form-control" value="" />
+                            <input type="text" id="e_Commission" name="Commission" class="form-control" value="" />
                         </div>
                     </div>
                     <div class="form-group-sm row">
                         <label class="col-sm-3 col-form-label">TR</label>
                         <div class="col-sm-9">
-                            <input required type="text" id="e_TR" name="TR" class="form-control" value="" />
+                            <input type="text" id="e_TR" name="TR" class="form-control" value="" />
                         </div>
                     </div>
                     <div class="form-group-sm row">
                         <label class="col-sm-3 col-form-label">Purchage Price</label>
                         <div class="col-sm-9">
-                            <input required type="text" id="e_PurchagePrice" name="PurchagePrice" class="form-control" value="" />
+                            <input type="text" id="e_PurchagePrice" name="PurchagePrice" class="form-control" value="" />
                         </div>
                     </div>
                     <div class="form-group-sm row">
                         <label class="col-sm-3 col-form-label">Reabate Basic</label>
                         <div class="col-sm-9">
-                            <input required type="text" id="e_ReabateBasic" name="ReabateBasic" class="form-control" value="" />
+                            <input type="text" id="e_ReabateBasic" name="ReabateBasic" class="form-control" value="" />
                         </div>
                     </div>
                     <div class="form-group-sm row">
                         <label class="col-sm-3 col-form-label">Reabate</label>
                         <div class="col-sm-9">
-                            <input required type="text" id="e_Reabate" name="Reabate" class="form-control" value="" />
+                            <input type="text" id="e_Reabate" name="Reabate" class="form-control" value="" />
                         </div>
                     </div>
 
@@ -127,7 +127,7 @@
 @section('script')
 <script>
     $(function() {
-        $(document).on('click', '#edit', function() {
+        $(document).on('click', '.editIcon', function() {
             $('#title').text('Update');
             $('#update_mrp').text('Update');
             // $('#edit_mrp_form').prop('id', "update_mrp_form");
@@ -165,18 +165,35 @@
         $("#edit_mrp_form").on("input", function() {
             vat_calculate();
         });
-        $("#add").on("click", function() {
-            $("#update_mrp").text("Add MRP");
-            $('#edit_mrp_form').attr('id', "add_mrp_form");
+        $(document).on("click", '#add', function(e) {
+            console.log('add');
+            e.preventDefault();
+            if ($("#edit_mrp_form")[0]) {
+                $("#edit_mrp_form")[0].reset();
+                $("#edit_mrp_form").prop('id', "add_mrp_form");
+                $("#update_mrp").text("Add MRP");
+                $("#title").text("Add MRP");
+                console.log('if condition add');
+            }
+            if ($("#add_mrp_form")[0]) {
+                $("#add_mrp_form")[0].reset();
+            }
         });
-        $("#edit").on("click", function() {
-            $("#update_mrp").text("Update");
-            $('#add_mrp_form').attr('id', "edit_mrp_form");
+        $(document).on("click", '.editIcon', function(e) {
+            e.preventDefault();
+            console.log('edit');
+            if ($("#add_mrp_form")[0]) {
+                $("#add_mrp_form").prop('id', "edit_mrp_form");
+                // $("#edit_mrp_form")[0].reset();
+                $("#update_mrp").text("Update");
+                $("#title").text("Update");
+            }
         });
 
         // add new employee ajax request
         $("#add_mrp_form").submit(function(e) {
             e.preventDefault();
+            console.log('add_mrp_form');
             const FD = new FormData(this);
             $("#update_mrp").text("Adding...");
             $.ajax({
@@ -199,7 +216,7 @@
                         fetchAllMrp();
                     }
                     $("#update_mrp").text("Add MRP");
-                    $("#add_mrp_form")[0].reset();
+                    // $("#add_mrp_form")[0].reset();
                     // $('#add_mrp_form').attr('id', "edit_mrp_form");
                     $("#exampleModal").modal("hide");
                 },
@@ -208,6 +225,7 @@
 
         // update employee ajax request
         $("#edit_mrp_form").submit(function(e) {
+            console.log('edit_mrp_form');
             e.preventDefault();
             const FD = new FormData(this);
             $("#update_mrp").text('Updating...');
@@ -231,7 +249,7 @@
                         fetchAllMrp();
                     }
                     $("#update_mrp").text('Add MRP');
-                    $("#edit_mrp_form")[0].reset();
+                    // $("#edit_mrp_form")[0].reset();
                     $("#exampleModal").modal('hide');
                 }
             });
@@ -320,8 +338,8 @@
                                 <td class="ReabateBasic text-right">${BDFormat.format(data.ReabateBasic)}</td>
                                 <td class="Reabate text-right">${BDFormat.format(data.Reabate)}</td>
                                 <td class="text-center">
-                                    <a class="m-r-15 text-muted edit" id="edit_btn"  data-toggle="modal" data-idUpdate="${data.model_code}" data-target="#exampleModal">
-                                        <i class="fa fa-edit" id="edit" style="color: #2196f3;font-size:16px;"></i>
+                                    <a href="#" class="m-r-15 text-muted editIcon" id="${data.model_code}" data-toggle="modal" data-idUpdate="${data.model_code}" data-target="#exampleModal">
+                                        <i class="fa fa-edit" style="color: #2196f3;font-size:16px;"></i>
                                     </a>
                                     <a href="#" class="deleteIcon" id="${data.model_code}">
                                         <i class="fa fa-trash" aria-hidden="true" style="color: red;font-size:16px;">
