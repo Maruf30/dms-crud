@@ -8,14 +8,18 @@ use DB;
 
 class MrpController extends Controller
 {
+    public function index()
+    {
+        return view('dms.mrp.mrp');
+    }
+
     public function mrp_get()
     {
-        $MrpData = Mrp::all();
-        // dd($MrpData);
-
-        return view('dms.mrp.mrp', ['MrpDatas' => $MrpData]);
+        $Mrps = Mrp::all();
+        return response()->json($Mrps);
     }
-    public function mrp_add_two(Request $request)
+
+    public function mrp_add(Request $request)
     {
         Mrp::create($request->all());
         return response()->json([
@@ -24,7 +28,8 @@ class MrpController extends Controller
 
         // dd($request->all());
     }
-    public function mrp_update_two(Request $request)
+
+    public function mrp_update(Request $request)
     {
         // $update = [
         //     'model_code'           =>  $request->model_code,
@@ -49,6 +54,7 @@ class MrpController extends Controller
         // return redirect('first-team');
         // return view('dms.mrpedit', ['mrpDatas' => $mrpEditData]);
     }
+
     public function mrp_delete(Request $request)
     {
         // dd($request->model_code);

@@ -77,15 +77,9 @@
             </a>
         </li>
         <li class="nav-item">
-            <a href="{{ route('mrp.get') }}" class="nav-link">
-                <i class="nav-icon fas fa-dollar-sign"></i>
-                <p>Product Price</p>
-            </a>
-        </li>
-        <li class="nav-item">
             <a href="{{ route('mrp.index') }}" class="nav-link">
                 <i class="nav-icon fas fa-dollar-sign"></i>
-                <p>Product Price Two</p>
+                <p>Product Price</p>
             </a>
         </li>
         <li class="nav-item">
