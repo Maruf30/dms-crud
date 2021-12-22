@@ -8,9 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class Vehicle extends Model
 {
     use HasFactory;
-
-    public function core()
-    {
-        return $this->belongsTo(Core::class, 'foreign_key', 'ModelCode');
-    }
+    protected $guarded = [];
 }

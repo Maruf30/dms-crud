@@ -10,40 +10,12 @@ class VehicleController extends Controller
 
     public function index()
     {
-        //
+        return view('dms.vehicle.vehicle');
     }
 
-    public function create()
+    public function vehicle_get()
     {
-        //
-    }
-
-
-    public function store(Request $request)
-    {
-    }
-
-
-    public function show(Vehicle $vehicle)
-    {
-        //
-    }
-
-
-    public function edit(Vehicle $vehicle)
-    {
-        //
-    }
-
-
-    public function update(Request $request, Vehicle $vehicle)
-    {
-        //
-    }
-
-
-    public function destroy(Vehicle $vehicle)
-    {
-        //
+        $vehicles = Vehicle::all();
+        return response()->json($vehicles);
     }
 }

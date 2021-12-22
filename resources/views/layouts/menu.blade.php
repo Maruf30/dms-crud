@@ -21,7 +21,12 @@
     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="true">
         <!-- Add icons to the links using the .nav-icon class
            with font-awesome or any other icon font library -->
-
+        <li class="nav-item">
+            <a href="{{ route('home') }}" class="nav-link">
+                <i class="nav-icon fas fa-home"></i>
+                <p>Home</p>
+            </a>
+        </li>
         <li class="nav-item">
             <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -44,44 +49,28 @@
             <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-table"></i>
                 <p>
-                    Tables
+                    Motorcycle
                     <i class="fas fa-angle-left right"></i>
                 </p>
             </a>
             <ul class="nav nav-treeview" style="display: none;">
                 <li class="nav-item">
-                    <a href="tables/simple.html" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Simple Tables</p>
+                    <a href="{{ route('mrp.index') }}" class="nav-link">
+                        <i class="nav-icon fas fa-dollar-sign"></i>
+                        <p>Motorcycle Price</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="tables/data.html" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>DataTables</p>
+                    <a href="{{ route('vehicle.index') }}" class="nav-link">
+                        <i class="nav-icon fas fa-dollar-sign"></i>
+                        <p>Motorcycle Details</p>
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a href="tables/jsgrid.html" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>jsGrid</p>
-                    </a>
-                </li>
+
             </ul>
         </li>
 
-        <li class="nav-item">
-            <a href="{{ route('home') }}" class="nav-link">
-                <i class="nav-icon fas fa-home"></i>
-                <p>Home</p>
-            </a>
-        </li>
-        <li class="nav-item">
-            <a href="{{ route('mrp.index') }}" class="nav-link">
-                <i class="nav-icon fas fa-dollar-sign"></i>
-                <p>Product Price</p>
-            </a>
-        </li>
+
         <li class="nav-item">
             <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-parachute-box"></i>

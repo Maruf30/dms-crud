@@ -23,16 +23,9 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/customerSearch', [App\Http\Controllers\HomeController::class, 'customerSearch']);
-    // ---------------------------- MRP Table ----------------------------
 
-    // // Testing Route MrpControllerTwo
-    // Route::get('/index', [App\Http\Controllers\MrpControllerTwo::class, 'index'])->name('mrp.index');
-    // Route::get('/mrp_get_two', [App\Http\Controllers\MrpControllerTwo::class, 'mrp_get_two'])->name('mrp.get_two');
-    // Route::post('/mrp_update_two', [App\Http\Controllers\MrpController::class, 'mrp_update_two'])->name('mrp.update_two');
-    // Route::post('/mrp_add_two', [App\Http\Controllers\MrpController::class, 'mrp_add_two'])->name('mrp.add_two');
-
-    // Original Route
-    Route::get('/index', [App\Http\Controllers\MrpController::class, 'index'])->name('mrp.index');
+    // MRP Table
+    Route::get('/mrp_index', [App\Http\Controllers\MrpController::class, 'index'])->name('mrp.index');
     Route::get('/mrp_get', [App\Http\Controllers\MrpController::class, 'mrp_get'])->name('mrp.get');
     Route::post('/mrp_add', [App\Http\Controllers\MrpController::class, 'mrp_add'])->name('mrp.add');
     Route::post('/mrp_update', [App\Http\Controllers\MrpController::class, 'mrp_update'])->name('mrp.update');
@@ -46,6 +39,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/searchChassisList', [App\Http\Controllers\CoreController::class, 'searchChassisList']);
     Route::post('/engineSearch', [App\Http\Controllers\CoreController::class, 'engineSearch']);
     Route::post('/mobileSearch', [App\Http\Controllers\CoreController::class, 'mobileSearch']);
+
+    // Vehicle Route
+    Route::get('/vehicle_index', [App\Http\Controllers\VehicleController::class, 'index'])->name('vehicle.index');
+    Route::get('/vehicle_get', [App\Http\Controllers\VehicleController::class, 'vehicle_get'])->name('vehicle.get');
 });
 
 // Auth::routes();

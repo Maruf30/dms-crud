@@ -25,8 +25,6 @@ class MrpController extends Controller
         return response()->json([
             'status' => 200,
         ]);
-
-        // dd($request->all());
     }
 
     public function mrp_update(Request $request)
