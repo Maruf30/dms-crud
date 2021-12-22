@@ -5,7 +5,7 @@
         <h3 class="bg-primary text-center p-2 text-white mt-2 rounded">Product Price Details</h3>
         <div class="row justify-content-center">
             <div class="col-md-12">
-                <a class="m-r-15 text-muted edit float-right btn btn-primary text-white mb-1" id="add" data-toggle="modal" data-target="#exampleModal"><i class="fas fa-plus"></i>
+                <a class="m-r-15 text-muted edit float-right btn btn-primary text-white mb-1" id="add" data-toggle="modal" data-target="#addModal"><i class="fas fa-plus"></i>
                 </a>
                 <div id="show_all_mrp">
                     <h1 class="text-center text-secondary my-5">Loading...</h1>
@@ -16,7 +16,7 @@
 </div>
 
 <!-- Modal Update-->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" style="z-index: 1050; display: none;" aria-hidden="true">
+<div class="modal fade" id="updateModal" tabindex="-1" role="dialog" style="z-index: 1050; display: none;" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header text-write">
@@ -25,7 +25,7 @@
                     <span aria-hidden="true"><i class="fa fa-close"></i></span>
                 </button>
             </div>
-            <form action="#" method="POST" class="form-horizontal" id="add_mrp_form">
+            <form action="#" method="POST" class="form-horizontal" id="edit_mrp_form">
                 @csrf
                 <div class="modal-body">
                     <div class="form-group-sm row">
@@ -104,12 +104,110 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal"><i class="icofont icofont-eye-alt"></i>Close</button>
-                    <button type="submit" id="update_mrp" name="" class="btn btn-success btn-sm  waves-light">Add MRP</button>
+                    <button type="submit" id="update_mrp" name="" class="btn btn-success btn-sm  waves-light">Update</button>
                 </div>
-            </form><!-- form delete end -->
+            </form>
         </div>
     </div>
-</div> <!-- End Modal Delete-->
+</div>
+<!-- Modal Update End-->
+
+<!-- Modal Add-->
+<div class="modal fade" id="addModal" tabindex="-1" role="dialog" style="z-index: 1050; display: none;" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header text-write">
+                <h4 class="modal-title p-1" id="title">Add</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true"><i class="fa fa-close"></i></span>
+                </button>
+            </div>
+            <form action="#" method="POST" class="form-horizontal" id="add_mrp_form">
+                @csrf
+                <div class="modal-body">
+                    <div class="form-group-sm row">
+                        <label class="col-sm-3 col-form-label">Code</label>
+                        <div class="col-sm-9">
+                            <input type="text" id="Model_Code" name="model_code" class="form-control" value="" />
+                        </div>
+                    </div>
+                    <div class="form-group-sm row">
+                        <label class="col-sm-3 col-form-label">Model</label>
+                        <div class="col-sm-9">
+                            <input type="text" id="Model" name="Model" class="form-control" value="" />
+                        </div>
+                    </div>
+                    <div class="form-group-sm row">
+                        <label class="col-sm-3 col-form-label">VAT Pur MRP</label>
+                        <div class="col-sm-9">
+                            <input type="text" id="VATPurchageMRP" name="VATPurchageMRP" class="form-control" value="" />
+                        </div>
+                    </div>
+                    <div class="form-group-sm row">
+                        <label class="col-sm-3 col-form-label">MRP</label>
+                        <div class="col-sm-9">
+                            <input type="text" id="MRP" name="MRP" class="form-control" value="" />
+                        </div>
+                    </div>
+                    <div class="form-group-sm row">
+                        <label class="col-sm-3 col-form-label">VAT MRP</label>
+                        <div class="col-sm-9">
+                            <input type="text" id="VATMRP" name="VATMRP" class="form-control" value="" />
+                        </div>
+                    </div>
+                    <div class="form-group-sm row">
+                        <label class="col-sm-3 col-form-label">Basic (VAT)</label>
+                        <div class="col-sm-9">
+                            <input type="text" id="basic_vat" name="basic_vat" class="form-control" value="" />
+                        </div>
+                    </div>
+                    <div class="form-group-sm row">
+                        <label class="col-sm-3 col-form-label">Sale Vat</label>
+                        <div class="col-sm-9">
+                            <input type="text" id="SaleVat" name="SaleVat" class="form-control" value="" />
+                        </div>
+                    </div>
+                    <div class="form-group-sm row">
+                        <label class="col-sm-3 col-form-label">Commission</label>
+                        <div class="col-sm-9">
+                            <input type="text" id="Commission" name="Commission" class="form-control" value="" />
+                        </div>
+                    </div>
+                    <div class="form-group-sm row">
+                        <label class="col-sm-3 col-form-label">TR</label>
+                        <div class="col-sm-9">
+                            <input type="text" id="TR" name="TR" class="form-control" value="" />
+                        </div>
+                    </div>
+                    <div class="form-group-sm row">
+                        <label class="col-sm-3 col-form-label">Purchage Price</label>
+                        <div class="col-sm-9">
+                            <input type="text" id="PurchagePrice" name="PurchagePrice" class="form-control" value="" />
+                        </div>
+                    </div>
+                    <div class="form-group-sm row">
+                        <label class="col-sm-3 col-form-label">Reabate Basic</label>
+                        <div class="col-sm-9">
+                            <input type="text" id="ReabateBasic" name="ReabateBasic" class="form-control" value="" />
+                        </div>
+                    </div>
+                    <div class="form-group-sm row">
+                        <label class="col-sm-3 col-form-label">Reabate</label>
+                        <div class="col-sm-9">
+                            <input type="text" id="Reabate" name="Reabate" class="form-control" value="" />
+                        </div>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal"><i class="icofont icofont-eye-alt"></i>Close</button>
+                    <button type="submit" id="update_mrp" name="" class="btn btn-success btn-sm  waves-light">Add</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- Modal Add End-->
 @endsection
 
 @section('datatable')
@@ -146,7 +244,21 @@
             $('#e_Reabate').val(_this.find('.Reabate').text().replace(/,/g, ''));
         });
 
-        function vat_calculate() {
+        function vat_calculate_add() {
+            let mrp = $('#MRP').val();
+            let commission = $('#Commission').val();
+            let tr = $('#TR').val();
+            let purchage_price_tr = mrp - commission
+            let purchage_price = purchage_price_tr - (commission * 0.15);
+            $('#basic_vat').val(Math.round((mrp * 100) / 115));
+            $('#SaleVat').val(Math.round((mrp * 15) / 115));
+            $('#TR').val(commission * 0.15);
+            $('#PurchagePrice').val(purchage_price);
+            $('#ReabateBasic').val(Math.round((purchage_price * 100) / 115));
+            $('#Reabate').val(Math.round((purchage_price * 15) / 115));
+        }
+
+        function vat_calculate_edit() {
             let mrp = $('#e_MRP').val();
             let commission = $('#e_Commission').val();
             let tr = $('#e_TR').val();
@@ -160,34 +272,11 @@
             $('#e_Reabate').val(Math.round((purchage_price * 15) / 115));
         }
         $("#add_mrp_form").on("input", function() {
-            vat_calculate();
+            console.log('input vat calculate called.');
+            vat_calculate_add();
         });
         $("#edit_mrp_form").on("input", function() {
-            vat_calculate();
-        });
-        $(document).on("click", '#add', function(e) {
-            console.log('add');
-            e.preventDefault();
-            if ($("#edit_mrp_form")[0]) {
-                $("#edit_mrp_form")[0].reset();
-                $("#edit_mrp_form").prop('id', "add_mrp_form");
-                $("#update_mrp").text("Add MRP");
-                $("#title").text("Add MRP");
-                console.log('if condition add');
-            }
-            if ($("#add_mrp_form")[0]) {
-                $("#add_mrp_form")[0].reset();
-            }
-        });
-        $(document).on("click", '.editIcon', function(e) {
-            e.preventDefault();
-            console.log('edit');
-            if ($("#add_mrp_form")[0]) {
-                $("#add_mrp_form").prop('id', "edit_mrp_form");
-                // $("#edit_mrp_form")[0].reset();
-                $("#update_mrp").text("Update");
-                $("#title").text("Update");
-            }
+            vat_calculate_edit();
         });
 
         // add new employee ajax request
@@ -195,7 +284,6 @@
             e.preventDefault();
             console.log('add_mrp_form');
             const FD = new FormData(this);
-            $("#update_mrp").text("Adding...");
             $.ajax({
                 url: "{{ route('mrp.add_two') }}",
                 method: "post",
@@ -215,10 +303,7 @@
                         });
                         fetchAllMrp();
                     }
-                    $("#update_mrp").text("Add MRP");
-                    // $("#add_mrp_form")[0].reset();
-                    // $('#add_mrp_form').attr('id', "edit_mrp_form");
-                    $("#exampleModal").modal("hide");
+                    $("#addModal").modal("hide");
                 },
             });
         });
@@ -248,13 +333,13 @@
                         })
                         fetchAllMrp();
                     }
-                    $("#update_mrp").text('Add MRP');
-                    // $("#edit_mrp_form")[0].reset();
-                    $("#exampleModal").modal('hide');
+                    $("#updateModal").modal('hide');
                 }
             });
         });
+
         fetchAllMrp();
+
         // delete employee ajax request
         $(document).on('click', '.deleteIcon', function(e) {
             e.preventDefault();
@@ -278,7 +363,7 @@
                             _token: csrf
                         },
                         success: function(response) {
-                            console.log(response);
+                            // console.log(response);
                             Swal.fire({
                                 position: "top-end",
                                 icon: "success",
@@ -338,7 +423,7 @@
                                 <td class="ReabateBasic text-right">${BDFormat.format(data.ReabateBasic)}</td>
                                 <td class="Reabate text-right">${BDFormat.format(data.Reabate)}</td>
                                 <td class="text-center">
-                                    <a href="#" class="m-r-15 text-muted editIcon" id="${data.model_code}" data-toggle="modal" data-idUpdate="${data.model_code}" data-target="#exampleModal">
+                                    <a href="#" class="m-r-15 text-muted editIcon" id="${data.model_code}" data-toggle="modal" data-idUpdate="${data.model_code}" data-target="#updateModal">
                                         <i class="fa fa-edit" style="color: #2196f3;font-size:16px;"></i>
                                     </a>
                                     <a href="#" class="deleteIcon" id="${data.model_code}">
@@ -352,7 +437,7 @@
                     } else {
                         html = `<h3 class="text-center">No MRP Found</h3>`;
                     }
-                    console.log(html);
+                    // console.log(html);
                     $("#show_all_mrp").html(html);
                     $("#example").DataTable({
                         pageLength: 10,
