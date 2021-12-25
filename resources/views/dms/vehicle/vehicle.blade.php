@@ -1,4 +1,10 @@
 @extends('layouts.app')
+
+@section('datatable_css')
+<link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css" />
+<link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.0.1/css/buttons.dataTables.min.css" />
+@endsection
+
 @section('content')
 <div class="row justify-content-center">
     <div class="col-md-10">
@@ -35,72 +41,137 @@
                         </div>
                     </div>
                     <div class="form-group-sm row">
+                        <label class="col-sm-3 col-form-label">Model Name</label>
+                        <div class="col-sm-9">
+                            <input type="text" id="e_model_name" name="model_name" class="form-control" value="" />
+                        </div>
+                    </div>
+                    <div class="form-group-sm row">
                         <label class="col-sm-3 col-form-label">Model</label>
                         <div class="col-sm-9">
                             <input type="text" id="e_model" name="model" class="form-control" value="" />
                         </div>
                     </div>
                     <div class="form-group-sm row">
-                        <label class="col-sm-3 col-form-label">VAT Pur MRP</label>
+                        <label class="col-sm-3 col-form-label">Vehicle</label>
                         <div class="col-sm-9">
-                            <input type="text" id="e_vat_purchage_mrp" name="vat_purchage_mrp" class="form-control" value="" />
+                            <input type="text" id="e_model_make_of_vehicle" name="model_make_of_vehicle" class="form-control" value="" />
                         </div>
                     </div>
                     <div class="form-group-sm row">
-                        <label class="col-sm-3 col-form-label">MRP</label>
+                        <label class="col-sm-3 col-form-label">Class</label>
                         <div class="col-sm-9">
-                            <input type="text" id="e_mrp" name="mrp" class="form-control" value="" />
+                            <input type="text" id="e_class_of_vehicle" name="class_of_vehicle" class="form-control" value="" />
                         </div>
                     </div>
                     <div class="form-group-sm row">
-                        <label class="col-sm-3 col-form-label">VAT MRP</label>
+                        <label class="col-sm-3 col-form-label">Cylinder</label>
                         <div class="col-sm-9">
-                            <input type="text" id="e_vat_mrp" name="vat_mrp" class="form-control" value="" />
+                            <input type="text" id="e_no_of_cylinder_with_cc" name="no_of_cylinder_with_cc" class="form-control" value="" />
                         </div>
                     </div>
                     <div class="form-group-sm row">
-                        <label class="col-sm-3 col-form-label">Basic (VAT)</label>
+                        <label class="col-sm-3 col-form-label">Tyre</label>
                         <div class="col-sm-9">
-                            <input type="text" id="e_basic_vat" name="basic_vat" class="form-control" value="" />
+                            <input type="text" id="e_size_of_tyre" name="size_of_tyre" class="form-control" value="" />
                         </div>
                     </div>
                     <div class="form-group-sm row">
-                        <label class="col-sm-3 col-form-label">Sale Vat</label>
+                        <label class="col-sm-3 col-form-label">Power</label>
                         <div class="col-sm-9">
-                            <input type="text" id="e_sale_vat" name="sale_vat" class="form-control" value="" />
+                            <input type="text" id="e_horse_power" name="horse_power" class="form-control" value="" />
                         </div>
                     </div>
                     <div class="form-group-sm row">
-                        <label class="col-sm-3 col-form-label">Commission</label>
+                        <label class="col-sm-3 col-form-label">LW</label>
                         <div class="col-sm-9">
-                            <input type="text" id="e_commission" name="commission" class="form-control" value="" />
+                            <input type="text" id="e_ladan_weight" name="ladan_weight" class="form-control" value="" />
                         </div>
                     </div>
                     <div class="form-group-sm row">
-                        <label class="col-sm-3 col-form-label">TR</label>
+                        <label class="col-sm-3 col-form-label">UW</label>
                         <div class="col-sm-9">
-                            <input type="text" id="e_tr" name="tr" class="form-control" value="" />
+                            <input type="text" id="e_unladen_weight" name="unladen_weight" class="form-control" value="" />
                         </div>
                     </div>
                     <div class="form-group-sm row">
-                        <label class="col-sm-3 col-form-label">Purchage Price</label>
+                        <label class="col-sm-3 col-form-label">Wheel</label>
                         <div class="col-sm-9">
-                            <input type="text" id="e_purchage_price" name="purchage_price" class="form-control" value="" />
+                            <input type="text" id="e_wheel_base" name="wheel_base" class="form-control" value="" />
                         </div>
                     </div>
                     <div class="form-group-sm row">
-                        <label class="col-sm-3 col-form-label">Reabate Basic</label>
+                        <label class="col-sm-3 col-form-label">SC</label>
                         <div class="col-sm-9">
-                            <input type="text" id="e_rebate_basic" name="rebate_basic" class="form-control" value="" />
+                            <input type="text" id="e_seating_capacity" name="seating_capacity" class="form-control" value="" />
                         </div>
                     </div>
                     <div class="form-group-sm row">
-                        <label class="col-sm-3 col-form-label">Reabate</label>
+                        <label class="col-sm-3 col-form-label">Makers</label>
                         <div class="col-sm-9">
-                            <input type="text" id="e_rebate" name="rebate" class="form-control" value="" />
+                            <input type="text" id="e_makers_name" name="makers_name" class="form-control" value="" />
                         </div>
                     </div>
-
+                    <div class="form-group-sm row">
+                        <label class="col-sm-3 col-form-label">Country</label>
+                        <div class="col-sm-9">
+                            <input type="text" id="e_makers_country" name="makers_country" class="form-control" value="" />
+                        </div>
+                    </div>
+                    <div class="form-group-sm row">
+                        <label class="col-sm-3 col-form-label">CC</label>
+                        <div class="col-sm-9">
+                            <input type="text" id="e_cubic_capacity" name="cubic_capacity" class="form-control" value="" />
+                        </div>
+                    </div>
+                    <div class="form-group-sm row">
+                        <label class="col-sm-3 col-form-label">TRA</label>
+                        <div class="col-sm-9">
+                            <input type="text" id="e_the_reg_auth" name="the_reg_auth" class="form-control" value="" />
+                        </div>
+                    </div>
+                    <div class="form-group-sm row">
+                        <label class="col-sm-3 col-form-label">BRTA</label>
+                        <div class="col-sm-9">
+                            <input type="text" id="e_brta" name="brta" class="form-control" value="" />
+                        </div>
+                    </div>
+                    <div class="form-group-sm row">
+                        <label class="col-sm-3 col-form-label">NOC</label>
+                        <div class="col-sm-9">
+                            <input type="text" id="e_no_of_cylinder" name="no_of_cylinder" class="form-control" value="" />
+                        </div>
+                    </div>
+                    <div class="form-group-sm row">
+                        <label class="col-sm-3 col-form-label">Fuel</label>
+                        <div class="col-sm-9">
+                            <input type="text" id="e_fuel_used" name="fuel_used" class="form-control" value="" />
+                        </div>
+                    </div>
+                    <div class="form-group-sm row">
+                        <label class="col-sm-3 col-form-label">RPM</label>
+                        <div class="col-sm-9">
+                            <input type="text" id="e_rpm" name="rpm" class="form-control" value="" />
+                        </div>
+                    </div>
+                    <div class="form-group-sm row">
+                        <label class="col-sm-3 col-form-label">SID</label>
+                        <div class="col-sm-9">
+                            <input type="text" id="e_seats_inc_driver" name="seats_inc_driver" class="form-control" value="" />
+                        </div>
+                    </div>
+                    <div class="form-group-sm row">
+                        <label class="col-sm-3 col-form-label">Description</label>
+                        <div class="col-sm-9">
+                            <input type="text" id="e_description" name="description" class="form-control" value="" />
+                        </div>
+                    </div>
+                    <div class="form-group-sm row">
+                        <label class="col-sm-3 col-form-label">Status</label>
+                        <div class="col-sm-9">
+                            <input type="text" id="e_status" name="status" class="form-control" value="" />
+                        </div>
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal"><i class="icofont icofont-eye-alt"></i>Close</button>
@@ -131,73 +202,6 @@
                             <input type="text" id="a_model_code" name="model_code" class="form-control" value="" />
                         </div>
                     </div>
-                    <div class="form-group-sm row">
-                        <label class="col-sm-3 col-form-label">Model</label>
-                        <div class="col-sm-9">
-                            <input type="text" id="a_model" name="model" class="form-control" value="" />
-                        </div>
-                    </div>
-                    <div class="form-group-sm row">
-                        <label class="col-sm-3 col-form-label">VAT Pur MRP</label>
-                        <div class="col-sm-9">
-                            <input type="text" id="a_vat_purchage_mrp" name="vat_purchage_mrp" class="form-control" value="" />
-                        </div>
-                    </div>
-                    <div class="form-group-sm row">
-                        <label class="col-sm-3 col-form-label">MRP</label>
-                        <div class="col-sm-9">
-                            <input type="text" id="a_mrp" name="mrp" class="form-control" value="" />
-                        </div>
-                    </div>
-                    <div class="form-group-sm row">
-                        <label class="col-sm-3 col-form-label">VAT MRP</label>
-                        <div class="col-sm-9">
-                            <input type="text" id="a_vat_mrp" name="vat_mrp" class="form-control" value="" />
-                        </div>
-                    </div>
-                    <div class="form-group-sm row">
-                        <label class="col-sm-3 col-form-label">Basic (VAT)</label>
-                        <div class="col-sm-9">
-                            <input type="text" id="a_basic_vat" name="basic_vat" class="form-control" value="" />
-                        </div>
-                    </div>
-                    <div class="form-group-sm row">
-                        <label class="col-sm-3 col-form-label">Sale Vat</label>
-                        <div class="col-sm-9">
-                            <input type="text" id="a_sale_vat" name="sale_vat" class="form-control" value="" />
-                        </div>
-                    </div>
-                    <div class="form-group-sm row">
-                        <label class="col-sm-3 col-form-label">Commission</label>
-                        <div class="col-sm-9">
-                            <input type="text" id="a_commission" name="commission" class="form-control" value="" />
-                        </div>
-                    </div>
-                    <div class="form-group-sm row">
-                        <label class="col-sm-3 col-form-label">TR</label>
-                        <div class="col-sm-9">
-                            <input type="text" id="a_tr" name="tr" class="form-control" value="" />
-                        </div>
-                    </div>
-                    <div class="form-group-sm row">
-                        <label class="col-sm-3 col-form-label">Purchage Price</label>
-                        <div class="col-sm-9">
-                            <input type="text" id="a_purchage_price" name="purchage_price" class="form-control" value="" />
-                        </div>
-                    </div>
-                    <div class="form-group-sm row">
-                        <label class="col-sm-3 col-form-label">Reabate Basic</label>
-                        <div class="col-sm-9">
-                            <input type="text" id="a_rebate_basic" name="rebate_basic" class="form-control" value="" />
-                        </div>
-                    </div>
-                    <div class="form-group-sm row">
-                        <label class="col-sm-3 col-form-label">Reabate</label>
-                        <div class="col-sm-9">
-                            <input type="text" id="a_rebate" name="rebate" class="form-control" value="" />
-                        </div>
-                    </div>
-
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal"><i class="icofont icofont-eye-alt"></i>Close</button>
@@ -228,17 +232,29 @@
         $(document).on('click', '.editIcon', function() {
             var _this = $(this).parents('tr');
             $('#e_model_code').val(_this.find('.model_code').text());
+            $('#e_model_name').val(_this.find('.model_name').text());
             $('#e_model').val(_this.find('.model').text());
-            $('#e_vat_purchage_mrp').val(_this.find('.vat_purchage_mrp').text().replace(/,/g, ''));
-            $('#e_mrp').val(_this.find('.mrp').text().replace(/,/g, ''));
-            $('#e_vat_mrp').val(_this.find('.vat_mrp').text().replace(/,/g, ''));
-            $('#e_basic_vat').val(_this.find('.basic_vat').text().replace(/,/g, ''));
-            $('#e_sale_vat').val(_this.find('.sale_vat').text().replace(/,/g, ''));
-            $('#e_commission').val(_this.find('.commission').text().replace(/,/g, ''));
-            $('#e_tr').val(_this.find('.tr').text().replace(/,/g, ''));
-            $('#e_purchage_price').val(_this.find('.purchage_price').text().replace(/,/g, ''));
-            $('#e_rebate_basic').val(_this.find('.rebate_basic').text().replace(/,/g, ''));
-            $('#e_rebate').val(_this.find('.rebate').text().replace(/,/g, ''));
+            $('#e_model_make_of_vehicle').val(_this.find('.model_make_of_vehicle').text());
+            $('#e_class_of_vehicle').val(_this.find('.class_of_vehicle').text());
+            $('#e_no_of_cylinder_with_cc').val(_this.find('.no_of_cylinder_with_cc').text());
+            $('#e_size_of_tyre').val(_this.find('.size_of_tyre').text());
+            $('#e_horse_power').val(_this.find('.horse_power').text());
+            $('#e_ladan_weight').val(_this.find('.ladan_weight').text());
+            $('#e_unladen_weight').val(_this.find('.unladen_weight').text());
+            $('#e_wheel_base').val(_this.find('.wheel_base').text());
+            $('#e_seating_capacity').val(_this.find('.seating_capacity').text());
+            $('#e_makers_name').val(_this.find('.makers_name').text());
+            $('#e_makers_country').val(_this.find('.makers_country').text());
+            $('#e_cubic_capacity').val(_this.find('.cubic_capacity').text());
+            $('#e_the_reg_auth').val(_this.find('.the_reg_auth').text());
+            $('#e_brta').val(_this.find('.brta').text());
+            $('#e_no_of_cylinder').val(_this.find('.no_of_cylinder').text());
+            $('#e_fuel_used').val(_this.find('.fuel_used').text());
+            $('#e_rpm').val(_this.find('.rpm').text());
+            $('#e_seats_inc_driver').val(_this.find('.seats_inc_driver').text());
+            $('#e_description').val(_this.find('.description').text());
+            $('#e_status').val(_this.find('.status').text());
+
         });
 
         fetchAll();
@@ -257,6 +273,27 @@
                             <tr>
                                 <th class="align-middle">Code</th>                                
                                 <th class="align-middle">Model Name</th>
+                                <th class="align-middle">Model</th>
+                                <th class="align-middle">Vehicle</th>
+                                <th class="align-middle">Class</th>
+                                <th class="align-middle">Cylinder</th>
+                                <th class="align-middle">Tyre</th>
+                                <th class="align-middle">Power</th>
+                                <th class="align-middle">LW</th>
+                                <th class="align-middle">UW</th>
+                                <th class="align-middle">Wheel</th>
+                                <th class="align-middle">SC</th>
+                                <th class="align-middle">Makers</th>
+                                <th class="align-middle">Country</th>
+                                <th class="align-middle">CC</th>
+                                <th class="align-middle">TRA</th>
+                                <th class="align-middle">BRTA</th>
+                                <th class="align-middle">NOC</th>
+                                <th class="align-middle">Fuel</th>
+                                <th class="align-middle">RPM</th>
+                                <th class="align-middle">SID</th>
+                                <th class="align-middle">Description</th>
+                                <th class="align-middle">Status</th>
                                 <th class="align-middle">Action</th>                                
                             </tr>
                         </thead>
@@ -265,7 +302,28 @@
                             html +=
                                 `<tr>                                
                                 <td class="model_code">${data.model_code}</td>                                
-                                <td class="model_code">${data.model_name}</td>                                
+                                <td class="model_name">${data.model_name}</td>                                
+                                <td class="model">${data.model}</td>                                
+                                <td class="model_make_of_vehicle"><textarea>${data.model_make_of_vehicle}</textarea></td>                                
+                                <td class="class_of_vehicle">${data.class_of_vehicle}</td>                                
+                                <td class="no_of_cylinder_with_cc">${data.no_of_cylinder_with_cc}</td>                                
+                                <td class="size_of_tyre"><textarea>${data.size_of_tyre}</textarea></td>                                
+                                <td class="horse_power">${data.horse_power}</td>                                
+                                <td class="ladan_weight">${data.ladan_weight}</td>                                
+                                <td class="unladen_weight">${data.unladen_weight}</td>                                
+                                <td class="wheel_base">${data.wheel_base}</td>                                
+                                <td class="seating_capacity">${data.seating_capacity}</td>                                
+                                <td class="makers_name"><textarea>${data.makers_name}</textarea></td>                                
+                                <td class="makers_country">${data.makers_country}</td>                                
+                                <td class="cubic_capacity">${data.cubic_capacity}</td>                                
+                                <td class="the_reg_auth">${data.the_reg_auth}</td>                                
+                                <td class="brta"><textarea>${data.brta}</textarea></td>                                
+                                <td class="no_of_cylinder">${data.no_of_cylinder}</td>                                
+                                <td class="fuel_used">${data.fuel_used}</td>                                
+                                <td class="rpm">${data.rpm}</td>                                
+                                <td class="seats_inc_driver">${data.seats_inc_driver}</td>                                
+                                <td class="description"><textarea>${data.description}</textarea></td>                                
+                                <td class="status">${data.status}</td>                                
                                 <td class="text-center">
                                     <a href="#" class="m-r-15 text-muted editIcon" id="${data.model_code}" data-toggle="modal" data-idUpdate="${data.model_code}" data-target="#updateModal">
                                         <i class="fa fa-edit" style="color: #2196f3;font-size:16px;"></i>
