@@ -18,7 +18,6 @@
     @yield('datatable')
     @yield('third_party_stylesheets')
     @stack('page_css')
-    <!-- @include('sweetalert::alert') -->
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
