@@ -405,8 +405,7 @@
                         <tbody>`;
                         response.forEach(function(data, index) {
                             html +=
-                                `<tr>
-                                
+                                `<tr>                                
                                 <td class="model_code">${data.model_code}</td>
                                 <td class="model">${data.model}</td>
                                 <td class="vat_purchage_mrp text-right">${BDFormat.format(data.vat_purchage_mrp)}</td>
