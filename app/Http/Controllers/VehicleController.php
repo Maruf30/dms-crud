@@ -18,4 +18,25 @@ class VehicleController extends Controller
         $vehicles = Vehicle::all();
         return response()->json($vehicles);
     }
+
+    public function vehicle_add(Request $request)
+    {
+        Vehicle::create($request->all());
+        return response()->json([
+            'status' => 200,
+        ]);
+    }
+
+    public function vehicle_update(Request $request)
+    {
+        Vehicle::whereModelCode($request->model_code)->update($request->all());
+        // dd($request->all());
+        return response()->json(['status' => 200]);
+    }
+
+    public function Vehicle(Request $request)
+    {
+        Vehicle::whereModelCode($request->model_code)->delete();
+        return response()->json(['status' => 200]);
+    }
 }
