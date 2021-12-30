@@ -110,7 +110,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col md-6">
+                            <div class="col-md-6">
                                 <div class="form-group-sm row">
                                     <label class="col-sm-3 col-form-label">Makers</label>
                                     <div class="col-sm-9">
@@ -201,13 +201,153 @@
                     <span aria-hidden="true"><i class="fa fa-close"></i></span>
                 </button>
             </div>
-            <form action="#" method="POST" class="form-horizontal" id="add_mrp_form">
+            <form action="#" method="POST" class="form-horizontal" id="add_vehicle_form">
                 @csrf
                 <div class="modal-body">
-                    <div class="form-group-sm row">
-                        <label class="col-sm-3 col-form-label">Code</label>
-                        <div class="col-sm-9">
-                            <input type="text" id="a_model_code" name="model_code" class="form-control" value="" />
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group-sm row">
+                                    <label class="col-sm-3 col-form-label">Code</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" id="e_model_code" name="model_code" class="form-control" value="" />
+                                    </div>
+                                </div>
+                                <div class="form-group-sm row">
+                                    <label class="col-sm-3 col-form-label">Name</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" id="e_model_name" name="model_name" class="form-control" value="" />
+                                    </div>
+                                </div>
+                                <div class="form-group-sm row">
+                                    <label class="col-sm-3 col-form-label">Model</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" id="e_model" name="model" class="form-control" value="" />
+                                    </div>
+                                </div>
+                                <div class="form-group-sm row">
+                                    <label class="col-sm-3 col-form-label">Vehicle</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" id="e_model_make_of_vehicle" name="model_make_of_vehicle" class="form-control" value="" />
+                                    </div>
+                                </div>
+                                <div class="form-group-sm row">
+                                    <label class="col-sm-3 col-form-label">Class</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" id="e_class_of_vehicle" name="class_of_vehicle" class="form-control" value="" />
+                                    </div>
+                                </div>
+                                <div class="form-group-sm row">
+                                    <label class="col-sm-3 col-form-label">Cylinder</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" id="e_no_of_cylinder_with_cc" name="no_of_cylinder_with_cc" class="form-control" value="" />
+                                    </div>
+                                </div>
+                                <div class="form-group-sm row">
+                                    <label class="col-sm-3 col-form-label">Tyre</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" id="e_size_of_tyre" name="size_of_tyre" class="form-control" value="" />
+                                    </div>
+                                </div>
+                                <div class="form-group-sm row">
+                                    <label class="col-sm-3 col-form-label">Power</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" id="e_horse_power" name="horse_power" class="form-control" value="" />
+                                    </div>
+                                </div>
+                                <div class="form-group-sm row">
+                                    <label class="col-sm-3 col-form-label">LW</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" id="e_ladan_weight" name="ladan_weight" class="form-control" value="" />
+                                    </div>
+                                </div>
+                                <div class="form-group-sm row">
+                                    <label class="col-sm-3 col-form-label">UW</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" id="e_unladen_weight" name="unladen_weight" class="form-control" value="" />
+                                    </div>
+                                </div>
+                                <div class="form-group-sm row">
+                                    <label class="col-sm-3 col-form-label">Wheel</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" id="e_wheel_base" name="wheel_base" class="form-control" value="" />
+                                    </div>
+                                </div>
+                                <div class="form-group-sm row">
+                                    <label class="col-sm-3 col-form-label">SC</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" id="e_seating_capacity" name="seating_capacity" class="form-control" value="" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group-sm row">
+                                    <label class="col-sm-3 col-form-label">Makers</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" id="e_makers_name" name="makers_name" class="form-control" value="" />
+                                    </div>
+                                </div>
+                                <div class="form-group-sm row">
+                                    <label class="col-sm-3 col-form-label">Country</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" id="e_makers_country" name="makers_country" class="form-control" value="" />
+                                    </div>
+                                </div>
+                                <div class="form-group-sm row">
+                                    <label class="col-sm-3 col-form-label">CC</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" id="e_cubic_capacity" name="cubic_capacity" class="form-control" value="" />
+                                    </div>
+                                </div>
+                                <div class="form-group-sm row">
+                                    <label class="col-sm-3 col-form-label">TRA</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" id="e_the_reg_auth" name="the_reg_auth" class="form-control" value="" />
+                                    </div>
+                                </div>
+                                <div class="form-group-sm row">
+                                    <label class="col-sm-3 col-form-label">BRTA</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" id="e_brta" name="brta" class="form-control" value="" />
+                                    </div>
+                                </div>
+                                <div class="form-group-sm row">
+                                    <label class="col-sm-3 col-form-label">NOC</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" id="e_no_of_cylinder" name="no_of_cylinder" class="form-control" value="" />
+                                    </div>
+                                </div>
+                                <div class="form-group-sm row">
+                                    <label class="col-sm-3 col-form-label">Fuel</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" id="e_fuel_used" name="fuel_used" class="form-control" value="" />
+                                    </div>
+                                </div>
+                                <div class="form-group-sm row">
+                                    <label class="col-sm-3 col-form-label">RPM</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" id="e_rpm" name="rpm" class="form-control" value="" />
+                                    </div>
+                                </div>
+                                <div class="form-group-sm row">
+                                    <label class="col-sm-3 col-form-label">SID</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" id="e_seats_inc_driver" name="seats_inc_driver" class="form-control" value="" />
+                                    </div>
+                                </div>
+                                <div class="form-group-sm row">
+                                    <label class="col-sm-3 col-form-label">Description</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" id="e_description" name="description" class="form-control" value="" />
+                                    </div>
+                                </div>
+                                <div class="form-group-sm row">
+                                    <label class="col-sm-3 col-form-label">Status</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" id="e_status" name="status" class="form-control" value="" />
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -264,6 +404,34 @@
             $('#e_status').val(_this.find('.status').text());
 
         });
+        // add new employee ajax request
+        $("#add_vehicle_form").submit(function(e) {
+            e.preventDefault();
+            console.log('add_vehicle_form');
+            const FD = new FormData(this);
+            $.ajax({
+                url: "{{ route('vehicle.add') }}",
+                method: "post",
+                data: FD,
+                cache: false,
+                contentType: false,
+                processData: false,
+                dataType: "json",
+                success: function(response) {
+                    if (response.status == 200) {
+                        Swal.fire({
+                            position: "top-end",
+                            icon: "success",
+                            title: "Your work has been saved",
+                            showConfirmButton: false,
+                            timer: 1500,
+                        });
+                        fetchAll();
+                    }
+                    $("#addModal").modal("hide");
+                },
+            });
+        });
         // update employee ajax request
         $("#edit_vehicle_form").submit(function(e) {
             console.log('edit_vehicle_form');
@@ -292,6 +460,43 @@
                     $("#updateModal").modal('hide');
                 }
             });
+        });
+        // delete employee ajax request
+        $(document).on('click', '.deleteIcon', function(e) {
+            e.preventDefault();
+            let model_code = $(this).attr('id');
+            let csrf = '{{ csrf_token() }}';
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $.ajax({
+                        url: "{{ route('vehicle.delete') }}",
+                        method: 'delete',
+                        data: {
+                            model_code: model_code,
+                            _token: csrf
+                        },
+                        success: function(response) {
+                            // console.log(response);
+                            Swal.fire({
+                                position: "top-end",
+                                icon: "success",
+                                title: "Data Deleted Successfully",
+                                showConfirmButton: false,
+                                timer: 1500,
+                            })
+                            fetchAll();
+                        }
+                    });
+                }
+            })
         });
 
         fetchAll();

@@ -30,11 +30,10 @@ class VehicleController extends Controller
     public function vehicle_update(Request $request)
     {
         Vehicle::whereModelCode($request->model_code)->update($request->all());
-        // dd($request->all());
         return response()->json(['status' => 200]);
     }
 
-    public function Vehicle(Request $request)
+    public function vehicle_delete(Request $request)
     {
         Vehicle::whereModelCode($request->model_code)->delete();
         return response()->json(['status' => 200]);
