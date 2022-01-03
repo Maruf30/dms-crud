@@ -8,12 +8,12 @@
 @section('content')
 <div class="row justify-content-center">
     <div class="col-md-10">
-        <h3 class="bg-primary text-center p-2 text-white mt-2 rounded">Product Price Details</h3>
+        <h3 class="bg-primary text-center p-2 text-white mt-2 rounded">Supplier Details</h3>
         <div class="row justify-content-center">
             <div class="col-md-12">
                 <a class="m-r-15 text-muted edit float-right btn btn-primary text-white mb-1" id="add" data-toggle="modal" data-target="#addModal"><i class="fas fa-plus"></i>
                 </a>
-                <div id="show_all_mrp">
+                <div id="show_all_supplier">
                     <h1 class="text-center text-secondary my-5">Loading...</h1>
                 </div>
             </div>
@@ -31,7 +31,7 @@
                     <span aria-hidden="true"><i class="fa fa-close"></i></span>
                 </button>
             </div>
-            <form action="#" method="POST" class="form-horizontal" id="edit_mrp_form">
+            <form action="#" method="POST" class="form-horizontal" id="edit_supplier_form">
                 @csrf
                 <div class="modal-body">
                     <div class="form-group-sm row">
@@ -128,7 +128,7 @@
                     <span aria-hidden="true"><i class="fa fa-close"></i></span>
                 </button>
             </div>
-            <form action="#" method="POST" class="form-horizontal" id="add_mrp_form">
+            <form action="#" method="POST" class="form-horizontal" id="add_supplier_form">
                 @csrf
                 <div class="modal-body">
                     <div class="form-group-sm row">
@@ -250,41 +250,6 @@
             $('#e_rebate').val(_this.find('.rebate').text().replace(/,/g, ''));
         });
 
-        function vat_calculate_add() {
-            let mrp = $('#a_mrp').val();
-            let commission = $('#a_commission').val();
-            let tr = $('#a_tr').val();
-            let purchage_price_tr = mrp - commission
-            let purchage_price = purchage_price_tr - (commission * 0.15);
-            $('#a_basic_vat').val(Math.round((mrp * 100) / 115));
-            $('#a_sale_vat').val(Math.round((mrp * 15) / 115));
-            $('#a_tr').val(commission * 0.15);
-            $('#a_purchage_price').val(purchage_price);
-            $('#a_rebate_basic').val(Math.round((purchage_price * 100) / 115));
-            $('#a_rebate').val(Math.round((purchage_price * 15) / 115));
-        }
-
-        function vat_calculate_edit() {
-            let mrp = $('#e_mrp').val();
-            let commission = $('#e_commission').val();
-            let tr = $('#e_tr').val();
-            let purchage_price_tr = mrp - commission
-            let purchage_price = purchage_price_tr - (commission * 0.15);
-            $('#e_basic_vat').val(Math.round((mrp * 100) / 115));
-            $('#e_sale_vat').val(Math.round((mrp * 15) / 115));
-            $('#e_tr').val(commission * 0.15);
-            $('#e_purchage_price').val(purchage_price);
-            $('#e_rebate_basic').val(Math.round((purchage_price * 100) / 115));
-            $('#e_rebate').val(Math.round((purchage_price * 15) / 115));
-        }
-        $("#add_mrp_form").on("input", function() {
-            console.log('input vat calculate called.');
-            vat_calculate_add();
-        });
-        $("#edit_mrp_form").on("input", function() {
-            vat_calculate_edit();
-        });
-
         // add new employee ajax request
         $("#add_mrp_form").submit(function(e) {
             e.preventDefault();
@@ -307,7 +272,7 @@
                             showConfirmButton: false,
                             timer: 1500,
                         });
-                        fetchAllMrp();
+                        fetchAll();
                     }
                     $("#addModal").modal("hide");
                 },
@@ -337,14 +302,14 @@
                             showConfirmButton: false,
                             timer: 1500
                         })
-                        fetchAllMrp();
+                        fetchAll();
                     }
                     $("#updateModal").modal('hide');
                 }
             });
         });
 
-        fetchAllMrp();
+        fetchAll();
 
         // delete employee ajax request
         $(document).on('click', '.deleteIcon', function(e) {
@@ -377,37 +342,30 @@
                                 showConfirmButton: false,
                                 timer: 1500,
                             })
-                            fetchAllMrp();
+                            fetchAll();
                         }
                     });
                 }
             })
         });
 
-        function fetchAllMrp() {
-            const BDFormat = new Intl.NumberFormat("en-IN", {
-                maximumFractionDigits: 0
-            });
+        function fetchAll() {
             $.ajax({
-                url: "{{ route('mrp.get') }}",
+                url: "{{ route('supplier.get') }}",
                 method: 'get',
                 success: function(response) {
                     if (response.length > 0) {
                         var html = `<table id="example" class="table table-hover table-responsive table-striped table-sm text-sm table-light table-bordered" style="width:100%;">
                         <thead>
                             <tr>
+                                <th class="align-middle">Name</th>
                                 <th class="align-middle">Code</th>
-                                <th class="align-middle">Model</th>
-                                <th class="align-middle">VAT Pur</th>
-                                <th class="align-middle">MRP</th>
-                                <th class="align-middle">VMRP</th>
-                                <th class="align-middle">Basic</th>
-                                <th class="align-middle">VAT</th>
-                                <th class="align-middle">Comm</th>
-                                <th class="align-middle">TR</th>
-                                <th class="align-middle">Buy</th>
-                                <th class="align-middle">Basic</th>
-                                <th class="align-middle">Reabate</th>
+                                <th class="align-middle">Print Ref</th>
+                                <th class="align-middle">YOM</th>
+                                <th class="align-middle">VYP</th>
+                                <th class="align-middle">VYS</th>
+                                <th class="align-middle">Dealer</th>
+                                <th class="align-middle">Status</th>                                
                                 <th class="align-middle">Action</th>
                             </tr>
                         </thead>
@@ -416,23 +374,19 @@
                             console.log(data);
                             html +=
                                 `<tr>                                
-                                <td class="model_code">${data.model_code}</td>
-                                <td class="model">${data.model}</td>
-                                <td class="vat_purchage_mrp text-right">${BDFormat.format(data.vat_purchage_mrp)}</td>
-                                <td class="mrp text-right">${BDFormat.format(data.mrp)}</td>
-                                <td class="vat_mrp text-right">${BDFormat.format(data.vat_mrp)}</td>
-                                <td class="basic_vat">${BDFormat.format(data.basic_vat)}</td>
-                                <td class="sale_vat text-right">${BDFormat.format(data.sale_vat)}</td>
-                                <td class="commission text-right">${BDFormat.format(data.commission)}</td>
-                                <td class="tr text-right">${BDFormat.format(data.tr)}</td>
-                                <td class="purchage_price text-right">${BDFormat.format(data.purchage_price)}</td>
-                                <td class="rebate_basic text-right">${BDFormat.format(data.rebate_basic)}</td>
-                                <td class="rebate text-right">${BDFormat.format(data.rebate)}</td>
+                                <td class="model_code">${data.supplier_name}</td>
+                                <td class="model">${data.supplier_code}</td>
+                                <td class="model">${data.print_ref}</td>
+                                <td class="model">${data.year_of_manufacture}</td>
+                                <td class="model">${data.vat_year_purchage}</td>
+                                <td class="model">${data.vat_year_sale}</td>
+                                <td class="model">${data.dealer_name}</td>
+                                <td class="model">${data.status}</td>                                
                                 <td class="text-center">
-                                    <a href="#" class="m-r-15 text-muted editIcon" id="${data.model_code}" data-toggle="modal" data-idUpdate="${data.model_code}" data-target="#updateModal">
+                                    <a href="#" class="m-r-15 text-muted editIcon" id="${data.id}" data-toggle="modal" data-idUpdate="${data.id}" data-target="#updateModal">
                                         <i class="fa fa-edit" style="color: #2196f3;font-size:16px;"></i>
                                     </a>
-                                    <a href="#" class="deleteIcon" id="${data.model_code}">
+                                    <a href="#" class="deleteIcon" id="${data.id}">
                                         <i class="fa fa-trash" aria-hidden="true" style="color: red;font-size:16px;">
                                         </i>
                                     </a>
@@ -444,7 +398,7 @@
                         html = `<h3 class="text-center">No MRP Found</h3>`;
                     }
                     console.log(html);
-                    $("#show_all_mrp").html(html);
+                    $("#show_all_supplier").html(html);
                     $("#example").DataTable({
                         pageLength: 10,
                         responsive: true,

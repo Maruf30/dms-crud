@@ -46,6 +46,13 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/vehicle_add', [App\Http\Controllers\VehicleController::class, 'vehicle_add'])->name('vehicle.add');
     Route::post('/vehicle_update', [App\Http\Controllers\VehicleController::class, 'vehicle_update'])->name('vehicle.update');
     Route::delete('/vehicle_delete', [App\Http\Controllers\VehicleController::class, 'vehicle_delete'])->name('vehicle.delete');
+
+    // Supplier Route
+    Route::get('/supplier_index', [App\Http\Controllers\SupplierController::class, 'index'])->name('supplier.index');
+    Route::get('/supplier_get', [App\Http\Controllers\SupplierController::class, 'supplier_get'])->name('supplier.get');
+    Route::post('/supplier_add', [App\Http\Controllers\SupplierController::class, 'supplier_add'])->name('supplier.add');
+    Route::post('/supplier_update', [App\Http\Controllers\SupplierController::class, 'supplier_update'])->name('supplier.update');
+    Route::delete('/supplier_delete', [App\Http\Controllers\SupplierController::class, 'supplier_delete'])->name('supplier.delete');
 });
 
 // Auth::routes();
