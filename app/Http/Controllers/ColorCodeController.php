@@ -7,79 +7,35 @@ use Illuminate\Http\Request;
 
 class ColorCodeController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        //
+        return view('dms.color_code.color_code');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function color_code_get()
     {
-        //
+        $color_codes = ColorCode::all();
+        return response()->json($color_codes);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function color_code_add(Request $request)
     {
-        //
+        ColorCode::create($request->all());
+        return response()->json([
+            'status' => 200,
+        ]);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\ColorCode  $colorCode
-     * @return \Illuminate\Http\Response
-     */
-    public function show(ColorCode $colorCode)
+    public function color_code_update(Request $request)
     {
-        //
+        // dd($request->all());
+        ColorCode::whereId($request->id)->update($request->all());
+        return response()->json(['status' => 200]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\ColorCode  $colorCode
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(ColorCode $colorCode)
+    public function color_code_delete(Request $request)
     {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\ColorCode  $colorCode
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, ColorCode $colorCode)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\ColorCode  $colorCode
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(ColorCode $colorCode)
-    {
-        //
+        ColorCode::whereId($request->id)->delete();
+        return response()->json(['status' => 200]);
     }
 }

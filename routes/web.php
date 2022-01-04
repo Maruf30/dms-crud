@@ -53,6 +53,13 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/supplier_add', [App\Http\Controllers\SupplierController::class, 'supplier_add'])->name('supplier.add');
     Route::post('/supplier_update', [App\Http\Controllers\SupplierController::class, 'supplier_update'])->name('supplier.update');
     Route::delete('/supplier_delete', [App\Http\Controllers\SupplierController::class, 'supplier_delete'])->name('supplier.delete');
+
+    // Color Code
+    Route::get('/color_code_index', [App\Http\Controllers\ColorCodeController::class, 'index'])->name('color_code.index');
+    Route::get('/color_code_get', [App\Http\Controllers\ColorCodeController::class, 'color_code_get'])->name('color_code.get');
+    Route::post('/color_code_add', [App\Http\Controllers\ColorCodeController::class, 'color_code_add'])->name('color_code.add');
+    Route::post('/color_code_update', [App\Http\Controllers\ColorCodeController::class, 'color_code_update'])->name('color_code.update');
+    Route::delete('/color_code_delete', [App\Http\Controllers\ColorCodeController::class, 'color_code_delete'])->name('color_code.delete');
 });
 
 // Auth::routes();
