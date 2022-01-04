@@ -35,82 +35,58 @@
                 @csrf
                 <div class="modal-body">
                     <div class="form-group-sm row">
+                        <label class="col-sm-3 col-form-label">Name</label>
+                        <div class="col-sm-9">
+                            <input type="text" id="supplier_name" name="supplier_name" class="form-control" value="" />
+                            <input hidden type="text" id="supplier_id" name="id" class="form-control" value="" />
+                        </div>
+                    </div>
+                    <div class="form-group-sm row">
                         <label class="col-sm-3 col-form-label">Code</label>
                         <div class="col-sm-9">
-                            <input type="text" id="e_model_code" name="model_code" class="form-control" value="" />
+                            <input type="text" id="supplier_code" name="supplier_code" class="form-control" value="" />
                         </div>
                     </div>
                     <div class="form-group-sm row">
-                        <label class="col-sm-3 col-form-label">Model</label>
+                        <label class="col-sm-3 col-form-label">Print Ref</label>
                         <div class="col-sm-9">
-                            <input type="text" id="e_model" name="model" class="form-control" value="" />
+                            <input type="text" id="print_ref" name="print_ref" class="form-control" value="" />
                         </div>
                     </div>
                     <div class="form-group-sm row">
-                        <label class="col-sm-3 col-form-label">VAT Pur MRP</label>
+                        <label class="col-sm-3 col-form-label">YOM</label>
                         <div class="col-sm-9">
-                            <input type="text" id="e_vat_purchage_mrp" name="vat_purchage_mrp" class="form-control" value="" />
+                            <input type="text" id="year_of_manufacture" name="year_of_manufacture" class="form-control" value="" />
                         </div>
                     </div>
                     <div class="form-group-sm row">
-                        <label class="col-sm-3 col-form-label">MRP</label>
+                        <label class="col-sm-3 col-form-label">VYP</label>
                         <div class="col-sm-9">
-                            <input type="text" id="e_mrp" name="mrp" class="form-control" value="" />
+                            <input type="text" id="vat_year_purchage" name="vat_year_purchage" class="form-control" value="" />
                         </div>
                     </div>
                     <div class="form-group-sm row">
-                        <label class="col-sm-3 col-form-label">VAT MRP</label>
+                        <label class="col-sm-3 col-form-label">VYS</label>
                         <div class="col-sm-9">
-                            <input type="text" id="e_vat_mrp" name="vat_mrp" class="form-control" value="" />
+                            <input type="text" id="vat_year_sale" name="vat_year_sale" class="form-control" value="" />
                         </div>
                     </div>
                     <div class="form-group-sm row">
-                        <label class="col-sm-3 col-form-label">Basic (VAT)</label>
+                        <label class="col-sm-3 col-form-label">Dealer</label>
                         <div class="col-sm-9">
-                            <input type="text" id="e_basic_vat" name="basic_vat" class="form-control" value="" />
+                            <input type="text" id="dealer_name" name="dealer_name" class="form-control" value="" />
                         </div>
                     </div>
                     <div class="form-group-sm row">
-                        <label class="col-sm-3 col-form-label">Sale Vat</label>
+                        <label class="col-sm-3 col-form-label">Status</label>
                         <div class="col-sm-9">
-                            <input type="text" id="e_sale_vat" name="sale_vat" class="form-control" value="" />
+                            <input type="text" id="status" name="status" class="form-control" value="" />
                         </div>
                     </div>
-                    <div class="form-group-sm row">
-                        <label class="col-sm-3 col-form-label">Commission</label>
-                        <div class="col-sm-9">
-                            <input type="text" id="e_commission" name="commission" class="form-control" value="" />
-                        </div>
-                    </div>
-                    <div class="form-group-sm row">
-                        <label class="col-sm-3 col-form-label">TR</label>
-                        <div class="col-sm-9">
-                            <input type="text" id="e_tr" name="tr" class="form-control" value="" />
-                        </div>
-                    </div>
-                    <div class="form-group-sm row">
-                        <label class="col-sm-3 col-form-label">Purchage Price</label>
-                        <div class="col-sm-9">
-                            <input type="text" id="e_purchage_price" name="purchage_price" class="form-control" value="" />
-                        </div>
-                    </div>
-                    <div class="form-group-sm row">
-                        <label class="col-sm-3 col-form-label">Reabate Basic</label>
-                        <div class="col-sm-9">
-                            <input type="text" id="e_rebate_basic" name="rebate_basic" class="form-control" value="" />
-                        </div>
-                    </div>
-                    <div class="form-group-sm row">
-                        <label class="col-sm-3 col-form-label">Reabate</label>
-                        <div class="col-sm-9">
-                            <input type="text" id="e_rebate" name="rebate" class="form-control" value="" />
-                        </div>
-                    </div>
-
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal"><i class="icofont icofont-eye-alt"></i>Close</button>
-                    <button type="submit" id="update_mrp" name="" class="btn btn-success btn-sm  waves-light">Update</button>
+                    <button type="submit" id="update_supplier" name="" class="btn btn-success btn-sm  waves-light">Update</button>
                 </div>
             </form>
         </div>
@@ -132,82 +108,58 @@
                 @csrf
                 <div class="modal-body">
                     <div class="form-group-sm row">
+                        <label class="col-sm-3 col-form-label">Name</label>
+                        <div class="col-sm-9">
+                            <input type="text" id="supplier_name" name="supplier_name" class="form-control" value="" />
+                        </div>
+                    </div>
+                    <div class="form-group-sm row">
                         <label class="col-sm-3 col-form-label">Code</label>
                         <div class="col-sm-9">
-                            <input type="text" id="a_model_code" name="model_code" class="form-control" value="" />
+                            <input type="text" id="supplier_code" name="supplier_code" class="form-control" value="" />
                         </div>
                     </div>
                     <div class="form-group-sm row">
-                        <label class="col-sm-3 col-form-label">Model</label>
+                        <label class="col-sm-3 col-form-label">Print Ref</label>
                         <div class="col-sm-9">
-                            <input type="text" id="a_model" name="model" class="form-control" value="" />
+                            <input type="text" id="print_ref" name="print_ref" class="form-control" value="" />
                         </div>
                     </div>
                     <div class="form-group-sm row">
-                        <label class="col-sm-3 col-form-label">VAT Pur MRP</label>
+                        <label class="col-sm-3 col-form-label">YOM</label>
                         <div class="col-sm-9">
-                            <input type="text" id="a_vat_purchage_mrp" name="vat_purchage_mrp" class="form-control" value="" />
+                            <input type="text" id="year_of_manufacture" name="year_of_manufacture" class="form-control" value="" />
                         </div>
                     </div>
                     <div class="form-group-sm row">
-                        <label class="col-sm-3 col-form-label">MRP</label>
+                        <label class="col-sm-3 col-form-label">VYP</label>
                         <div class="col-sm-9">
-                            <input type="text" id="a_mrp" name="mrp" class="form-control" value="" />
+                            <input type="text" id="vat_year_purchage" name="vat_year_purchage" class="form-control" value="" />
                         </div>
                     </div>
                     <div class="form-group-sm row">
-                        <label class="col-sm-3 col-form-label">VAT MRP</label>
+                        <label class="col-sm-3 col-form-label">VYS</label>
                         <div class="col-sm-9">
-                            <input type="text" id="a_vat_mrp" name="vat_mrp" class="form-control" value="" />
+                            <input type="text" id="vat_year_sale" name="vat_year_sale" class="form-control" value="" />
                         </div>
                     </div>
                     <div class="form-group-sm row">
-                        <label class="col-sm-3 col-form-label">Basic (VAT)</label>
+                        <label class="col-sm-3 col-form-label">Dealer</label>
                         <div class="col-sm-9">
-                            <input type="text" id="a_basic_vat" name="basic_vat" class="form-control" value="" />
+                            <input type="text" id="dealer_name" name="dealer_name" class="form-control" value="" />
                         </div>
                     </div>
                     <div class="form-group-sm row">
-                        <label class="col-sm-3 col-form-label">Sale Vat</label>
+                        <label class="col-sm-3 col-form-label">Status</label>
                         <div class="col-sm-9">
-                            <input type="text" id="a_sale_vat" name="sale_vat" class="form-control" value="" />
-                        </div>
-                    </div>
-                    <div class="form-group-sm row">
-                        <label class="col-sm-3 col-form-label">Commission</label>
-                        <div class="col-sm-9">
-                            <input type="text" id="a_commission" name="commission" class="form-control" value="" />
-                        </div>
-                    </div>
-                    <div class="form-group-sm row">
-                        <label class="col-sm-3 col-form-label">TR</label>
-                        <div class="col-sm-9">
-                            <input type="text" id="a_tr" name="tr" class="form-control" value="" />
-                        </div>
-                    </div>
-                    <div class="form-group-sm row">
-                        <label class="col-sm-3 col-form-label">Purchage Price</label>
-                        <div class="col-sm-9">
-                            <input type="text" id="a_purchage_price" name="purchage_price" class="form-control" value="" />
-                        </div>
-                    </div>
-                    <div class="form-group-sm row">
-                        <label class="col-sm-3 col-form-label">Reabate Basic</label>
-                        <div class="col-sm-9">
-                            <input type="text" id="a_rebate_basic" name="rebate_basic" class="form-control" value="" />
-                        </div>
-                    </div>
-                    <div class="form-group-sm row">
-                        <label class="col-sm-3 col-form-label">Reabate</label>
-                        <div class="col-sm-9">
-                            <input type="text" id="a_rebate" name="rebate" class="form-control" value="" />
+                            <input type="text" id="status" name="status" class="form-control" value="" />
                         </div>
                     </div>
 
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal"><i class="icofont icofont-eye-alt"></i>Close</button>
-                    <button type="submit" id="update_mrp" name="" class="btn btn-success btn-sm  waves-light">Add</button>
+                    <button type="submit" id="add_supplier" name="" class="btn btn-success btn-sm  waves-light">Add</button>
                 </div>
             </form>
         </div>
@@ -227,7 +179,6 @@
 <script src="https://cdn.datatables.net/buttons/2.0.1/js/buttons.print.min.js"></script>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
-
 @endsection
 
 @section('script')
@@ -235,28 +186,27 @@
     $(function() {
         $("input").prop('required', true);
         $(document).on('click', '.editIcon', function() {
+            $("#update_supplier").text('Update');
             var _this = $(this).parents('tr');
-            $('#e_model_code').val(_this.find('.model_code').text());
-            $('#e_model').val(_this.find('.model').text());
-            $('#e_vat_purchage_mrp').val(_this.find('.vat_purchage_mrp').text().replace(/,/g, ''));
-            $('#e_mrp').val(_this.find('.mrp').text().replace(/,/g, ''));
-            $('#e_vat_mrp').val(_this.find('.vat_mrp').text().replace(/,/g, ''));
-            $('#e_basic_vat').val(_this.find('.basic_vat').text().replace(/,/g, ''));
-            $('#e_sale_vat').val(_this.find('.sale_vat').text().replace(/,/g, ''));
-            $('#e_commission').val(_this.find('.commission').text().replace(/,/g, ''));
-            $('#e_tr').val(_this.find('.tr').text().replace(/,/g, ''));
-            $('#e_purchage_price').val(_this.find('.purchage_price').text().replace(/,/g, ''));
-            $('#e_rebate_basic').val(_this.find('.rebate_basic').text().replace(/,/g, ''));
-            $('#e_rebate').val(_this.find('.rebate').text().replace(/,/g, ''));
+            $('#supplier_name').val(_this.find('.supplier_name').text());
+            $('#supplier_code').val(_this.find('.supplier_code').text());
+            $('#print_ref').val(_this.find('.print_ref').text());
+            $('#year_of_manufacture').val(_this.find('.year_of_manufacture').text());
+            $('#vat_year_purchage').val(_this.find('.vat_year_purchage').text());
+            $('#vat_year_sale').val(_this.find('.vat_year_sale').text());
+            $('#dealer_name').val(_this.find('.dealer_name').text());
+            $('#status').val(_this.find('.status').text().replace(/ /g, ''));
+            $('#supplier_id').val(_this.find('.supplier_id').text());
         });
 
         // add new employee ajax request
-        $("#add_mrp_form").submit(function(e) {
+        $("#add_supplier_form").submit(function(e) {
             e.preventDefault();
-            console.log('add_mrp_form');
+            console.log('add_supplier_form');
             const FD = new FormData(this);
+            $("#add_supplier").text('Adding...');
             $.ajax({
-                url: "{{ route('mrp.add') }}",
+                url: "{{ route('supplier.add') }}",
                 method: "post",
                 data: FD,
                 cache: false,
@@ -272,6 +222,7 @@
                             showConfirmButton: false,
                             timer: 1500,
                         });
+                        $("#add_supplier_form")[0].reset();
                         fetchAll();
                     }
                     $("#addModal").modal("hide");
@@ -280,13 +231,13 @@
         });
 
         // update employee ajax request
-        $("#edit_mrp_form").submit(function(e) {
-            console.log('edit_mrp_form');
+        $("#edit_supplier_form").submit(function(e) {
+            console.log('edit_supplier_form');
             e.preventDefault();
             const FD = new FormData(this);
-            $("#update_mrp").text('Updating...');
+            $("#update_supplier").text('Updating...');
             $.ajax({
-                url: "{{ route('mrp.update') }}",
+                url: "{{ route('supplier.update') }}",
                 method: 'post',
                 data: FD,
                 cache: false,
@@ -314,7 +265,7 @@
         // delete employee ajax request
         $(document).on('click', '.deleteIcon', function(e) {
             e.preventDefault();
-            let model_code = $(this).attr('id');
+            let id = $(this).attr('id');
             let csrf = '{{ csrf_token() }}';
             Swal.fire({
                 title: 'Are you sure?',
@@ -327,10 +278,10 @@
             }).then((result) => {
                 if (result.isConfirmed) {
                     $.ajax({
-                        url: "{{ route('mrp.delete') }}",
+                        url: "{{ route('supplier.delete') }}",
                         method: 'delete',
                         data: {
-                            model_code: model_code,
+                            id: id,
                             _token: csrf
                         },
                         success: function(response) {
@@ -366,6 +317,7 @@
                                 <th class="align-middle">VYS</th>
                                 <th class="align-middle">Dealer</th>
                                 <th class="align-middle">Status</th>                                
+                                <th hidden class="align-middle">Id</th>                                
                                 <th class="align-middle">Action</th>
                             </tr>
                         </thead>
@@ -374,16 +326,17 @@
                             console.log(data);
                             html +=
                                 `<tr>                                
-                                <td class="model_code">${data.supplier_name}</td>
-                                <td class="model">${data.supplier_code}</td>
-                                <td class="model">${data.print_ref}</td>
-                                <td class="model">${data.year_of_manufacture}</td>
-                                <td class="model">${data.vat_year_purchage}</td>
-                                <td class="model">${data.vat_year_sale}</td>
-                                <td class="model">${data.dealer_name}</td>
-                                <td class="model">${data.status}</td>                                
+                                <td class="supplier_name">${data.supplier_name}</td>
+                                <td class="supplier_code">${data.supplier_code}</td>
+                                <td class="print_ref">${data.print_ref}</td>
+                                <td class="year_of_manufacture">${data.year_of_manufacture}</td>
+                                <td class="vat_year_purchage">${data.vat_year_purchage}</td>
+                                <td class="vat_year_sale">${data.vat_year_sale}</td>
+                                <td class="dealer_name">${data.dealer_name}</td>
+                                <td class="status">${data.status}</td>                                
+                                <td hidden class="supplier_id">${data.id}</td>                                
                                 <td class="text-center">
-                                    <a href="#" class="m-r-15 text-muted editIcon" id="${data.id}" data-toggle="modal" data-idUpdate="${data.id}" data-target="#updateModal">
+                                    <a href="#" class="m-r-15 text-muted editIcon status" id="${data.id}" data-toggle="modal" data-idUpdate="${data.id}" data-target="#updateModal">
                                         <i class="fa fa-edit" style="color: #2196f3;font-size:16px;"></i>
                                     </a>
                                     <a href="#" class="deleteIcon" id="${data.id}">

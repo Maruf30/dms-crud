@@ -28,6 +28,7 @@ class SupplierController extends Controller
 
     public function supplier_update(Request $request)
     {
+        // dd($request->all());
         Supplier::whereId($request->id)->update($request->all());
         return response()->json(['status' => 200]);
     }
