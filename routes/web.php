@@ -64,6 +64,7 @@ Route::group(['middleware' => 'auth'], function () {
     // Purchage
     Route::get('/purchage_index', [App\Http\Controllers\PurchageController::class, 'index'])->name('purchage.index');
     Route::post('/purchage_create', [App\Http\Controllers\PurchageController::class, 'create'])->name('purchage.create');
+    Route::post('/purchage_get_mrp', [App\Http\Controllers\PurchageController::class, 'get_mrp'])->name('purchage.get_mrp');
 });
 
 // Auth::routes();

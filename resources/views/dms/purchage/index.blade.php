@@ -91,19 +91,19 @@
                                     <input type="text" class="form-control form-control-sm" id="five_engine" name="five_engine[]" placeholder="Engine">
                                 </td>
                                 <td>
-                                    <input type="text" class="form-control form-control-sm" id="unit_price" name="unit_price[]" placeholder="Unit Price">
+                                    <input type="text" class="form-control form-control-sm unit_price" id="unit_price" name="unit_price[]" placeholder="Unit Price">
                                 </td>
                                 <td>
-                                    <input type="text" class="form-control form-control-sm" id="unit_price_vat" name="unit_price_vat[]" placeholder="UP Vat">
+                                    <input type="text" class="form-control form-control-sm unit_price_vat" id="unit_price_vat" name="unit_price_vat[]" placeholder="UP Vat">
                                 </td>
                                 <td>
-                                    <input type="text" class="form-control form-control-sm" id="vat_purchage_mrp" name="vat_purchage_mrp[]" placeholder="Vat Pur MRP">
+                                    <input type="text" class="form-control form-control-sm vat_purchage_mrp" id="vat_purchage_mrp" name="vat_purchage_mrp[]" placeholder="Vat Pur MRP">
                                 </td>
                                 <td>
-                                    <input type="text" class="form-control form-control-sm" id="vat_year_purchage" name="vat_year_purchage[]" placeholder="Vat Year Purchage">
+                                    <input type="text" class="form-control form-control-sm vat_year_purchage" id="vat_year_purchage" name="vat_year_purchage[]" placeholder="Vat Year Purchage">
                                 </td>
                                 <td>
-                                    <input type="text" class="form-control form-control-sm" id="purchage_price" name="purchage_price[]" placeholder="Purchage Price">
+                                    <input type="text" class="form-control form-control-sm purchage_price" id="purchage_price" name="purchage_price[]" placeholder="Purchage Price">
                                 </td>
                             </tr>
                         </tbody>
@@ -157,5 +157,25 @@
     function calculator() {
 
     }
+    $(".add_more_model").on("change", ".all_model", function() {
+        var model_code = $(this).val();
+        let csrf = '{{ csrf_token() }}';
+        var tr = $(this).parent().parent();
+        $.ajax({
+            url: "{{ route('purchage.get_mrp') }}",
+            method: 'post',
+            data: {
+                model_code: model_code,
+                _token: csrf
+            },
+            success: function(data) {
+                tr.find(".unit_price").val(data["mrp"]);
+                tr.find(".unit_price_vat").val(data["vat_mrp"]);
+                tr.find(".vat_purchage_mrp").val(data["vat_purchage_mrp"]);
+                tr.find(".vat_year_purchage").val(20212022);
+                tr.find(".purchage_price").val(data["purchage_price"]);
+            },
+        });
+    });
 </script>
 @endsection

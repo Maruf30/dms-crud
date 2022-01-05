@@ -19,4 +19,9 @@ class PurchageController extends Controller
     {
         dd($request->all());
     }
+    public function get_mrp(Request $request)
+    {
+        $mrp = Mrp::select('mrp', 'vat_mrp', 'vat_purchage_mrp', 'purchage_price')->where('model_code', $request->model_code)->first();
+        return response()->json($mrp);
+    }
 }
