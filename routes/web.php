@@ -60,6 +60,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/color_code_add', [App\Http\Controllers\ColorCodeController::class, 'color_code_add'])->name('color_code.add');
     Route::post('/color_code_update', [App\Http\Controllers\ColorCodeController::class, 'color_code_update'])->name('color_code.update');
     Route::delete('/color_code_delete', [App\Http\Controllers\ColorCodeController::class, 'color_code_delete'])->name('color_code.delete');
+
+    // Purchage
+    Route::get('/purchage_index', [App\Http\Controllers\PurchageController::class, 'index'])->name('purchage.index');
+    Route::post('/purchage_create', [App\Http\Controllers\PurchageController::class, 'create'])->name('purchage.create');
 });
 
 // Auth::routes();

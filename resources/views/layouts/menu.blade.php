@@ -79,7 +79,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="{{ route('purchage.index') }}" class="nav-link">
                         <i class="nav-icon fas fa-parachute-box"></i>
                         <p>Purchage</p>
                     </a>
