@@ -20,7 +20,17 @@ class PurchageController extends Controller
     public function create(Request $request)
     {
         $input_data = $request->all();
-        // $input_data = count($request->all());
+
+
+        $model_code = $input_data['model_code'];
+        $core_arr = [$model_code];
+        $five_chassis = $input_data['five_chassis'];
+        $five_engine = $input_data['five_engine'];
+        $unit_price = $input_data['unit_price'];
+        $vat_purchage_mrp = $input_data['vat_purchage_mrp'];
+        $vat_year_purchage = $input_data['vat_year_purchage'];
+        $purchage_price = $input_data['purchage_price'];
+        array_push($core_arr, $five_chassis, $five_engine, $unit_price, $vat_purchage_mrp, $vat_year_purchage, $purchage_price);
 
         $mc_purchage = new Purchage();
         $mc_purchage->challan_no = $input_data['challan_no'];
@@ -33,18 +43,19 @@ class PurchageController extends Controller
 
         $purchage_id = $mc_purchage->id;
 
-        $core_data = new Core();
-
-
-
-
-        // foreach ($input_data as $key => $value) {
-        //     if (strpos($key, 'core_') !== false) {
-        //         $core_data->purchage_id = $purchage_id;
-        //         $core_data->mrp_id = $value;
-        //         $core_data->save();
-        //     }
-        // }
+        foreach ($core_arr as $key => $value) {
+            $core_data['store_id'] = $purchage_id;
+            $core_data['model_code'] = $model_code[$key];
+            $core_data['five_chassis'] = $five_chassis[$key];
+            $core_data['five_engine'] = $five_engine[$key];
+            $core_data['unit_price'] = $unit_price[$key];
+            $core_data['vat_purchage_mrp'] = $vat_purchage_mrp[$key];
+            $core_data['vat_year_purchage'] = $vat_year_purchage[$key];
+            $core_data['purchage_price'] = $purchage_price[$key];
+            print_r($core_data);
+            // Core::create($core_data);
+        }
+        // return redirect()->route('purchage.index');
 
 
         // foreach ($input_data as $key => $value) {           

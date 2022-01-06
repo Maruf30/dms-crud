@@ -10,9 +10,10 @@ use Illuminate\Database\Eloquent\Model;
 class Core extends Model
 {
     use HasFactory;
+    protected $guarded = [];
 
-    public function vehicles()
-    {
-        return $this->hasMany(Vehicle::class, 'foreign_key', 'ModelCode');
-    }
+    // public function vehicles()
+    // {
+    //     return $this->hasMany(Vehicle::class, 'foreign_key', 'ModelCode');
+    // }
 }
