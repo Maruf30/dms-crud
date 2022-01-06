@@ -56,6 +56,22 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="col-md-4">
+                            <div class="form-group mb-0 row">
+                                <label for="uml_mushak_no" class="col-sm-4 col-form-label">Mushak No</label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" id="uml_mushak_no" name="uml_mushak_no" placeholder="UML Mushak">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group mb-0 row">
+                                <label for="uml_mushak_date" class="col-sm-4 col-form-label">Mushak Date</label>
+                                <div class="col-sm-8">
+                                    <input type="date" class="form-control" id="uml_mushak_date" name="uml_mushak_date" placeholder="Purchage Value">
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="card-header"></div>
                     <table align="center" style="width:100%;" id="tbl">
@@ -107,6 +123,19 @@
                                 </td>
                             </tr>
                         </tbody>
+                        <tfoot>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td class="form-control form-control-sm"><b>Total</b></td>
+                                <td><b><input type="text" class="form-control form-control-sm" id="grant_total"></b></td>
+                            </tr>
+                        </tfoot>
                     </table>
                     <center style="padding:10px;">
                         <button id="add" style="width:100px;" class="btn btn-success btn-sm">Add</button>
@@ -148,11 +177,23 @@
             $trLast = $tableBody.find("tr:last"),
             $trNew = $trLast.clone();
         $trLast.after($trNew);
+
+        if ($("#tbl tbody tr").length > 0) {
+            $('#remove').attr('disabled', false);
+        }
     })
     $('#remove').on('click', function(e) {
         e.preventDefault();
-        $('#tbl tr:last').remove();
+        $('#tbl tbody tr:last').remove();
+        ar_row_control();
     })
+    ar_row_control();
+
+    function ar_row_control() {
+        if ($("#tbl tbody tr").length == 1) {
+            $('#remove').attr('disabled', true);
+        }
+    }
 
     function calculator() {
 
