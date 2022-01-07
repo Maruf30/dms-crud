@@ -7,6 +7,7 @@ use App\Models\Mrp;
 use App\Models\Purchage;
 use App\Models\Supplier;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PurchageController extends Controller
 {
@@ -19,56 +20,41 @@ class PurchageController extends Controller
     }
     public function create(Request $request)
     {
-        $input_data = $request->all();
 
+        DB::transaction(function () use ($request) {
+            $supplier_code = Supplier::select('supplier_code')->where('supplier_name', $request->vendor)->value('supplier_code');
 
-        $model_code = $input_data['model_code'];
-        $core_arr = [$model_code];
-        $five_chassis = $input_data['five_chassis'];
-        $five_engine = $input_data['five_engine'];
-        $unit_price = $input_data['unit_price'];
-        $vat_purchage_mrp = $input_data['vat_purchage_mrp'];
-        $vat_year_purchage = $input_data['vat_year_purchage'];
-        $purchage_price = $input_data['purchage_price'];
-        array_push($core_arr, $five_chassis, $five_engine, $unit_price, $vat_purchage_mrp, $vat_year_purchage, $purchage_price);
+            $mc_purchage = new Purchage();
+            $mc_purchage->challan_no = $request['challan_no'];
+            $mc_purchage->purchage_date = $request['purchage_date'];
+            $mc_purchage->vendor = $request['vendor'];
+            $mc_purchage->purchage_value = $request['purchage_value'];
+            // $mc_purchage->uml_mushak_no = $request['uml_mushak_no'];
+            // $mc_purchage->uml_mushak_date = $request['uml_mushak_date'];
+            $mc_purchage->save();
 
-        $mc_purchage = new Purchage();
-        $mc_purchage->challan_no = $input_data['challan_no'];
-        $mc_purchage->purchage_date = $input_data['purchage_date'];
-        $mc_purchage->vendor = $input_data['vendor'];
-        $mc_purchage->purchage_value = $input_data['purchage_value'];
-        // $mc_purchage->uml_mushak_no = $input_data['uml_mushak_no'];
-        // $mc_purchage->uml_mushak_date = $input_data['uml_mushak_date'];
-        // $mc_purchage->save();
+            $purchage_id = $mc_purchage->id;
 
-        $purchage_id = $mc_purchage->id;
+            foreach ($request->model_code as $key => $value) {
 
-        foreach ($core_arr as $key => $value) {
-            $core_data['store_id'] = $purchage_id;
-            $core_data['model_code'] = $model_code[$key];
-            $core_data['five_chassis'] = $five_chassis[$key];
-            $core_data['five_engine'] = $five_engine[$key];
-            $core_data['unit_price'] = $unit_price[$key];
-            $core_data['vat_purchage_mrp'] = $vat_purchage_mrp[$key];
-            $core_data['vat_year_purchage'] = $vat_year_purchage[$key];
-            $core_data['purchage_price'] = $purchage_price[$key];
-            print_r($core_data);
-            // Core::create($core_data);
-        }
-        // return redirect()->route('purchage.index');
-
-
-        // foreach ($input_data as $key => $value) {           
-        // echo $key . '<br>';
-
-        // $core_data->store_id = $purchage_id;          
-        // $core_data->model_code = $value['model_code'];
-        // dd($core_data->model_code);
-        // $core_data->model = $input_data['model'][$key];
-        // $core_data->quantity = $input_data['quantity'][$key];
-        // $core_data->price = $input_data['price'][$key];
-        // $core_data->save();
-        // }
+                $save_record = [
+                    'store_id' => $purchage_id,
+                    'vat_code' => $supplier_code,
+                    'print_code' => $supplier_code,
+                    'report_code' => $supplier_code,
+                    'model_code' => $request->model_code[$key],
+                    'five_chassis' => $request->five_chassis[$key],
+                    'five_engine' => $request->five_engine[$key],
+                    'unit_price' => $request->unit_price[$key],
+                    'unit_price_vat' => $request->unit_price_vat[$key],
+                    'vat_purchage_mrp' => $request->vat_purchage_mrp[$key],
+                    'vat_year_purchage' => $request->vat_year_purchage[$key],
+                    'purchage_price' => $request->purchage_price[$key],
+                ];
+                Core::insert($save_record);
+            }
+        });
+        return redirect()->route('purchage.index');
     }
     public function get_mrp(Request $request)
     {

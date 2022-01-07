@@ -101,25 +101,25 @@
                                     </select>
                                 </td>
                                 <td>
-                                    <input type="text" class="form-control form-control-sm" id="five_chassis" name="five_chassis[]" placeholder="Chassis">
+                                    <input type="text" class="form-control form-control-sm five_chassis text-center" id="five_chassis" name="five_chassis[]" placeholder="Chassis">
                                 </td>
                                 <td>
-                                    <input type="text" class="form-control form-control-sm" id="five_engine" name="five_engine[]" placeholder="Engine">
+                                    <input type="text" class="form-control form-control-sm text-center" id="five_engine" name="five_engine[]" placeholder="Engine">
                                 </td>
                                 <td>
-                                    <input type="text" class="form-control form-control-sm unit_price" id="unit_price" name="unit_price[]" placeholder="Unit Price">
+                                    <input type="text" class="form-control form-control-sm unit_price text-right" id="unit_price" name="unit_price[]" placeholder="Unit Price">
                                 </td>
                                 <td>
-                                    <input type="text" class="form-control form-control-sm unit_price_vat" id="unit_price_vat" name="unit_price_vat[]" placeholder="UP Vat">
+                                    <input type="text" class="form-control form-control-sm unit_price_vat text-right" id="unit_price_vat" name="unit_price_vat[]" placeholder="UP Vat">
                                 </td>
                                 <td>
-                                    <input type="text" class="form-control form-control-sm vat_purchage_mrp" id="vat_purchage_mrp" name="vat_purchage_mrp[]" placeholder="Vat Pur MRP">
+                                    <input type="text" class="form-control form-control-sm vat_purchage_mrp text-right" id="vat_purchage_mrp" name="vat_purchage_mrp[]" placeholder="Vat Pur MRP">
                                 </td>
                                 <td>
-                                    <input type="text" class="form-control form-control-sm vat_year_purchage" id="vat_year_purchage" name="vat_year_purchage[]" placeholder="Vat Year Purchage">
+                                    <input type="text" class="form-control form-control-sm vat_year_purchage text-right" id="vat_year_purchage" name="vat_year_purchage[]" placeholder="Vat Year Purchage">
                                 </td>
                                 <td>
-                                    <input type="text" class="form-control form-control-sm purchage_price" id="purchage_price" name="purchage_price[]" placeholder="Purchage Price">
+                                    <input type="text" class="form-control form-control-sm purchage_price text-right sum" id="purchage_price" name="purchage_price[]" placeholder="Purchage Price">
                                 </td>
                             </tr>
                         </tbody>
@@ -132,8 +132,8 @@
                                 <td></td>
                                 <td></td>
                                 <td></td>
-                                <td class="form-control form-control-sm"><b>Total</b></td>
-                                <td><b><input type="text" class="form-control form-control-sm" id="grant_total"></b></td>
+                                <td class="form-control form-control-sm text-center"><b>Total</b></td>
+                                <td><input type="text" class="form-control form-control-sm grant_total text-right text-bold" id="grant_total"></td>
                             </tr>
                         </tfoot>
                     </table>
@@ -194,10 +194,16 @@
             $('#remove').attr('disabled', true);
         }
     }
+    $(document).on("keyup", ".five_chassis", function() {
+        var sum = 0;
+        $(".sum").each(function() {
+            sum += +$(this).val();
+        });
+        $(".grant_total").val(sum);
+        $("#purchage_value").val(sum);
 
-    function calculator() {
+    });
 
-    }
     $(".add_more_model").on("change", ".all_model", function() {
         var model_code = $(this).val();
         let csrf = '{{ csrf_token() }}';
