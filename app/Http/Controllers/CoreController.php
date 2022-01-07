@@ -10,7 +10,7 @@ class CoreController extends Controller
 
     public function show($chassis)
     {
-        $core = Core::select("*")->where("5DigitCh", "=", $chassis)->get();
+        $core = Core::select("*")->where("five_chassis", "=", $chassis)->get();
         return view('dms.customerInfo', ['cores' => $core]);
     }
     public function customerInfoFullChassis($chassis)
@@ -20,7 +20,7 @@ class CoreController extends Controller
     }
     public function chassisSearch(Request $request)
     {
-        $core = Core::select("*")->where("5DigitCh", "=", $request->chassis)->get();
+        $core = Core::select("*")->where("five_chassis", "=", $request->chassis)->get();
         return view('dms.customerInfo', ['cores' => $core]);
     }
     // public function chassisSearch(Request $request)
@@ -34,7 +34,7 @@ class CoreController extends Controller
     // }
     public function searchChassisList(Request $request)
     {
-        $core = Core::select("ChassisNo", "EngineNo")->where("5DigitCh", "=", $request->chassis)->get();
+        $core = Core::select("ChassisNo", "EngineNo")->where("five_chassis", "=", $request->chassis)->get();
         return view('dms.searchChassisList', ['cores' => $core]);
     }
     public function mobileSearch(Request $request)
@@ -44,7 +44,7 @@ class CoreController extends Controller
     }
     public function engineSearch(Request $request)
     {
-        $core = Core::select("*")->where("5DigitEn", "=", $request->engine)->get();
+        $core = Core::select("*")->where("five_engine", "=", $request->engine)->get();
         return view('dms.customerInfo', ['cores' => $core]);
     }
 }
