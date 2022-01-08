@@ -67,6 +67,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/purchage_get_mrp', [App\Http\Controllers\PurchageController::class, 'get_mrp'])->name('purchage.get_mrp');
     Route::get('/purchage_list_index', [App\Http\Controllers\PurchageController::class, 'purchage_list_index'])->name('purchage_list.index');
     Route::get('/purchage_list', [App\Http\Controllers\PurchageController::class, 'purchage_list'])->name('purchage.list');
+    Route::get('/purchage_details/{id}', [App\Http\Controllers\PurchageController::class, 'purchage_details']);
 });
 
 // Auth::routes();

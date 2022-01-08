@@ -10,7 +10,15 @@
     <div class="col-md-12">
         <div class="card" style="box-shadow:0 0 25px 0 lightgrey;">
             <div class="card-header">
-                <h4>Purchage</h4>
+                <div class="row">
+                    <div class="col-md-6">
+                        <h4>Purchage</h4>
+                    </div>
+                    <div class="col-md-6">
+                        <a href="{{route('purchage_list.index')}}" class="m-r-15 text-muted edit float-right btn btn-primary text-white mb-1">Purchage List</i>
+                        </a>
+                    </div>
+                </div>
             </div>
             <div class="card-body">
                 <form action="{{route('purchage.create')}}" method="post">

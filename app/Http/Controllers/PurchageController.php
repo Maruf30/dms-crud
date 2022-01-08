@@ -67,7 +67,31 @@ class PurchageController extends Controller
     }
     public function purchage_list()
     {
-        $purchages = Purchage::select('id', 'challan_no', 'purchage_date', 'vendor', 'purchage_value', 'dealer_name')->get();
+        $purchages = Purchage::select('id', 'challan_no', 'purchage_date', 'vendor', 'purchage_value', 'dealer_name')->orderBy('id', 'desc')->get();
         return response()->json($purchages);
+    }
+    public function purchage_details($id)
+    {
+        $purchages = Purchage::select('id', 'challan_no', 'purchage_date', 'vendor', 'purchage_value', 'dealer_name')->where('id', $id)->first();
+
+        $purchage_details = Core::rightJoin('vehicles', 'vehicles.model_code', '=', 'cores.model_code')
+            ->select(
+                'cores.id',
+                'cores.model_code',
+                'cores.five_chassis',
+                'cores.five_engine',
+                'cores.unit_price',
+                'cores.unit_price_vat',
+                'cores.vat_purchage_mrp',
+                'cores.vat_year_purchage',
+                'cores.purchage_price',
+                'vehicles.model'
+            )
+            ->where('store_id', "=", $id)
+            ->get();
+
+        // $purchage_details = Core::select('id', 'model_code', 'five_chassis', 'five_engine', 'unit_price', 'unit_price_vat', 'vat_purchage_mrp', 'vat_year_purchage', 'purchage_price')->where('store_id', $id)->get();
+        // dd($purchage_details);
+        return view('dms.purchage.purchage_details')->with(['purchages' => $purchages, 'purchage_details' => $purchage_details]);
     }
 }

@@ -15,7 +15,7 @@
                         <h4>Purchage</h4>
                     </div>
                     <div class="col-md-6">
-                        <a class="m-r-15 text-muted edit float-right btn btn-primary text-white mb-1" id="add" data-toggle="modal" data-target="#addModal"><i class="fas fa-plus"></i>
+                        <a href="{{route('purchage.index')}}" class="m-r-15 text-muted edit float-right btn btn-primary text-white mb-1">Purchage Entry</i>
                         </a>
                     </div>
                 </div>
@@ -50,6 +50,7 @@
 @section('script')
 <script>
     $(function() {
+
         fetchAll();
 
         function fetchAll() {
@@ -73,17 +74,25 @@
                         </thead>
                         <tbody>`;
                         response.forEach(function(data, index) {
+                            var date = new Date(data.purchage_date);
+                            var d = date.getDate();
+                            var m = date.getMonth() + 1;
+                            var y = date.getFullYear();
+                            var dateString = (d <= 9 ? '0' + d : d) + '-' + (m <= 9 ? '0' + m : m) + '-' + y;
                             console.log(data);
                             html +=
                                 `<tr>                                
-                                <td class="supplier_name">${data.challan_no}</td>
-                                <td class="supplier_code">${data.purchage_date}</td>
-                                <td class="print_ref">${data.vendor}</td>
-                                <td class="year_of_manufacture">${data.purchage_value}</td>
-                                <td class="vat_year_purchage">${data.uml_mushak_no}</td>
-                                <td class="vat_year_sale">${data.uml_mushak_date}</td>                                
-                                <td class="vat_year_sale">${data.dealer_name}</td>                                
+                                <td class="challan_no">${data.challan_no}</td>
+                                <td class="purchage_date">${dateString}</td>
+                                <td class="vendor">${data.vendor}</td>
+                                <td class="purchage_value">${data.purchage_value}</td>
+                                <td class="uml_mushak_no">${data.uml_mushak_no}</td>
+                                <td class="uml_mushak_date">${data.uml_mushak_date}</td>                                
+                                <td class="dealer_name">${data.dealer_name}</td>                                
                                 <td class="text-center">
+                                    <a href="purchage_details/${data.id}" class="m-r-15 text-muted">
+                                        <i class="fa fa-eye" style="color: #2196f3;font-size:16px;"></i>
+                                    </a>
                                     <a href="#" class="m-r-15 text-muted editIcon status" id="${data.id}" data-toggle="modal" data-idUpdate="${data.id}" data-target="#updateModal">
                                         <i class="fa fa-edit" style="color: #2196f3;font-size:16px;"></i>
                                     </a>
