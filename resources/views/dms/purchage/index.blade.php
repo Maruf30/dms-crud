@@ -209,7 +209,6 @@
         });
         $(".grant_total").val(sum);
         $("#purchage_value").val(sum);
-
     });
 
     $(".add_more_model").on("change", ".all_model", function() {
