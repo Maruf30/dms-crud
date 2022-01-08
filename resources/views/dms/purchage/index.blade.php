@@ -24,7 +24,7 @@
                 <form action="{{route('purchage.create')}}" method="post">
                     @csrf
                     <div class="form-row">
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <div class="form-group mb-0 row">
                                 <label for="challan_no" class="col-sm-4 col-form-label">Challan No</label>
                                 <div class="col-sm-8">
@@ -32,7 +32,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <div class="form-group mb-0 row">
                                 <label for="purchage_date" class="col-sm-4 col-form-label">Date</label>
                                 <div class="col-sm-8">
@@ -40,7 +40,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <div class="form-group mb-0 row">
                                 <label for="vendor" class="col-sm-4 col-form-label">Vendor</label>
                                 <div class="col-sm-8">
@@ -53,10 +53,23 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="col-md-3">
+                            <div class="form-group mb-0 row">
+                                <label for="vendor" class="col-sm-4 col-form-label">Dealer</label>
+                                <div class="col-sm-8">
+                                    <select name="dealer_name" class="browser-default custom-select">
+                                        <option selected>Open this select menu</option>
+                                        @foreach ($dealer_names as $dealer)
+                                        <option value="{{$dealer->dealer_name}}">{{$dealer->dealer_name}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="form-row">
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <div class="form-group mb-0 row">
                                 <label for="purchage_value" class="col-sm-4 col-form-label">Value</label>
                                 <div class="col-sm-8">
@@ -64,7 +77,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <div class="form-group mb-0 row">
                                 <label for="uml_mushak_no" class="col-sm-4 col-form-label">Mushak No</label>
                                 <div class="col-sm-8">
@@ -72,7 +85,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <div class="form-group mb-0 row">
                                 <label for="uml_mushak_date" class="col-sm-4 col-form-label">Mushak Date</label>
                                 <div class="col-sm-8">

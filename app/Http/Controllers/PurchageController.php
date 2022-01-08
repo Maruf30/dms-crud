@@ -14,9 +14,10 @@ class PurchageController extends Controller
     public function index()
     {
         $suppliers = Supplier::select('supplier_name')->where('status', '1')->get();
+        $dealer_names = Supplier::select('dealer_name')->whereNotNull('dealer_name')->get();
         $mrps = Mrp::select('model', 'model_code')->where('status', '1')->get();
         // dd($mrps);
-        return view('dms.purchage.index')->with(['suppliers' => $suppliers, 'mrps' => $mrps]);
+        return view('dms.purchage.index')->with(['suppliers' => $suppliers, 'mrps' => $mrps, 'dealer_names' => $dealer_names]);
     }
     public function create(Request $request)
     {
@@ -28,6 +29,7 @@ class PurchageController extends Controller
             $mc_purchage->challan_no = $request['challan_no'];
             $mc_purchage->purchage_date = $request['purchage_date'];
             $mc_purchage->vendor = $request['vendor'];
+            $mc_purchage->dealer_name = $request['dealer_name'];
             $mc_purchage->purchage_value = $request['purchage_value'];
             // $mc_purchage->uml_mushak_no = $request['uml_mushak_no'];
             // $mc_purchage->uml_mushak_date = $request['uml_mushak_date'];
