@@ -103,7 +103,7 @@
             </a>
             <ul class="nav nav-treeview" style="display: none;">
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="{{ route('purchage_list.index') }}" class="nav-link">
                         <i class="nav-icon fas fa-dollar-sign"></i>
                         <p>Purchage</p>
                     </a>

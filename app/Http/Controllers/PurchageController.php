@@ -61,4 +61,13 @@ class PurchageController extends Controller
         $mrp = Mrp::select('mrp', 'vat_mrp', 'vat_purchage_mrp', 'purchage_price')->where('model_code', $request->model_code)->first();
         return response()->json($mrp);
     }
+    public function purchage_list_index()
+    {
+        return view('dms.purchage.purchage_list');
+    }
+    public function purchage_list()
+    {
+        $purchages = Purchage::select('id', 'challan_no', 'purchage_date', 'vendor', 'purchage_value', 'dealer_name')->get();
+        return response()->json($purchages);
+    }
 }
