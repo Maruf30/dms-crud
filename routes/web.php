@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
-use App\Http\Controllers\PDFController;
+
 
 
 
@@ -18,7 +18,6 @@ use App\Http\Controllers\PDFController;
 */
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'login']);
-Route::get('create-pdf-file', [PDFController::class, 'index']);
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::group(['middleware' => 'auth'], function () {
