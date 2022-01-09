@@ -37,9 +37,9 @@
             </a>
             <ul class="nav nav-treeview" style="display: none;">
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Dashboard v1</p>
+                    <a href="{{ url('/customerSearch') }}" class="nav-link">
+                        <i class="nav-icon fas fa-dollar-sign"></i>
+                        <p>Search</p>
                     </a>
                 </li>
             </ul>

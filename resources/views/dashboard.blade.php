@@ -1,6 +1,5 @@
 @extends('layouts.app') @section('content')
 <div class="container-fluid">
-
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="content-header">
@@ -8,12 +7,6 @@
                     <div class="row mb-2">
                         <div class="col-sm-6">
                             <h1 class="m-0">Dashboard</h1>
-                        </div><!-- /.col -->
-                        <div class="col-sm-6">
-                            <ol class="breadcrumb float-sm-right">
-                                <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                {{-- <li class="breadcrumb-item active">Dashboard v1</li> --}}
-                            </ol>
                         </div><!-- /.col -->
                     </div><!-- /.row -->
                 </div><!-- /.container-fluid -->
@@ -79,55 +72,6 @@
                     </div>
                 </div>
                 <!-- ./col -->
-            </div>
-
-            <div class="row justify-content-center">
-                <div class="col-md-2">
-                    <div class="card">
-                        <div class="card-header">
-                            <a href="{{ url('/customerSearch') }}">
-                                <h5 class="text-center">Customer Search</h5>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-2">
-                    <div class="card">
-                        <div class="card-header">
-                            <a href="{{ route('mrp.get') }}">
-                                <h5 class="text-center">MRP Table</h5>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-2">
-                    <div class="card">
-                        <div class="card-header">
-                            <h5 class="text-center">Model Table</h5>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-2">
-                    <div class="card">
-                        <div class="card-header">
-                            <h5 class="text-center">Total Categories</h5>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-2">
-                    <div class="card">
-                        <div class="card-header">
-                            <h5 class="text-center">Total Categories</h5>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-2">
-                    <div class="card">
-                        <div class="card-header">
-                            <h5 class="text-center">Total Categories</h5>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </div>
