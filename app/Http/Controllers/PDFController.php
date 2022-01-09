@@ -8,20 +8,17 @@ use PDF;
 
 class PDFController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+
+    public function generate_pdf()
     {
         $data = [
             'title' => 'Welcome to Tutsmake.com',
             'date' => date('m/d/Y')
         ];
 
-        $pdf = PDF::loadView('welcome', $data);
+        $pdf = PDF::loadView('pdf', $data);
+        $pdf->setPaper('A4', 'portrait');
 
-        return $pdf->download('tutsmake.pdf');
+        return $pdf->stream('bajaj_point.pdf');
     }
 }
