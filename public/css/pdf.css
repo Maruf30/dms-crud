@@ -1,0 +1,72 @@
+@font-face {
+    font-family: "Helvetica";
+    font-weight: normal;
+    font-style: normal;
+    font-variant: normal;
+    src: url("http://fonts.cdnfonts.com/css/helvetica-neue-9");
+}
+
+body {
+    font-family: Helvetica, sans-serif;
+}
+
+html {
+    margin: 0px;
+}
+
+.concern {
+    font-size: 25px;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 0px;
+    margin-bottom: 20px;
+    padding: 0px;
+}
+
+.sl {
+    padding-right: 10px;
+}
+
+.model {
+    width: 25px;
+}
+
+.colon {
+    width: 5px;
+}
+
+.description {
+    width: 30px;
+}
+
+.certificate {
+    margin-left: 50px;
+    margin-top: 192px;
+}
+.table_first_page td {
+    padding-bottom: 5px;
+}
+h1,
+h2,
+p,
+h3,
+span {
+    margin: 0px;
+    padding: 0px;
+}
+.margin {
+    margin-bottom: 0px;
+}
+.certify {
+    padding: 10px 0px;
+}
+.all_code {
+    margin-left: 50px;
+    padding: 25px 0px;
+}
+.all_code span {
+    padding-right: 25px;
+}
+.colon {
+    padding: 0 10px;
+}

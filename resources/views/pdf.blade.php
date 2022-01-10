@@ -3,103 +3,138 @@
 
 <head>
     <title>Laravel 8 Generate PDF From View</title>
-    <style>
-        @font-face {
-            font-family: 'Helvetica';
-            font-weight: normal;
-            font-style: normal;
-            font-variant: normal;
-            src: url("http://fonts.cdnfonts.com/css/helvetica-neue-9");
-        }
-
-        body {
-            font-family: Helvetica, sans-serif;
-        }
-
-        html {
-            margin: 0px
-        }
-
-        h1 {
-            font-size: 20px;
-            font-weight: bold;
-            text-align: center;
-            margin-top: 0px;
-            margin-bottom: 0px;
-            padding: 0px;
-        }
-
-        .sl {
-            padding-right: 30px;
-            margin-right: 50px;
-
-
-        }
-
-        .model {
-            width: 25px
-        }
-
-        .colon {
-            width: 5px;
-        }
-
-        .description {
-            width: 30px;
-        }
-
-        .certificate {
-            margin-left: 30px;
-            margin-top: 30px
-        }
-    </style>
-
+    <link rel="stylesheet" href="{{ asset('css/pdf.css') }}">
 </head>
 
 <body>
+    <div class="all_code">
+        <span>392</span><span>1391</span><span>4762</span><span>9433</span><span>540</span><span>BB</span><span>VAT OK</span><span>71</span>
+    </div>
     <div class="certificate">
         <!-- <span>Sale Date</span> -->
-        <h1>TO WHOM IT MAY CONCERN</h1>
-        <p>Ref: </p>
-        <p>To: The Registration Authority,</p>
-        <p>Bangladesh Road Transport Authority</p>
-        <p>This is to certify that we have sold new vehicle to:</p>
-        <span>Name: </span><span>Father Name: </span>
-        <p>Address: </p>
-        <p>On the following particulars</p>
+        <h1 class="concern">TO WHOM IT MAY CONCERN</h1>
         <table>
-            <!-- <thead>
             <tr>
-                <th class="sl"></th>
-                <th class="model"></th>
-                <th class="colon"></th>
-                <th class="description"></th>
+                <td>
+                    <p class="margin">Ref:</p>
+                </td>
+                <td>
+                    <p class="margin">BAJAJ POINT/DHAKA/2021-2022</p>
+                </td>
             </tr>
-        </thead> -->
+            <tr>
+                <td>
+                    <p class="margin">To:</p>
+                </td>
+                <td>
+                    <p class="margin">The Registration Authority,</p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p class="margin"></p>
+                </td>
+                <td>
+                    <p class="margin">Bangladesh Road Transport Authority</p>
+                </td>
+            </tr>
+        </table>
+
+        <h2 class="certify">This is to certify that we have sold new vehicle to:</h2>
+        <span>ALAMGIR HOSSAI KAJAL</span><span>S/O. AFAJ UDDIN</span>
+        <p>DAG # 2515, 226/A, ASHKONA, DAKHIN KHAN, UTTARA, DHAKA-1230</p>
+        <h2 class="certify">On the following particulars</h2>
+        <table class="table_first_page">
             <tbody>
                 <tr>
                     <td class="sl">1.</td>
                     <td>Model/Make of Vehicle</td>
-                    <td>:</td>
-                    <td>Bajaj 4 Stroke Motorcycle, Bajaj</td>
+                    <td class="colon">:</td>
+                    <td>Bajaj 4 Stroke Motorcycle, BAJAJ PULSAR 150 TWIN DISC</td>
                 </tr>
                 <tr>
                     <td class="sl">2.</td>
                     <td>Class of Vehicle</td>
-                    <td>:</td>
+                    <td class="colon">:</td>
                     <td>Motorcycle</td>
                 </tr>
                 <tr>
                     <td class="sl">3.</td>
                     <td>Chassis No.</td>
-                    <td>:</td>
+                    <td class="colon">:</td>
                     <td>MD2A11CY0MTH60606</td>
                 </tr>
                 <tr>
                     <td class="sl">4.</td>
                     <td>Engine No.</td>
-                    <td>:</td>
+                    <td class="colon">:</td>
                     <td>JBXWMG79165</td>
+                </tr>
+                <tr>
+                    <td class="sl">5.</td>
+                    <td>Key No.</td>
+                    <td class="colon">:</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="sl">6.</td>
+                    <td>No. of Cylinder with CC</td>
+                    <td class="colon">:</td>
+                    <td>SINGLE CYLINDER 150 C.C</td>
+                </tr>
+                <tr>
+                    <td class="sl">7.</td>
+                    <td>Colour of Vehicle</td>
+                    <td class="colon">:</td>
+                    <td>Black/Red</td>
+                </tr>
+                <tr>
+                    <td class="sl">8.</td>
+                    <td>Size of Tyre</td>
+                    <td class="colon">:</td>
+                    <td>FRONT 90/90 X 17 & REAR 120/80 X 17</td>
+                </tr>
+                <tr>
+                    <td class="sl">9.</td>
+                    <td>Year of Manufacture/Assamble</td>
+                    <td class="colon">:</td>
+                    <td>2021</td>
+                </tr>
+                <tr>
+                    <td class="sl">10.</td>
+                    <td>Horse Power</td>
+                    <td class="colon">:</td>
+                    <td>14 PS @ 8000 RPM</td>
+                </tr>
+                <tr>
+                    <td class="sl">11.</td>
+                    <td>Ladan Weight</td>
+                    <td class="colon">:</td>
+                    <td>144 KG</td>
+                </tr>
+                <tr>
+                    <td class="sl">12.</td>
+                    <td>Wheel Base</td>
+                    <td class="colon">:</td>
+                    <td>1345 MM</td>
+                </tr>
+                <tr>
+                    <td class="sl">13.</td>
+                    <td>Seating Capacity</td>
+                    <td class="colon">:</td>
+                    <td>2 PERSON</td>
+                </tr>
+                <tr>
+                    <td class="sl">14.</td>
+                    <td>Maker's Name</td>
+                    <td class="colon">:</td>
+                    <td>BAJAJ AUTO LTD, INDIA</td>
+                </tr>
+                <tr>
+                    <td class="sl">14.</td>
+                    <td>Unit Price</td>
+                    <td class="colon">:</td>
+                    <td>1,56,522 + 23,478 = 1,80,000</td>
                 </tr>
             </tbody>
         </table>
