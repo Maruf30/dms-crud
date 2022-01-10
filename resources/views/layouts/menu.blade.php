@@ -22,7 +22,7 @@
         <!-- Add icons to the links using the .nav-icon class
            with font-awesome or any other icon font library -->
         <li class="nav-item">
-            <a href="{{ route('pdf.generate') }}" class="nav-link">
+            <a href="{{ route('pdf.file_print') }}" class="nav-link">
                 <i class="nav-icon fas fa-home"></i>
                 <p>PDF</p>
             </a>

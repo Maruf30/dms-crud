@@ -39,10 +39,15 @@ html {
     width: 30px;
 }
 
-.certificate {
+.certificate,
+.challan {
     margin-left: 50px;
     margin-top: 192px;
 }
+.margin_right {
+    margin-right: 20px;
+}
+
 .table_first_page td {
     padding-bottom: 5px;
 }
@@ -69,4 +74,34 @@ span {
 }
 .colon {
     padding: 0 10px;
+}
+.delivery_challan {
+    font-weight: bold;
+    font-size: 15px;
+    margin-top: 10px;
+    text-align: center;
+}
+
+.remarks {
+    border: 1px solid black;
+    margin-bottom: 10px;
+    height: 116px;
+}
+
+.remarks > p {
+    padding: 10px;
+}
+.remarks p {
+    padding: 5px;
+}
+
+.remarks div {
+    margin-left: 150px;
+}
+.foot_note {
+    padding-top: 15px;
+}
+.please {
+    margin-top: 35px;
+    margin-bottom: 10px;
 }

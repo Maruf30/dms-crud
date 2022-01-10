@@ -69,7 +69,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/purchage_details/{id}', [App\Http\Controllers\PurchageController::class, 'purchage_details']);
 
     // PDF
-    Route::get('/generate_pdf', [App\Http\Controllers\PDFController::class, 'generate_pdf'])->name('pdf.generate');
+    Route::get('/pdf_file_print', [App\Http\Controllers\PDFController::class, 'pdf_file_print'])->name('pdf.file_print');
 });
 
 
