@@ -10,10 +10,12 @@
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
         "infyomlabs/laravel-ui-adminlte": "^3.2",
+        "inspector-apm/inspector-laravel": "^4.7",
         "laravel/framework": "^8.54",
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
         "laravel/ui": "^3.3",
+        "maatwebsite/excel": "^3.1",
         "realrashid/sweet-alert": "^4.1"
     },
     "require-dev": {

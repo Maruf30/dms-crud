@@ -28,6 +28,12 @@
             </a>
         </li>
         <li class="nav-item">
+            <a href="{{ route('excel.export') }}" class="nav-link">
+                <i class="nav-icon fas fa-home"></i>
+                <p>Export Excel</p>
+            </a>
+        </li>
+        <li class="nav-item">
             <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-tachometer-alt"></i>
                 <p>
@@ -122,6 +128,29 @@
                 <i class="nav-icon fas fa-table"></i>
                 <p>
                     VAT
+                    <i class="fas fa-angle-left right"></i>
+                </p>
+            </a>
+            <ul class="nav nav-treeview" style="display: none;">
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-dollar-sign"></i>
+                        <p>Purchage</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-dollar-sign"></i>
+                        <p>Sale</p>
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <li class="nav-item">
+            <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-table"></i>
+                <p>
+                    Print
                     <i class="fas fa-angle-left right"></i>
                 </p>
             </a>
