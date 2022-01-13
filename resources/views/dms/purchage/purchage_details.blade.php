@@ -131,7 +131,9 @@
 
                         <tr>
                             <td><b class="h3">Purchage Value =</b></td>
-                            <td><b class="h3" id="purchage_value"></b></td>
+                            <td>
+                                <p class="h3" id="purchage_value" class="purchage_value"></p>
+                            </td>
                         </tr>
 
                     </table>
@@ -166,17 +168,13 @@
             var sum = 0;
             $(".purchage_price").each(function() {
                 sum += +$(this).text();
-                console.log($(this).val());
+
             });
-            $('#purchage_value').text(sum);
+            $('.purchage_value').text(sum);
+            console.log(sum);
         }
         purchageValue();
     });
-
-
-
-
-
 
     $("#example").DataTable({
         pageLength: 10,
