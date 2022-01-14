@@ -74,16 +74,19 @@
                         </thead>
                         <tbody>`;
                         response.forEach(function(data, index) {
-                            var date = new Date(data.purchage_date);
-                            var d = date.getDate();
-                            var m = date.getMonth() + 1;
-                            var y = date.getFullYear();
-                            var dateString = (d <= 9 ? '0' + d : d) + '-' + (m <= 9 ? '0' + m : m) + '-' + y;
-                            console.log(data);
+                            var date = new Date(data.purchage_date).toISOString().slice(0, 10);
+                            // date.toLocalDateString('en-GB');
+
+                            // var date = new Date(data.purchage_date);
+                            // var d = date.getDate();
+                            // var m = date.getMonth() + 1;
+                            // var y = date.getFullYear();
+                            // var dateString = (d <= 9 ? '0' + d : d) + '-' + (m <= 9 ? '0' + m : m) + '-' + y;
+                            // console.log(data);
                             html +=
                                 `<tr>                                
-                                <td class="challan_no">${data.challan_no}</td>
-                                <td class="purchage_date">${dateString}</td>
+                                <td class="challan_no">${data.challan_no}</td>                                
+                                <td class="purchage_date">${date}</td>
                                 <td class="vendor">${data.vendor}</td>
                                 <td class="purchage_value">${data.purchage_value}</td>
                                 <td class="uml_mushak_no">${data.uml_mushak_no}</td>
