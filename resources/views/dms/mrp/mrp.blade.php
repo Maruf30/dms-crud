@@ -417,7 +417,7 @@
                             html +=
                                 `<tr>                                
                                 <td class="model_code">${data.model_code}</td>
-                                <td class="model">${data.model}</td>
+                                <td class="model">${data.model_name}</td>
                                 <td class="vat_purchage_mrp text-right">${BDFormat.format(data.vat_purchage_mrp)}</td>
                                 <td class="mrp text-right">${BDFormat.format(data.mrp)}</td>
                                 <td class="vat_mrp text-right">${BDFormat.format(data.vat_mrp)}</td>

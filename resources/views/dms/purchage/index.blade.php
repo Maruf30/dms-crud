@@ -117,7 +117,7 @@
                                     <select name="model_code[]" class="form-control form-control-sm all_model">
                                         <option selected>Open this select menu</option>
                                         @foreach ($mrps as $mrp)
-                                        <option value="{{$mrp->model_code}}">{{$mrp->model}}</option>
+                                        <option value="{{$mrp->model_code}}">{{$mrp->model_name}}</option>
                                         @endforeach
                                     </select>
                                 </td>

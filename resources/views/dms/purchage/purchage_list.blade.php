@@ -74,7 +74,8 @@
                         </thead>
                         <tbody>`;
                         response.forEach(function(data, index) {
-                            var date = new Date(data.purchage_date).toISOString().slice(0, 10);
+                            var date = new Date(data.purchage_date);
+
                             // date.toLocalDateString('en-GB');
 
                             // var date = new Date(data.purchage_date);
@@ -86,7 +87,7 @@
                             html +=
                                 `<tr>                                
                                 <td class="challan_no">${data.challan_no}</td>                                
-                                <td class="purchage_date">${date}</td>
+                                <td class="purchage_date">${date_format(date, 'dd-MM-yyyy')}</td>
                                 <td class="vendor">${data.vendor}</td>
                                 <td class="purchage_value">${data.purchage_value}</td>
                                 <td class="uml_mushak_no">${data.uml_mushak_no}</td>
