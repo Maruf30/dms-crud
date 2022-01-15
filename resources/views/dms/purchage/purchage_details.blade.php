@@ -14,10 +14,16 @@
                     <div class="col-md-6">
                         <h4>Purchage Details</h4>
                     </div>
+
                     <div class="col-md-6">
-                        <a href="#" class="m-r-15 text-muted edit float-right btn btn-primary text-white mb-1">Purchage Entry</i>
+                        <a href="{{ route('purchage.index') }}" class="m-r-15 text-muted edit float-right btn btn-primary text-white mb-1">Purchage Entry</i>
+                        </a>
+                        <a href="{{ route('purchage_list.index') }}" class="m-r-15 text-muted edit float-right btn btn-primary text-white mb-1">Purchage List</i>
                         </a>
                     </div>
+
+
+
                 </div>
             </div>
             <div class="card-header">
@@ -101,16 +107,22 @@
                             </tr>
                         </thead>
                         <tbody>
+                            @php
+                            function bd_format($amount) {
+                            $fmt = new \NumberFormatter($locale = 'en_IN', NumberFormatter::DECIMAL);
+                            return $fmt->format($amount);
+                            }
+                            @endphp
                             @foreach ( $purchage_details as $detail )
                             <tr>
                                 <td>{{$detail->model}}</td>
-                                <td>{{$detail->five_chassis}}</td>
-                                <td>{{$detail->five_engine}}</td>
-                                <td>{{$detail->unit_price}}</td>
-                                <td>{{$detail->unit_price_vat}}</td>
-                                <td>{{$detail->vat_purchage_mrp}}</td>
-                                <td>{{$detail->vat_year_purchage}}</td>
-                                <td class="purchage_price">{{$detail->purchage_price}}</td>
+                                <td class="text-center">{{$detail->five_chassis}}</td>
+                                <td class="text-center">{{$detail->five_engine}}</td>
+                                <td class="text-right">{{bd_format($detail->unit_price)}}</td>
+                                <td class="text-right">{{bd_format($detail->unit_price_vat)}}</td>
+                                <td class="text-right">{{bd_format($detail->vat_purchage_mrp)}}</td>
+                                <td class="text-center">{{$detail->vat_year_purchage}}</td>
+                                <td class="purchage_price text-right">{{bd_format($detail->purchage_price)}}</td>
                                 <td class="text-center">
                                     <a href="#" class="m-r-15 text-muted editIcon status" id="${data.id}" data-toggle="modal" data-idUpdate="${data.id}" data-target="#updateModal">
                                         <i class="fa fa-edit" style="color: #2196f3;font-size:16px;"></i>
@@ -132,7 +144,7 @@
                         <tr>
                             <td><b class="h3">Purchage Value =</b></td>
                             <td>
-                                <p class="h3" id="purchage_value" class="purchage_value"></p>
+                                <p class="h3 purchage_value" id="purchage_value"></p>
                             </td>
                         </tr>
 
@@ -167,10 +179,10 @@
         function purchageValue() {
             var sum = 0;
             $(".purchage_price").each(function() {
-                sum += +$(this).text();
+                sum += +$(this).text().replace(/,/g, '');
 
             });
-            $('.purchage_value').text(sum);
+            $('.purchage_value').text(sum.toLocaleString("en-IN"));
             console.log(sum);
         }
         purchageValue();

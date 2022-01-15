@@ -1,4 +1,4 @@
 require("./bootstrap");
 require("admin-lte");
 
-window.moment = require("moment");
+// window.moment = require("moment");

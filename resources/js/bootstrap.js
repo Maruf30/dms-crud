@@ -1,5 +1,6 @@
 window._ = require("lodash");
-
+const { format: date_format } = require("date-fns");
+window.date_format = date_format;
 /**
  * We'll load jQuery and the Bootstrap jQuery plugin which provides support
  * for JavaScript based Bootstrap features such as modals and tabs. This

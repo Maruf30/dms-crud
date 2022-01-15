@@ -69,7 +69,7 @@ class PurchageController extends Controller
     }
     public function purchage_list()
     {
-        $purchages = Purchage::select('id', 'challan_no', 'purchage_date', 'vendor', 'purchage_value', 'dealer_name')->orderBy('id', 'desc')->get();
+        $purchages = Purchage::select('id', 'challan_no', 'purchage_date', 'vendor', 'purchage_value', 'dealer_name')->whereYear('purchage_date', '>', '2020')->orderBy('id', 'desc')->get();
         return response()->json($purchages);
     }
     public function purchage_details($id)
