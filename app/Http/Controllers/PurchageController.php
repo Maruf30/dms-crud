@@ -31,6 +31,7 @@ class PurchageController extends Controller
             $mc_purchage->vendor = $request['vendor'];
             $mc_purchage->dealer_name = $request['dealer_name'];
             $mc_purchage->purchage_value = $request['purchage_value'];
+            $mc_purchage->quantity = $request['quantity'];
             // $mc_purchage->uml_mushak_no = $request['uml_mushak_no'];
             // $mc_purchage->uml_mushak_date = $request['uml_mushak_date'];
             $mc_purchage->save();
@@ -69,12 +70,12 @@ class PurchageController extends Controller
     }
     public function purchage_list()
     {
-        $purchages = Purchage::select('id', 'challan_no', 'purchage_date', 'vendor', 'purchage_value', 'dealer_name')->whereYear('purchage_date', '>', '2020')->orderBy('id', 'desc')->get();
+        $purchages = Purchage::select('id', 'challan_no', 'purchage_date', 'vendor', 'purchage_value', 'dealer_name', 'quantity')->whereYear('purchage_date', '>', '2020')->orderBy('id', 'desc')->get();
         return response()->json($purchages);
     }
     public function purchage_details($id)
     {
-        $purchages = Purchage::select('id', 'challan_no', 'purchage_date', 'vendor', 'purchage_value', 'dealer_name')->where('id', $id)->first();
+        $purchages = Purchage::select('id', 'challan_no', 'purchage_date', 'vendor', 'purchage_value', 'dealer_name', 'quantity')->where('id', $id)->first();
 
         $purchage_details = Core::rightJoin('vehicles', 'vehicles.model_code', '=', 'cores.model_code')
             ->select(

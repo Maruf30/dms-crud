@@ -71,6 +71,14 @@
                     <div class="form-row">
                         <div class="col-md-3">
                             <div class="form-group mb-0 row">
+                                <label for="purchage_value" class="col-sm-4 col-form-label">Quantity</label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" id="quantity" name="quantity" placeholder="Quantity">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group mb-0 row">
                                 <label for="purchage_value" class="col-sm-4 col-form-label">Value</label>
                                 <div class="col-sm-8">
                                     <input type="text" class="form-control" id="purchage_value" name="purchage_value" placeholder="Purchage Value">
@@ -217,11 +225,14 @@
     }
     $(document).on("keyup", ".five_chassis", function() {
         var sum = 0;
+        var qty = 0
         $(".sum").each(function() {
             sum += +$(this).val();
+            qty++;
         });
         $(".grant_total").val(sum);
         $("#purchage_value").val(sum);
+        $("#quantity").val(qty);
     });
 
     $(".add_more_model").on("change", ".all_model", function() {

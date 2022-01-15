@@ -13,7 +13,7 @@
             <div class="col-md-12">
                 <a class="m-r-15 text-muted edit float-right btn btn-primary text-white mb-1" id="add" data-toggle="modal" data-target="#addModal"><i class="fas fa-plus"></i>
                 </a>
-                <div id="show_all_color_code">
+                <div id="show_all_color_code" class="container h-100 d-flex justify-content-center">
                     <h1 class="text-center text-secondary my-5">Loading...</h1>
                 </div>
             </div>

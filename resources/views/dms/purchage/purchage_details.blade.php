@@ -7,7 +7,7 @@
 
 @section('content')
 <div class="row justify-content-center">
-    <div class="col-md-12">
+    <div class="col-md-10">
         <div class="card" style="box-shadow:0 0 25px 0 lightgrey;">
             <div class="card-header">
                 <div class="row">
@@ -21,9 +21,6 @@
                         <a href="{{ route('purchage_list.index') }}" class="m-r-15 text-muted edit float-right btn btn-primary text-white mb-1">Purchage List</i>
                         </a>
                     </div>
-
-
-
                 </div>
             </div>
             <div class="card-header">
@@ -52,6 +49,7 @@
                             </div>
                         </div>
                     </div>
+
                     <div class="col-md-3">
                         <div class="form-group mb-0 row">
                             <label for="vendor" class="col-sm-4 col-form-label">Dealer</label>
@@ -63,6 +61,14 @@
                 </div>
 
                 <div class="form-row">
+                    <div class="col-md-3">
+                        <div class="form-group mb-0 row">
+                            <label for="vendor" class="col-sm-4 col-form-label">Quantity</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="challan_no" name="challan_no" value="{{$purchages->quantity}}">
+                            </div>
+                        </div>
+                    </div>
                     <div class="col-md-3">
                         <div class="form-group mb-0 row">
                             <label for="purchage_value" class="col-sm-4 col-form-label">Value</label>
@@ -90,8 +96,7 @@
                 </div>
             </div>
             <div class="card-body">
-
-                <div id="purchage_details_list">
+                <div id="purchage_details_list" class="container h-100 d-flex justify-content-center">
                     <table id="example" class="table table-hover table-responsive table-striped table-sm text-sm table-light table-bordered" style="width:100%;">
                         <thead>
                             <tr>
@@ -139,16 +144,9 @@
                             </tr> -->
                         </tbody>
                     </table>
-                    <table>
-
-                        <tr>
-                            <td><b class="h3">Purchage Value =</b></td>
-                            <td>
-                                <p class="h3 purchage_value" id="purchage_value"></p>
-                            </td>
-                        </tr>
-
-                    </table>
+                </div>
+                <div>
+                    <b class="card p-1"><span>Purchage Value = <span class="purchage_value"></span></span></b>
                 </div>
             </div>
 

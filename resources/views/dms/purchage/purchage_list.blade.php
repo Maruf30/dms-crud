@@ -7,7 +7,7 @@
 
 @section('content')
 <div class="row justify-content-center">
-    <div class="col-md-12">
+    <div class="col-md-10">
         <div class="card" style="box-shadow:0 0 25px 0 lightgrey;">
             <div class="card-header">
                 <div class="row">
@@ -21,7 +21,7 @@
                 </div>
             </div>
             <div class="card-body">
-                <div id="show_purchage_list">
+                <div id="show_purchage_list" class="container h-100 d-flex justify-content-center">
                     <h1 class="text-center text-secondary my-5">Loading...</h1>
                 </div>
             </div>
@@ -62,9 +62,11 @@
                         var html = `<table id="example" class="table table-hover table-responsive table-striped table-sm text-sm table-light table-bordered" style="width:100%;">
                         <thead>
                             <tr>
+                                <th class="align-middle">Id No</th>
                                 <th class="align-middle">Challan No</th>
                                 <th class="align-middle">Purchage Date</th>
                                 <th class="align-middle">Vendor Name</th>
+                                <th class="align-middle">Quantity</th>
                                 <th class="align-middle">Purchage Value</th>
                                 <th class="align-middle">UML Mushak No</th>
                                 <th class="align-middle">UML Mushak Date</th>                                
@@ -86,9 +88,11 @@
                             // console.log(data);
                             html +=
                                 `<tr>                                
+                                <td class="challan_no">${data.id}</td>                                
                                 <td class="challan_no">${data.challan_no}</td>                                
                                 <td class="purchage_date">${date_format(date, 'dd-MM-yyyy')}</td>
                                 <td class="vendor">${data.vendor}</td>
+                                <td class="vendor">${data.quantity}</td>
                                 <td class="purchage_value">${data.purchage_value}</td>
                                 <td class="uml_mushak_no">${data.uml_mushak_no}</td>
                                 <td class="uml_mushak_date">${data.uml_mushak_date}</td>                                
