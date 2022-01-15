@@ -15,7 +15,7 @@ class PurchageController extends Controller
     {
         $suppliers = Supplier::select('supplier_name')->where('status', '1')->get();
         $dealer_names = Supplier::select('dealer_name')->whereNotNull('dealer_name')->get();
-        $mrps = Mrp::select('model', 'model_code')->where('status', '1')->get();
+        $mrps = Mrp::select('model_name', 'model_code')->where('status', '1')->get();
         // dd($mrps);
         return view('dms.purchage.index')->with(['suppliers' => $suppliers, 'mrps' => $mrps, 'dealer_names' => $dealer_names]);
     }
