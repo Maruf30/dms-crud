@@ -16,6 +16,12 @@
     @yield('datatable_css')
     @yield('third_party_stylesheets')
     @stack('page_css')
+    <style>
+        table.dataTable tbody th,
+        table.dataTable tbody td {
+            padding: 2px 10px;
+        }
+    </style>
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
