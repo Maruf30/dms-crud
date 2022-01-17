@@ -8,13 +8,20 @@
 @section('content')
 <div class="row justify-content-center">
     <div class="col-md-10">
-        <h3 class="bg-primary text-center p-2 text-white mt-2 rounded">Product Price Details</h3>
-        <div class="row justify-content-center">
-            <div class="col-md-12">
+        <div class="card mt-2" style="box-shadow:0 0 25px 0 lightgrey;">
+            <div class="card-header">
+                <h3 class="bg-primary text-center p-2 text-white mt-2 rounded">Product Price Details</h3>
                 <a class="m-r-15 text-muted edit float-right btn btn-primary text-white mb-1" id="add" data-toggle="modal" data-target="#addModal"><i class="fas fa-plus"></i>
                 </a>
-                <div id="show_all_mrp" class="container h-100 d-flex justify-content-center">
-                    <h1 class="text-center text-secondary my-5">Loading...</h1>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-md-12">
+
+                    <div class="card-body">
+                        <div id="show_all_mrp" class="container h-100 d-flex justify-content-center">
+                            <h1 class="text-center text-secondary my-5">Loading...</h1>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
