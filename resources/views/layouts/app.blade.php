@@ -20,6 +20,7 @@
         table.dataTable tbody th,
         table.dataTable tbody td {
             padding: 2px 10px;
+            font-size: 12px;
         }
     </style>
 </head>
