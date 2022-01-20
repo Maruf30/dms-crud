@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ColorCode;
 use App\Models\Core;
 use App\Models\Mrp;
 use App\Models\Purchage;
@@ -61,8 +62,21 @@ class PurchageController extends Controller
     }
     public function get_mrp(Request $request)
     {
+        $color = ColorCode::select('model_name', 'color')->where('model_code', $request->model_code)->get();
         $mrp = Mrp::select('mrp', 'vat_mrp', 'vat_purchage_mrp', 'purchage_price')->where('model_code', $request->model_code)->first();
-        return response()->json($mrp);
+        // $mrp = Mrp::rightJoin('color_codes', 'color_codes.model_code', '=', 'mrps.model_code')
+        //     ->select(
+        //         'mrps.mrp',
+        //         'mrps.vat_mrp',
+        //         'mrps.vat_purchage_mrp',
+        //         'mrps.purchage_price',
+        //         'color_codes.color',
+        //         'color_codes.color_code'
+        //     )->where('model_code', "=", $request->model_code)
+        //     ->get();
+        return response()->json(['mrp' => $mrp, 'color' => $color]);
+        // dd($mrp);
+        // return response()->json($mrp);
     }
     public function purchage_list_index()
     {

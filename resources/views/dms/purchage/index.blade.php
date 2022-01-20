@@ -246,13 +246,25 @@
                 model_code: model_code,
                 _token: csrf
             },
-            success: function(data) {
-                tr.find(".unit_price").val(data["mrp"]);
-                tr.find(".unit_price_vat").val(data["vat_mrp"]);
-                tr.find(".vat_purchage_mrp").val(data["vat_purchage_mrp"]);
+            success: function({
+                color,
+                mrp
+            }) {
+                // console.log(color);
+                tr.find(".unit_price").val(mrp["mrp"]);
+                tr.find(".unit_price_vat").val(mrp["vat_mrp"]);
+                tr.find(".vat_purchage_mrp").val(mrp["vat_purchage_mrp"]);
                 tr.find(".vat_year_purchage").val(20212022);
-                tr.find(".purchage_price").val(data["purchage_price"]);
+                tr.find(".purchage_price").val(mrp["purchage_price"]);
             },
+            // success: function(data) {
+            //     console.log(data);
+            //     tr.find(".unit_price").val(data["mrp"]);
+            //     tr.find(".unit_price_vat").val(data["vat_mrp"]);
+            //     tr.find(".vat_purchage_mrp").val(data["vat_purchage_mrp"]);
+            //     tr.find(".vat_year_purchage").val(20212022);
+            //     tr.find(".purchage_price").val(data["purchage_price"]);
+            // },
         });
     });
 </script>
