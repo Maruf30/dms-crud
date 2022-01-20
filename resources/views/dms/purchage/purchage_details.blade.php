@@ -7,7 +7,7 @@
 
 @section('content')
 <div class="row justify-content-center">
-    <div class="col-md-10">
+    <div class="col-md-11">
         <div class="card" style="box-shadow:0 0 25px 0 lightgrey;">
             <div class="card-header">
                 <div class="row">
@@ -100,7 +100,7 @@
                     <table id="example" class="table table-hover table-responsive table-striped table-sm text-sm table-light table-bordered" style="width:100%;">
                         <thead>
                             <tr>
-                                <th class="align-middle">Name</th>
+                                <th class="align-middle" style="width:160px;">Name</th>
                                 <th class="align-middle">Chassis</th>
                                 <th class="align-middle">Engine</th>
                                 <th class="align-middle">Unit Price</th>

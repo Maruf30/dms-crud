@@ -123,7 +123,7 @@
                                 <td>#</td>
                                 <td>
                                     <!-- <select name="model_code[]" class="browser-default custom-select"> -->
-                                    <select name="model_code[]" class="form-control form-control-sm all_model">
+                                    <select name="model_code[]" class="form-control form-control-sm all_model" style="width:230px;">
                                         <option selected>Open this select menu</option>
                                         @foreach ($mrps as $mrp)
                                         <option value="{{$mrp->model_code}}">{{$mrp->model_name}}</option>
@@ -137,7 +137,7 @@
                                     <input type="text" class="form-control form-control-sm text-center" id="five_engine" name="five_engine[]" placeholder="Engine">
                                 </td>
                                 <td>
-                                    <select name="color_code[]" class="form-control form-control-sm color">
+                                    <select name="color_code[]" class="form-control form-control-sm color" style="width:100px;">
                                         <option value="">None</option>
                                     </select>
                                 </td>
@@ -257,24 +257,17 @@
                 color,
                 mrp
             }) {
-                // console.log(color);
-                tr.find(".unit_price").val(mrp["mrp"]);
-                tr.find(".unit_price_vat").val(mrp["vat_mrp"]);
-                tr.find(".vat_purchage_mrp").val(mrp["vat_purchage_mrp"]);
+                tr.find(".unit_price").val(mrp[0].mrp);
+                tr.find(".unit_price_vat").val(mrp[0].vat_mrp);
+                tr.find(".vat_purchage_mrp").val(mrp[0].vat_purchage_mrp);
                 tr.find(".vat_year_purchage").val(20212022);
-                tr.find(".purchage_price").val(mrp["purchage_price"]);
+                tr.find(".purchage_price").val(mrp[0].purchage_price);
+                tr.find(".color").empty();
+                tr.find(".color").append(`<option value="">None</option>`);
                 color.forEach(function(item) {
                     tr.find(".color").append(`<option value="${item.color_code}">${item.color}</option>`);
                 });
             },
-            // success: function(data) {
-            //     console.log(data);
-            //     tr.find(".unit_price").val(data["mrp"]);
-            //     tr.find(".unit_price_vat").val(data["vat_mrp"]);
-            //     tr.find(".vat_purchage_mrp").val(data["vat_purchage_mrp"]);
-            //     tr.find(".vat_year_purchage").val(20212022);
-            //     tr.find(".purchage_price").val(data["purchage_price"]);
-            // },
         });
     });
 </script>

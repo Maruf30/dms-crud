@@ -64,7 +64,7 @@ class PurchageController extends Controller
     public function get_mrp(Request $request)
     {
         $color = ColorCode::select('model_name', 'color', 'color_code')->where('model_code', $request->model_code)->get();
-        $mrp = Mrp::select('mrp', 'vat_mrp', 'vat_purchage_mrp', 'purchage_price')->where('model_code', $request->model_code)->first();
+        $mrp = Mrp::select('mrp', 'vat_mrp', 'vat_purchage_mrp', 'purchage_price')->where('model_code', $request->model_code)->get();
         // $mrp = Mrp::rightJoin('color_codes', 'color_codes.model_code', '=', 'mrps.model_code')
         //     ->select(
         //         'mrps.mrp',
