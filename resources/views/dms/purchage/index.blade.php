@@ -110,6 +110,7 @@
                                 <th style="text-align:center;">Model Name</th>
                                 <th style="text-align:center;">Chassis No</th>
                                 <th style="text-align:center;">Engine No</th>
+                                <th style="text-align:center;">Color</th>
                                 <th style="text-align:center;">Unit Price</th>
                                 <th style="text-align:center;">Unit Price VAT</th>
                                 <th style="text-align:center;">VAT Pur MRP</th>
@@ -136,6 +137,11 @@
                                     <input type="text" class="form-control form-control-sm text-center" id="five_engine" name="five_engine[]" placeholder="Engine">
                                 </td>
                                 <td>
+                                    <select name="color_code[]" class="form-control form-control-sm color">
+                                        <option value="">None</option>
+                                    </select>
+                                </td>
+                                <td>
                                     <input type="text" class="form-control form-control-sm unit_price text-right" id="unit_price" name="unit_price[]" placeholder="Unit Price">
                                 </td>
                                 <td>
@@ -154,6 +160,7 @@
                         </tbody>
                         <tfoot>
                             <tr>
+                                <td></td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
@@ -256,6 +263,9 @@
                 tr.find(".vat_purchage_mrp").val(mrp["vat_purchage_mrp"]);
                 tr.find(".vat_year_purchage").val(20212022);
                 tr.find(".purchage_price").val(mrp["purchage_price"]);
+                color.forEach(function(item) {
+                    tr.find(".color").append(`<option value="${item.color_code}">${item.color}</option>`);
+                });
             },
             // success: function(data) {
             //     console.log(data);

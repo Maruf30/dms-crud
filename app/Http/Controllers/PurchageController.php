@@ -49,6 +49,7 @@ class PurchageController extends Controller
                     'model_code' => $request->model_code[$key],
                     'five_chassis' => $request->five_chassis[$key],
                     'five_engine' => $request->five_engine[$key],
+                    'color_code' => $request->color_code[$key],
                     'unit_price' => $request->unit_price[$key],
                     'unit_price_vat' => $request->unit_price_vat[$key],
                     'vat_purchage_mrp' => $request->vat_purchage_mrp[$key],
@@ -62,7 +63,7 @@ class PurchageController extends Controller
     }
     public function get_mrp(Request $request)
     {
-        $color = ColorCode::select('model_name', 'color')->where('model_code', $request->model_code)->get();
+        $color = ColorCode::select('model_name', 'color', 'color_code')->where('model_code', $request->model_code)->get();
         $mrp = Mrp::select('mrp', 'vat_mrp', 'vat_purchage_mrp', 'purchage_price')->where('model_code', $request->model_code)->first();
         // $mrp = Mrp::rightJoin('color_codes', 'color_codes.model_code', '=', 'mrps.model_code')
         //     ->select(
