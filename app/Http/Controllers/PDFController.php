@@ -38,6 +38,7 @@ class PDFController extends Controller
                 'cores.chassis_no',
                 'cores.engine_no',
                 'cores.original_sale_date',
+                'cores.vat_sale_date',
                 'cores.mobile',
                 'cores.uml_mushak_no',
                 'cores.approval_no',
@@ -53,6 +54,7 @@ class PDFController extends Controller
                 'cores.print_ref',
                 'cores.color',
                 'purchages.challan_no',
+                'purchages.purchage_date',
                 'vehicles.*'
             )
             ->where('cores.print_code', "=", $print_code)
