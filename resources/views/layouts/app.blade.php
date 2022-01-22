@@ -19,6 +19,10 @@
             padding: 2px 10px;
             font-size: 12px;
         }
+
+        .fas {
+            color: #DC3545
+        }
     </style>
 </head>
 

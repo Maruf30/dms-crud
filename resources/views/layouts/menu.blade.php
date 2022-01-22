@@ -21,21 +21,10 @@
     <ul class="nav nav-pills nav-sidebar nav-child-indent flex-column" data-widget="tree-view" role="menu" data-accordion="true">
         <!-- Add icons to the links using the .nav-icon class
            with font-awesome or any other icon font library -->
-        <li class="nav-item">
-            <a href="{{ route('pdf.file_print') }}" class="nav-link">
-                <i class="nav-icon fas fa-home"></i>
-                <p>PDF</p>
-            </a>
-        </li>
-        <li class="nav-item">
-            <a href="{{ route('excel.export') }}" class="nav-link">
-                <i class="nav-icon fas fa-home"></i>
-                <p>Export Excel</p>
-            </a>
-        </li>
+
         <li class="nav-item">
             <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-tachometer-alt"></i>
+                <i class="nav-icon fas fa-user-tie"></i>
                 <p>
                     Customer
                     <i class="right fas fa-angle-left"></i>
@@ -44,7 +33,7 @@
             <ul class="nav nav-treeview" style="display: none;">
                 <li class="nav-item">
                     <a href="{{ url('/customerSearch') }}" class="nav-link">
-                        <i class="nav-icon fas fa-dollar-sign"></i>
+                        <i class="nav-icon fas fa-search"></i>
                         <p>Search</p>
                     </a>
                 </li>
@@ -54,7 +43,7 @@
 
         <li class="nav-item">
             <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-table"></i>
+                <i class="nav-icon fas fa-motorcycle"></i>
                 <p>
                     Motorcycle
                     <i class="fas fa-angle-left right"></i>
@@ -69,7 +58,7 @@
                 </li>
                 <li class="nav-item">
                     <a href="{{ route('vehicle.index') }}" class="nav-link">
-                        <i class="nav-icon fas fa-dollar-sign"></i>
+                        <i class="nav-icon fas fa-info"></i>
                         <p>Details</p>
                     </a>
                 </li>
@@ -81,30 +70,28 @@
                 </li>
                 <li class="nav-item">
                     <a href="{{ route('color_code.index') }}" class="nav-link">
-                        <i class="nav-icon fas fa-parachute-box"></i>
+                        <i class="nav-icon fas fa-tint"></i>
                         <p>Color Code</p>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="{{ route('purchage.index') }}" class="nav-link">
-                        <i class="nav-icon fas fa-parachute-box"></i>
+                        <i class="nav-icon fas fa-shopping-bag"></i>
                         <p>Purchage</p>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-parachute-box"></i>
+                        <i class="nav-icon fas fa-shopping-cart"></i>
                         <p>Sale</p>
                     </a>
                 </li>
 
             </ul>
         </li>
-
-
         <li class="nav-item">
             <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-table"></i>
+                <i class="nav-icon fas fa-file"></i>
                 <p>
                     Report
                     <i class="fas fa-angle-left right"></i>
@@ -128,7 +115,7 @@
         </li>
         <li class="nav-item">
             <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-table"></i>
+                <i class="nav-icon fas fa-percent"></i>
                 <p>
                     VAT
                     <i class="fas fa-angle-left right"></i>
@@ -151,7 +138,7 @@
         </li>
         <li class="nav-item">
             <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-table"></i>
+                <i class="nav-icon fas fa-print"></i>
                 <p>
                     Print
                     <i class="fas fa-angle-left right"></i>
@@ -160,16 +147,86 @@
             <ul class="nav nav-treeview" style="display: none;">
                 <li class="nav-item">
                     <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-dollar-sign"></i>
-                        <p>Purchage</p>
+                        <i class="nav-icon fas fa-table"></i>
+                        <p>
+                            BRTA
+                            <i class="fas fa-angle-left right"></i>
+                        </p>
                     </a>
+                    <ul class="nav nav-treeview" style="display: none;">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-home"></i>
+                                <p>HForm</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-home"></i>
+                                <p>Stamp</p>
+                            </a>
+                        </li>
+                    </ul>
                 </li>
                 <li class="nav-item">
                     <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-dollar-sign"></i>
-                        <p>Sale</p>
+                        <i class="nav-icon fas fa-table"></i>
+                        <p>
+                            File
+                            <i class="fas fa-angle-left right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview" style="display: none;">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-home"></i>
+                                <p>Single File</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-home"></i>
+                                <p>File Print</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-table"></i>
+                        <p>
+                            VAT
+                            <i class="fas fa-angle-left right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview" style="display: none;">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-home"></i>
+                                <p>Single File</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-home"></i>
+                                <p>File Print</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('pdf.file_print') }}" target="_blank" class="nav-link">
+                        <i class="nav-icon fas fa-home"></i>
+                        <p>PDF</p>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a href="{{ route('excel.export') }}" class="nav-link">
+                        <i class="nav-icon fas fa-home"></i>
+                        <p>Export Excel</p>
+                    </a>
+                </li>
+
             </ul>
         </li>
     </ul>
