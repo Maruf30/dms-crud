@@ -73,6 +73,9 @@ Route::group(['middleware' => 'auth'], function () {
 
     // Excel
     Route::get('excel_export', [App\Http\Controllers\UsersController::class, 'export'])->name('excel.export');
+
+    // Print
+    Route::get('file_print', [App\Http\Controllers\PDFController::class, 'file_print'])->name('print.file_print');
 });
 
 

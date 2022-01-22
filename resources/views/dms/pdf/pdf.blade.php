@@ -8,12 +8,13 @@
 
 <body>
     <div class="print_certificate margin_right">
+        @foreach ($print_data as $data)
         <div class="all_code">
-            <span>392</span><span>1391</span><span>4762</span><span>9433</span><span>540</span><span>BB</span><span>VAT OK</span><span>71</span>
+            <span>392</span><span>{{$data->uml_mushak_no}}</span><span>{{$data->approval_no}}</span><span>{{$data->invoice_no}}</span><span>{{$data->sale_mushak_no}}</span><span>{{$data->dealer}}</span><span>{{$data->vat_process}}</span><span>{{$data->tr_number}}</span>
         </div>
         <div class="certificate">
-            <span>Sale Date</span>
-            <span>Mobile No: </span>
+            <span>Sale Date : {{$data->original_sale_date}}</span>
+            <span>Mobile No: {{$data->mobile}}</span>
             <h1 class="concern">TO WHOM IT MAY CONCERN</h1>
             <table>
                 <tr>
@@ -21,7 +22,7 @@
                         <p class="margin">Ref:</p>
                     </td>
                     <td>
-                        <p class="margin">BAJAJ POINT/DHAKA/2021-2022</p>
+                        <p class="margin">{{$data->print_ref}}</p>
                     </td>
                 </tr>
                 <tr>
@@ -43,8 +44,8 @@
             </table>
 
             <h2 class="certify">This is to certify that we have sold new vehicle to:</h2>
-            <span style="margin-right: 35px;">ALAMGIR HOSSAI KAJAL</span><span>S/O. AFAJ UDDIN</span>
-            <p>DAG # 2515, 226/A, ASHKONA, DAKHIN KHAN, UTTARA, DHAKA-1230</p>
+            <span style="margin-right: 35px;">{{$data->customer_name}}</span><span>S/O. {{$data->father_name}}</span>
+            <p>{{$data->address_one}}, {{$data->address_two}}</p>
             <h2 class="certify">On the following particulars</h2>
             <table class="table_first_page">
                 <tbody>
@@ -52,7 +53,7 @@
                         <td class="sl">1.</td>
                         <td>Model/Make of Vehicle</td>
                         <td class="colon">:</td>
-                        <td>Bajaj 4 Stroke Motorcycle, BAJAJ PULSAR 150 TWIN DISC</td>
+                        <td>{{ $data->model_make_of_vehicle }}</td>
                     </tr>
                     <tr>
                         <td class="sl">2.</td>
@@ -64,13 +65,13 @@
                         <td class="sl">3.</td>
                         <td>Chassis No.</td>
                         <td class="colon">:</td>
-                        <td>MD2A11CY0MTH60606</td>
+                        <td>{{$data->chassis_no}}</td>
                     </tr>
                     <tr>
                         <td class="sl">4.</td>
                         <td>Engine No.</td>
                         <td class="colon">:</td>
-                        <td>JBXWMG79165</td>
+                        <td>{{$data->engine_no}}</td>
                     </tr>
                     <tr>
                         <td class="sl">5.</td>
@@ -82,19 +83,19 @@
                         <td class="sl">6.</td>
                         <td>No. of Cylinder with CC</td>
                         <td class="colon">:</td>
-                        <td>SINGLE CYLINDER 150 C.C</td>
+                        <td>{{$data->no_of_cylinder_with_cc}}</td>
                     </tr>
                     <tr>
                         <td class="sl">7.</td>
                         <td>Colour of Vehicle</td>
                         <td class="colon">:</td>
-                        <td>Black/Red</td>
+                        <td>{{$data->color}}</td>
                     </tr>
                     <tr>
                         <td class="sl">8.</td>
                         <td>Size of Tyre</td>
                         <td class="colon">:</td>
-                        <td>FRONT 90/90 X 17 & REAR 120/80 X 17</td>
+                        <td>{{$data->size_of_tyre}}</td>
                     </tr>
                     <tr>
                         <td class="sl">9.</td>
@@ -106,19 +107,19 @@
                         <td class="sl">10.</td>
                         <td>Horse Power</td>
                         <td class="colon">:</td>
-                        <td>14 PS @ 8000 RPM</td>
+                        <td>{{$data->horse_power}}</td>
                     </tr>
                     <tr>
                         <td class="sl">11.</td>
                         <td>Ladan Weight</td>
                         <td class="colon">:</td>
-                        <td>144 KG</td>
+                        <td>{{$data->ladan_weight}}</td>
                     </tr>
                     <tr>
                         <td class="sl">12.</td>
                         <td>Wheel Base</td>
                         <td class="colon">:</td>
-                        <td>1345 MM</td>
+                        <td>{{$data->wheel_base}}</td>
                     </tr>
                     <tr>
                         <td class="sl">13.</td>
@@ -136,12 +137,13 @@
                         <td class="sl">14.</td>
                         <td>Unit Price</td>
                         <td class="colon">:</td>
-                        <td>1,56,522 + 23,478 = 1,80,000</td>
+                        <td>{{$data->basic_price_vat}} + {{$data->sale_vat}} = {{$data->unit_price_vat}}</td>
                     </tr>
                 </tbody>
             </table>
         </div>
     </div>
+    @endforeach
     <div style="break-after:page"></div>
     <div class="print_challan margin_right">
         <div class="delivery_challan">
