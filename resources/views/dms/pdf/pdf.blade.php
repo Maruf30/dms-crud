@@ -10,7 +10,7 @@
     <div class="print_certificate margin_right">
         @foreach ($print_data as $data)
         <div class="all_code">
-            <span>392</span><span>{{$data->uml_mushak_no}}</span><span>{{$data->approval_no}}</span><span>{{$data->invoice_no}}</span><span>{{$data->sale_mushak_no}}</span><span>{{$data->dealer}}</span><span>{{$data->vat_process}}</span><span>{{$data->tr_number}}</span>
+            <span>{{$data->challan_no}}</span><span>{{$data->uml_mushak_no}}</span><span>{{$data->approval_no}}</span><span>{{$data->invoice_no}}</span><span>{{$data->sale_mushak_no}}</span><span>{{$data->dealer}}</span><span>{{$data->vat_process}}</span><span>{{$data->tr_number}}</span>
         </div>
         <div class="certificate">
             <span>Sale Date : {{$data->original_sale_date}}</span>

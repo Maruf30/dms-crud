@@ -22,13 +22,14 @@ class PDFController extends Controller
 
         return $pdf->stream('bajaj_point.pdf');
     }
-    public function file_print()
+    public function file_print(Request $request)
     {
         $print_code = 2000;
         $start_date = '2022-01-01';
-        $end_date = '2022-01-10';
+        $end_date = '2022-01-05';
 
         $print_data = Core::rightJoin('vehicles', 'vehicles.model_code', '=', 'cores.model_code')
+            ->rightJoin('purchages', 'purchages.id', '=', 'cores.store_id')
             ->select(
                 'cores.customer_name',
                 'cores.father_name',
@@ -51,16 +52,12 @@ class PDFController extends Controller
                 'cores.unit_price_vat',
                 'cores.print_ref',
                 'cores.color',
+                'purchages.challan_no',
                 'vehicles.*'
             )
             ->where('cores.print_code', "=", $print_code)
             ->whereBetween('cores.original_sale_date', [$start_date, $end_date])
             ->get();
-        $data = [
-            'title' => 'Welcome to Tutsmake.com',
-            'date' => date('m/d/Y')
-        ];
-
         $pdf = PDF::loadView('dms.pdf.pdf', ['print_data' => $print_data]);
         $pdf->setPaper('A4', 'portrait');
 
