@@ -155,7 +155,7 @@
                     </a>
                     <ul class="nav nav-treeview" style="display: none;">
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="{{ route('pdf.hform') }}" target="_blank" class="nav-link">
                                 <i class="nav-icon fas fa-home"></i>
                                 <p>HForm</p>
                             </a>
@@ -201,9 +201,9 @@
                     </a>
                     <ul class="nav nav-treeview" style="display: none;">
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="{{ route('pdf.vat_sale') }}" target="_blank" class="nav-link">
                                 <i class="nav-icon fas fa-home"></i>
-                                <p>Single File</p>
+                                <p>VAT Sale</p>
                             </a>
                         </li>
                         <li class="nav-item">
