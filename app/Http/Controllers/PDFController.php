@@ -65,4 +65,18 @@ class PDFController extends Controller
 
         return $pdf->stream('bajaj_point.pdf');
     }
+    public function hform()
+    {
+        $pdf = PDF::loadView('dms.pdf.brta.hform');
+        $pdf->setPaper('A4', 'portrait');
+
+        return $pdf->stream('dms.pdf.brta.hform');
+    }
+    public function vat_sale()
+    {
+        $pdf = PDF::loadView('dms.pdf.vat.vat_sale_bp');
+        $pdf->setPaper('A4', 'landscape');
+
+        return $pdf->stream('dms.pdf.vat.vat_sale_bp');
+    }
 }

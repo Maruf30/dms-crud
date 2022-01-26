@@ -70,6 +70,8 @@ Route::group(['middleware' => 'auth'], function () {
 
     // PDF
     Route::get('/pdf_file_print', [App\Http\Controllers\PDFController::class, 'pdf_file_print'])->name('pdf.file_print');
+    Route::get('/hform', [App\Http\Controllers\PDFController::class, 'hform'])->name('pdf.hform');
+    Route::get('/vat_sale', [App\Http\Controllers\PDFController::class, 'vat_sale'])->name('pdf.vat_sale');
 
     // Excel
     Route::get('excel_export', [App\Http\Controllers\UsersController::class, 'export'])->name('excel.export');
