@@ -2,6 +2,7 @@
 <html>
 
 <head>
+
     <style>
         html {
             margin: 0px;
@@ -14,14 +15,6 @@
             margin: 0px;
             padding: 0px;
         }
-
-        /* @font-face {
-            font-family: "Helvetica";
-            font-weight: normal;
-            font-style: normal;
-            font-variant: normal;
-            src: url("http://fonts.cdnfonts.com/css/helvetica-neue-9");
-        } */
 
         body {
             /* font-family: Helvetica, sans-serif; */
