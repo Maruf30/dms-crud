@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Core;
-use Illuminate\Http\Request;
-
 use PDF;
+use App\Models\Core;
+
+use Illuminate\Http\Request;
+use DB;
 
 class PDFController extends Controller
 {
@@ -78,5 +79,58 @@ class PDFController extends Controller
         $pdf->setPaper('A4', 'landscape');
 
         return $pdf->stream('dms.pdf.vat.vat_sale_bp');
+    }
+    public function vat_sale_bp()
+    {
+        $print_code = 2000;
+        $start_date = '2022-01-01';
+        $end_date = '2022-01-20';
+
+        // $data = DB::table('cores')
+        //     ->rightJoin('vehicles', 'vehicles.model_code', '=', 'cores.model_code')
+        //     ->select(
+        //         'cores.customer_name',
+        //         'cores.address_two',
+        //         'cores.five_chassis',
+        //         'cores.five_engine',
+        //         'cores.vat_sale_date',
+        //         'cores.sale_mushak_no',
+        //         'cores.basic_price_vat',
+        //         'cores.sale_vat',
+        //         'cores.unit_price_vat',
+        //         'vehicles.model',
+        //         // DB::raw('COUNT(*) AS total')
+        //     )
+        //     ->where('cores.vat_code', "=", $print_code)
+        //     // ->whereNotNull('cores.sale_mushak_no')
+        //     ->whereBetween('cores.vat_sale_date', [$start_date, $end_date])
+        //     // ->groupBy('vehicles.model')
+        //     ->get()
+        //     ->groupBy('model');
+
+        // ->sortBy('sale_mushak_no');
+        $data = Core::rightJoin('vehicles', 'vehicles.model_code', '=', 'cores.model_code')
+            ->select(
+                'cores.customer_name',
+                'cores.address_two',
+                'cores.five_chassis',
+                'cores.five_engine',
+                'cores.vat_sale_date',
+                'cores.sale_mushak_no',
+                'cores.basic_price_vat',
+                'cores.sale_vat',
+                'cores.unit_price_vat',
+                'vehicles.model',
+            )
+            ->where('cores.vat_code', "=", $print_code)
+            ->whereNotNull('cores.sale_mushak_no')
+            ->whereBetween('cores.vat_sale_date', [$start_date, $end_date])
+            ->orderBy('sale_mushak_no')
+            ->get()
+            ->groupBy('vat_sale_date');
+
+        // ->sum('sale_vat');
+        // ->sortBy('sale_mushak_no');
+        return response()->json($data);
     }
 }

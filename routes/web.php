@@ -78,6 +78,8 @@ Route::group(['middleware' => 'auth'], function () {
 
     // Print
     Route::get('file_print', [App\Http\Controllers\PDFController::class, 'file_print'])->name('print.file_print');
+    // Vat
+    Route::get('vat_sale_bp', [App\Http\Controllers\PDFController::class, 'vat_sale_bp']);
 });
 
 
