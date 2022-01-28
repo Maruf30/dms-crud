@@ -75,10 +75,38 @@ class PDFController extends Controller
     }
     public function vat_sale()
     {
-        $pdf = PDF::loadView('dms.pdf.vat.vat_sale_bp');
+        $print_code = 2000;
+        $start_date = '2022-01-01';
+        $end_date = '2022-01-05';
+
+        $data = Core::rightJoin('vehicles', 'vehicles.model_code', '=', 'cores.model_code')
+            ->select(
+                'cores.customer_name',
+                'cores.address_two',
+                'cores.five_chassis',
+                'cores.five_engine',
+                'cores.vat_sale_date',
+                'cores.sale_mushak_no',
+                'cores.basic_price_vat',
+                'cores.sale_vat',
+                'cores.unit_price_vat',
+                'vehicles.model',
+            )
+            ->where('cores.vat_code', "=", $print_code)
+            ->whereNotNull('cores.sale_mushak_no')
+            ->whereBetween('cores.vat_sale_date', [$start_date, $end_date])
+            ->orderBy('sale_mushak_no')
+            ->get()
+            ->groupBy('vat_sale_date');
+
+
+        // return response()->json($data);
+        // return view('dms.pdf.vat.vat_sale_bp')->with(['date_data' => $data]);
+
+        $pdf = PDF::loadView('dms.pdf.vat.vat_sale_bp', ['date_data' => $data]);
         $pdf->setPaper('A4', 'landscape');
 
-        return $pdf->stream('dms.pdf.vat.vat_sale_bp');
+        return $pdf->stream('vat_sale_bp');
     }
     public function vat_sale_bp()
     {
@@ -129,8 +157,7 @@ class PDFController extends Controller
             ->get()
             ->groupBy('vat_sale_date');
 
-        // ->sum('sale_vat');
-        // ->sortBy('sale_mushak_no');
+        // dd($data);
         return response()->json($data);
     }
 }
